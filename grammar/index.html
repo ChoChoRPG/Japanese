@@ -4,557 +4,164 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cho・Grammar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body { font-family: 'Nunito', sans-serif; background-color: #f8fafc; }
-        .jp-text { font-family: 'Noto Sans JP', sans-serif; }
-        .card-shadow { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); }
-        
-        /* Custom Checkbox */
-        .check-input:checked + div { background-color: #10b981; border-color: #10b981; color: white; }
-        
-        /* Custom Star */
-        .star-input:checked + svg { fill: #fbbf24; stroke: #fbbf24; }
-        .star-input:checked + i { fill: #fbbf24; color: #fbbf24; }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="text-slate-800 h-screen flex flex-col overflow-hidden">
+<body>
 
-    <!-- VIEW 1: PILIH LEVEL -->
-    <div id="levelSelectionView" class="flex-1 flex flex-col items-center justify-center p-6 bg-slate-50 transition-all duration-300 overflow-y-auto">
-        <div class="text-center mb-10 mt-10 md:mt-0">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-800 mb-2 tracking-tight">Cho・Grammar</h1>
-            <p class="text-slate-500">Pilih level JLPT Anda untuk mulai belajar</p>
+    <div id="levelSelectionView">
+        <div class="hero-section">
+            <h1 class="hero-title">Grammar・Bunpou</h1>
+            <p class="hero-subtitle">Pilih level JLPT Anda untuk mulai belajar</p>
         </div>
         
-        <div class="flex flex-wrap justify-center gap-6 w-full max-w-5xl pb-10">
+        <div class="level-grid">
+            <div onclick="selectLevel('n5')" class="level-card card-n5">
+                <div class="icon-circle">N5</div>
+                <h3 class="level-title">Beginner</h3>
+                <p class="level-desc">Dasar tata bahasa</p>
+            </div>
+
+            <div onclick="selectLevel('n4')" class="level-card card-n4">
+                <div class="icon-circle">N4</div>
+                <h3 class="level-title">Elementary</h3>
+                <p class="level-desc">Konjugasi lanjutan</p>
+            </div>
+
+            <div onclick="selectLevel('n3')" class="level-card card-n3">
+                <div class="icon-circle">N3</div>
+                <h3 class="level-title">Intermediate</h3>
+                <p class="level-desc">Bahasa sehari-hari</p>
+            </div>
             
-            <!-- N5 -->
-            <button onclick="selectLevel('n5')" class="group relative bg-white p-8 rounded-2xl card-shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col items-center w-full sm:w-64">
-                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-blue-500 transition-colors">
-                    <span class="text-2xl font-bold text-blue-600 group-hover:text-white">N5</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-700">Beginner</h3>
-                <p class="text-xs text-slate-400 mt-1">Dasar tata bahasa</p>
-            </button>
+            <div onclick="selectLevel('n2')" class="level-card card-n2">
+                <div class="icon-circle">N2</div>
+                <h3 class="level-title">Pre-Advanced</h3>
+                <p class="level-desc">Bisnis & Formal</p>
+            </div>
 
-            <!-- N4 -->
-            <button onclick="selectLevel('n4')" class="group relative bg-white p-8 rounded-2xl card-shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col items-center w-full sm:w-64">
-                <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-emerald-500 transition-colors">
-                    <span class="text-2xl font-bold text-emerald-600 group-hover:text-white">N4</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-700">Elementary</h3>
-                <p class="text-xs text-slate-400 mt-1">Konjugasi lanjutan</p>
-            </button>
-
-            <!-- N3 -->
-            <button onclick="selectLevel('n3')" class="group relative bg-white p-8 rounded-2xl card-shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col items-center w-full sm:w-64">
-                <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-teal-500 transition-colors">
-                    <span class="text-2xl font-bold text-teal-600 group-hover:text-white">N3</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-700">Intermediate</h3>
-                <p class="text-xs text-slate-400 mt-1">Bahasa sehari-hari</p>
-            </button>
-            
-            <!-- N2 -->
-            <button onclick="selectLevel('n2')" class="group relative bg-white p-8 rounded-2xl card-shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col items-center w-full sm:w-64">
-                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-orange-500 transition-colors">
-                    <span class="text-2xl font-bold text-orange-600 group-hover:text-white">N2</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-700">Pre-Advanced</h3>
-                <p class="text-xs text-slate-400 mt-1">Bisnis & Formal</p>
-            </button>
-
-            <!-- N1 -->
-            <button onclick="selectLevel('n1')" class="group relative bg-white p-8 rounded-2xl card-shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col items-center w-full sm:w-64">
-                <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mb-4 group-hover:bg-rose-500 transition-colors">
-                    <span class="text-2xl font-bold text-rose-600 group-hover:text-white">N1</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-700">Advanced</h3>
-                <p class="text-xs text-slate-400 mt-1">Akademik & Koran</p>
-            </button>
+            <div onclick="selectLevel('n1')" class="level-card card-n1">
+                <div class="icon-circle">N1</div>
+                <h3 class="level-title">Advanced</h3>
+                <p class="level-desc">Akademik & Koran</p>
+            </div>
         </div>
     </div>
 
-    <!-- VIEW 2: DAFTAR GRAMMAR -->
-    <div id="grammarListView" class="hidden flex-col h-full bg-slate-50">
+    <div id="grammarListView">
         
-        <!-- Navbar -->
-        <header class="bg-white shadow-sm z-30 flex-none">
-            <div class="max-w-5xl mx-auto px-4 py-3">
-                <div class="flex items-center gap-3 mb-3">
-                    <button onclick="goBack()" class="p-2 -ml-2 hover:bg-slate-100 rounded-full text-slate-500 transition-colors">
-                        <i data-lucide="arrow-left" class="w-6 h-6"></i>
+        <header class="app-header">
+            <div class="header-content">
+                <div class="top-bar">
+                    <button onclick="goBack()" class="back-btn">
+                        <i data-lucide="arrow-left"></i>
                     </button>
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-800 flex items-center gap-2">
-                            Cho・Grammar <span id="levelBadge" class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full font-bold">N5</span>
-                        </h2>
-                    </div>
+                    <h2 class="header-title">
+                        Grammar <span id="levelBadge" class="level-badge">N5</span>
+                    </h2>
                 </div>
 
-                <!-- Kontrol: Filter & Cari -->
-                <div class="flex flex-col md:flex-row gap-3 justify-between items-end md:items-center">
-                    <!-- Tab Filter -->
-                    <div class="flex bg-slate-100 p-1 rounded-lg w-full md:w-auto overflow-x-auto no-scrollbar">
-                        <button onclick="setFilter('all')" class="filter-btn flex-1 px-4 py-1.5 text-sm font-semibold rounded-md transition-all text-slate-500 hover:text-slate-800 whitespace-nowrap active-filter" data-filter="all">Semua</button>
-                        <button onclick="setFilter('unlearned')" class="filter-btn flex-1 px-4 py-1.5 text-sm font-semibold rounded-md transition-all text-slate-500 hover:text-slate-800 whitespace-nowrap" data-filter="unlearned">Belum</button>
-                        <button onclick="setFilter('learned')" class="filter-btn flex-1 px-4 py-1.5 text-sm font-semibold rounded-md transition-all text-slate-500 hover:text-slate-800 whitespace-nowrap" data-filter="learned">Sudah</button>
-                        <button onclick="setFilter('liked')" class="filter-btn flex-1 px-4 py-1.5 text-sm font-semibold rounded-md transition-all text-slate-500 hover:text-slate-800 whitespace-nowrap" data-filter="liked">Disukai</button>
+                <div class="controls-bar">
+                    <div class="filter-tabs">
+                        <button onclick="setFilter('all')" class="filter-btn" data-filter="all">Semua</button>
+                        <button onclick="setFilter('unlearned')" class="filter-btn" data-filter="unlearned">Belum</button>
+                        <button onclick="setFilter('learned')" class="filter-btn" data-filter="learned">Sudah</button>
+                        <button onclick="setFilter('liked')" class="filter-btn" data-filter="liked">Disukai</button>
                     </div>
 
-                    <!-- Kontrol Kanan -->
-                    <div class="flex gap-2 w-full md:w-auto">
-                        <!-- Toggle Acak -->
-                        <label class="flex items-center gap-2 cursor-pointer bg-white border border-slate-200 px-3 py-1.5 rounded-lg select-none hover:bg-slate-50 transition-colors">
-                            <input type="checkbox" id="randomToggle" class="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 accent-blue-600" onchange="toggleRandom()">
-                            <span class="text-sm font-medium text-slate-600">Acak</span>
+                    <div class="right-controls">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="randomToggle" onchange="toggleRandom()">
+                            <span>Acak</span>
                         </label>
-                        <!-- Cari -->
-                        <div class="relative flex-1 md:w-64">
-                            <input type="text" id="searchInput" placeholder="Cari..." class="w-full pl-9 pr-3 py-1.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-2"></i>
+                        <div class="search-box">
+                            <i data-lucide="search" class="search-icon"></i>
+                            <input type="text" id="searchInput" placeholder="Cari..." class="search-input">
                         </div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Konten Scrollable -->
-        <main class="flex-1 overflow-y-auto p-4 custom-scroll">
-            <div id="grammarGrid" class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-20">
-                <!-- Kartu akan dimasukkan di sini -->
-            </div>
+        <main class="scroll-area">
+            <div id="grammarGrid" class="grammar-grid">
+                </div>
 
-            <!-- Empty State -->
-            <div id="emptyState" class="hidden flex-col items-center justify-center h-64 text-slate-400">
-                <i data-lucide="filter" class="w-12 h-12 mb-3 opacity-50"></i>
+            <div id="emptyState" class="empty-state">
+                <i data-lucide="filter" class="empty-icon"></i>
                 <p>Tidak ada grammar yang cocok dengan filter ini.</p>
             </div>
         </main>
     </div>
 
-    <!-- Modal Detail -->
-    <div id="modalOverlay" class="fixed inset-0 bg-slate-900/50 hidden z-50 backdrop-blur-sm transition-opacity opacity-0 flex items-center justify-center p-4">
-        <div id="modalContent" class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col transform scale-95 transition-all">
-            <!-- Header Modal -->
-            <div class="p-6 border-b border-slate-100 flex justify-between items-start bg-slate-50 rounded-t-xl">
+    <div id="modalOverlay" class="modal-overlay">
+        <div id="modalContent" class="modal-content">
+            <div class="modal-header">
                 <div>
-                    <!-- Nomor & Level Badge -->
-                    <div class="flex items-center gap-2 mb-1">
-                        <span id="m-id" class="text-sm font-mono text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded"></span>
-                        <span id="m-level" class="text-xs font-bold text-white px-2 py-0.5 rounded-full"></span>
+                    <div class="modal-tags">
+                        <span id="m-id" class="tag-id"></span>
+                        <span id="m-level" class="tag-level"></span>
                     </div>
-                    <h2 id="m-title" class="text-3xl font-bold text-slate-800 jp-text"></h2>
-                    <p id="m-romaji" class="text-slate-500 font-mono text-sm mt-1"></p>
+                    <h2 id="m-title" class="modal-title jp-text"></h2>
+                    <p id="m-romaji" class="modal-subtitle"></p>
                 </div>
-                <button onclick="closeModal()" class="p-2 hover:bg-slate-200 rounded-full transition-colors">
-                    <i data-lucide="x" class="w-6 h-6 text-slate-600"></i>
+                <button onclick="closeModal()" class="back-btn">
+                    <i data-lucide="x"></i>
                 </button>
             </div>
-            <!-- Body Modal -->
-            <div class="p-6 overflow-y-auto flex-1 space-y-6">
+            
+            <div class="modal-body">
                 <div>
-                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2 py-1 rounded">Arti</span>
-                    <p id="m-meaning" class="text-xl font-semibold text-slate-800 mt-2"></p>
+                    <span class="section-label">Arti</span>
+                    <p id="m-meaning" class="meaning-text"></p>
                 </div>
-                <div class="bg-amber-50 p-4 rounded-lg border border-amber-100">
-                    <h3 class="flex items-center gap-2 text-sm font-bold text-amber-700 uppercase mb-2">
-                        <i data-lucide="link" class="w-4 h-4"></i> Rumus Sambungan
+
+                <div class="connection-box">
+                    <h3 class="connection-title">
+                        <i data-lucide="link" style="width:16px;"></i> Rumus Sambungan
                     </h3>
-                    <!-- Area Rumus -->
-                    <div id="m-connection" class="text-sm space-y-1"></div>
+                    <div id="m-connection"></div>
                 </div>
+
                 <div>
-                    <h3 class="text-sm font-bold text-slate-500 uppercase mb-2">Catatan</h3>
-                    <ul id="m-notes" class="list-disc list-inside space-y-1 text-slate-700 text-sm"></ul>
+                    <h3 class="section-label" style="background:none; color:#64748b; padding-left:0;">Catatan</h3>
+                    <ul id="m-notes" class="notes-list"></ul>
                 </div>
-                <div id="m-conjugation-wrapper" class="hidden">
-                    <h3 class="text-sm font-bold text-slate-500 uppercase mb-2">Perubahan Bentuk</h3>
-                    <table class="w-full text-sm text-left border rounded-lg overflow-hidden">
+
+                <div id="m-conjugation-wrapper" class="hidden" style="margin-bottom: 1.5rem;">
+                    <h3 class="section-label" style="background:none; color:#64748b; padding-left:0;">Perubahan Bentuk</h3>
+                    <table class="conj-table">
                         <tbody id="m-conjugations"></tbody>
                     </table>
                 </div>
+
                 <div>
-                    <h3 class="text-sm font-bold text-slate-500 uppercase mb-3">Contoh Kalimat</h3>
-                    <div id="m-examples" class="space-y-3"></div>
+                    <h3 class="section-label" style="background:none; color:#64748b; padding-left:0;">Contoh Kalimat</h3>
+                    <div id="m-examples"></div>
                 </div>
             </div>
-            <!-- Footer Modal -->
-            <div class="p-4 border-t border-slate-100 flex justify-between items-center bg-slate-50 rounded-b-xl">
-                <label class="flex items-center gap-2 cursor-pointer select-none">
-                    <input type="checkbox" id="m-check" class="hidden check-input" onchange="toggleFromModal('learned')">
-                    <div class="w-5 h-5 border-2 border-slate-300 rounded flex items-center justify-center transition-colors text-white">
-                        <i data-lucide="check" class="w-3.5 h-3.5"></i>
+
+            <div class="modal-footer">
+                <label class="check-wrapper" style="display:flex; align-items:center; gap:0.5rem;">
+                    <input type="checkbox" id="m-check" class="check-input" onchange="toggleFromModal('learned')">
+                    <div class="custom-check" style="width:20px; height:20px;">
+                        <i data-lucide="check" style="width:14px; height:14px;"></i>
                     </div>
-                    <span class="text-sm font-semibold text-slate-600">Sudah Hafal</span>
+                    <span style="font-weight:600; font-size:0.9rem; color:#475569;">Sudah Hafal</span>
                 </label>
-                <label class="cursor-pointer">
-                    <input type="checkbox" id="m-star" class="hidden star-input" onchange="toggleFromModal('liked')">
-                    <i data-lucide="star" class="w-6 h-6 text-slate-300 transition-colors"></i>
+                
+                <label class="star-label">
+                    <input type="checkbox" id="m-star" class="star-input" onchange="toggleFromModal('liked')">
+                    <i data-lucide="star" class="star-icon" style="width:24px; height:24px;"></i>
                 </label>
             </div>
         </div>
     </div>
 
-    <script>
-        // --- DATA & STATE ---
-        let rawData = [];
-        let displayData = [];
-        let currentLevel = '';
-        let filterMode = 'all'; // all, unlearned, learned, liked
-        let isRandom = false;
-        let currentModalId = null;
-
-        let userProgress = JSON.parse(localStorage.getItem('choGrammarProgress')) || {};
-
-        // --- KAMUS PENERJEMAH ISTILAH ---
-        // Fungsi ini akan mengubah istilah Inggris di data JSON menjadi Bahasa Indonesia secara otomatis
-        function localizeTerm(text) {
-            if (!text) return "";
-            let result = text;
-            
-            // Daftar kata yang akan diganti
-            const dict = {
-                'Noun': 'Kata Benda',
-                'Verb': 'Kata Kerja',
-                'i-Adj': 'Kata Sifat-i',
-                'na-Adj': 'Kata Sifat-na',
-                'Adj': 'Kata Sifat',
-                'Masu stem': 'Bentuk Masu (tanpa masu)',
-                'Dictionary': 'Bentuk Kamus',
-                'Kamus': 'Bentuk Kamus',
-                'Te-form': 'Bentuk Te',
-                'Te': 'Bentuk Te',
-                'Ta': 'Bentuk Ta',
-                'Nai': 'Bentuk Nai',
-                'Volitional': 'Bentuk Maksud (Volitional)',
-                'Potential': 'Bentuk Potensial',
-                'Passive': 'Bentuk Pasif',
-                'Causative': 'Bentuk Kausatif',
-                'Plain': 'Bentuk Biasa',
-                'Biasa': 'Bentuk Biasa'
-            };
-
-            // Lakukan penggantian (Replacement)
-            for (const [key, value] of Object.entries(dict)) {
-                result = result.split(key).join(value);
-            }
-            return result;
-        }
-
-        // --- TTS FUNCTION (Suara Jepang) ---
-        function playTTS(text) {
-            if ('speechSynthesis' in window) {
-                // Cancel antrian suara sebelumnya agar tidak tumpang tindih
-                window.speechSynthesis.cancel();
-                
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'ja-JP';
-                utterance.rate = 0.8; // Kecepatan sedikit lambat (ideal untuk belajar)
-                
-                // Mencoba mencari voice khusus Jepang jika tersedia di browser
-                const voices = window.speechSynthesis.getVoices();
-                const jpVoice = voices.find(voice => voice.lang === 'ja-JP');
-                if (jpVoice) utterance.voice = jpVoice;
-
-                window.speechSynthesis.speak(utterance);
-            } else {
-                alert("Browser Anda tidak mendukung fitur suara.");
-            }
-        }
-
-        // --- LOGIKA NAVIGASI ---
-
-        function selectLevel(level) {
-            currentLevel = level;
-            
-            // Update warna badge
-            const colors = { n5: 'bg-blue-100 text-blue-700', n4: 'bg-emerald-100 text-emerald-700', n3: 'bg-teal-100 text-teal-700', n2: 'bg-orange-100 text-orange-700', n1: 'bg-rose-100 text-rose-700' };
-            const badge = document.getElementById('levelBadge');
-            badge.className = `${colors[level] || 'bg-slate-100'} text-xs px-2 py-0.5 rounded-full font-bold uppercase`;
-            badge.textContent = level.toUpperCase();
-
-            loadData(level);
-        }
-
-        function goBack() {
-            document.getElementById('grammarListView').classList.add('hidden');
-            document.getElementById('levelSelectionView').classList.remove('hidden');
-            filterMode = 'all';
-            isRandom = false;
-            document.getElementById('randomToggle').checked = false;
-            document.getElementById('searchInput').value = '';
-            updateFilterUI();
-        }
-
-        async function loadData(level) {
-            try {
-                // Mengambil data JSON
-                const response = await fetch(`data/grammar-${level}.json`);
-                if(!response.ok) throw new Error("File not found");
-                
-                rawData = await response.json();
-                
-                // Pindah Tampilan
-                document.getElementById('levelSelectionView').classList.add('hidden');
-                document.getElementById('grammarListView').classList.remove('hidden');
-                document.getElementById('grammarListView').classList.add('flex');
-
-                applyFilters();
-
-            } catch (error) {
-                alert(`Data untuk level ${level.toUpperCase()} belum tersedia atau tidak bisa dibaca.\n\nTips: Pastikan nama file di folder data adalah 'grammar-${level}.json' dan Anda menggunakan Live Server.`);
-                console.error(error);
-                // Fallback untuk N5 jika error (Data dummy lokal untuk demo)
-                if(level === 'n5' && typeof localFallbackData !== 'undefined') {
-                    rawData = localFallbackData;
-                    applyFilters();
-                }
-            }
-        }
-
-        // --- LOGIKA UTAMA ---
-
-        function applyFilters() {
-            const keyword = document.getElementById('searchInput').value.toLowerCase();
-            
-            let filtered = rawData.filter(item => {
-                const key = `${currentLevel}-${item.id}`;
-                const progress = userProgress[key] || { learned: false, liked: false };
-                
-                const matchText = item.grammar_point.toLowerCase().includes(keyword) || 
-                                  item.meaning.toLowerCase().includes(keyword) ||
-                                  item.romaji.toLowerCase().includes(keyword);
-                if (!matchText) return false;
-
-                if (filterMode === 'learned') return progress.learned;
-                if (filterMode === 'unlearned') return !progress.learned;
-                if (filterMode === 'liked') return progress.liked;
-                return true; 
-            });
-
-            if (isRandom) {
-                for (let i = filtered.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
-                }
-            } else {
-                filtered.sort((a, b) => a.id - b.id);
-            }
-
-            displayData = filtered;
-            renderGrid();
-        }
-
-        function renderGrid() {
-            const grid = document.getElementById('grammarGrid');
-            const empty = document.getElementById('emptyState');
-            grid.innerHTML = '';
-
-            if (displayData.length === 0) {
-                empty.classList.remove('hidden');
-                empty.classList.add('flex');
-            } else {
-                empty.classList.add('hidden');
-                empty.classList.remove('flex');
-            }
-
-            displayData.forEach(item => {
-                const key = `${currentLevel}-${item.id}`;
-                const progress = userProgress[key] || { learned: false, liked: false };
-                
-                const card = document.createElement('div');
-                const bgClass = progress.learned ? 'bg-slate-50 border-emerald-200' : 'bg-white border-slate-100 hover:border-blue-200';
-                const opacityClass = progress.learned ? 'opacity-75 hover:opacity-100' : 'opacity-100';
-                
-                card.className = `${bgClass} ${opacityClass} p-5 rounded-xl border shadow-sm hover:shadow-md transition-all relative group flex flex-col justify-between min-h-[140px]`;
-                
-                const formattedId = item.id.toString().padStart(3, '0');
-
-                card.innerHTML = `
-                    <div class="cursor-pointer mb-2" onclick="openModal(${item.id})">
-                        <div class="flex justify-between items-start mb-1">
-                            <h3 class="text-xl font-bold text-slate-700 jp-text group-hover:text-blue-600 transition-colors">${item.grammar_point}</h3>
-                            <span class="text-xs font-mono text-slate-300 group-hover:text-blue-300">#${formattedId}</span>
-                        </div>
-                        <p class="text-xs text-slate-400 font-mono mb-2">${item.romaji}</p>
-                        <p class="text-sm text-slate-600 font-medium leading-relaxed line-clamp-2">${item.meaning}</p>
-                    </div>
-
-                    <div class="flex justify-between items-center pt-3 mt-auto border-t border-slate-100/50">
-                        <label class="cursor-pointer p-1 -ml-1 rounded hover:bg-slate-100" title="Tandai Hafal">
-                            <input type="checkbox" class="hidden check-input" ${progress.learned ? 'checked' : ''} onchange="toggleState(${item.id}, 'learned')">
-                            <div class="w-6 h-6 border-2 border-slate-200 rounded-md flex items-center justify-center transition-all text-white">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                        </label>
-
-                        <div class="flex items-center gap-2">
-                             <button onclick="openModal(${item.id})" class="text-xs text-slate-400 hover:text-blue-500 font-medium px-2 py-1 rounded bg-slate-50 hover:bg-blue-50">Detail</button>
-                             <label class="cursor-pointer p-1 rounded hover:bg-slate-100" title="Sukai">
-                                <input type="checkbox" class="hidden star-input" ${progress.liked ? 'checked' : ''} onchange="toggleState(${item.id}, 'liked')">
-                                <i data-lucide="star" class="w-5 h-5 text-slate-300 transition-colors"></i>
-                            </label>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-            lucide.createIcons();
-        }
-
-        // --- INTERAKSI ---
-
-        function toggleState(id, type) {
-            const key = `${currentLevel}-${id}`;
-            if (!userProgress[key]) userProgress[key] = { learned: false, liked: false };
-            
-            userProgress[key][type] = !userProgress[key][type];
-            localStorage.setItem('choGrammarProgress', JSON.stringify(userProgress));
-            
-            if (filterMode !== 'all') {
-                applyFilters();
-            } else {
-                renderGrid(); 
-            }
-        }
-
-        function setFilter(mode) {
-            filterMode = mode;
-            updateFilterUI();
-            applyFilters();
-        }
-
-        function updateFilterUI() {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                if(btn.dataset.filter === filterMode) {
-                    btn.classList.add('bg-white', 'text-blue-700', 'shadow-sm');
-                    btn.classList.remove('text-slate-500', 'hover:text-slate-800');
-                } else {
-                    btn.classList.remove('bg-white', 'text-blue-700', 'shadow-sm');
-                    btn.classList.add('text-slate-500', 'hover:text-slate-800');
-                }
-            });
-        }
-
-        function toggleRandom() {
-            isRandom = document.getElementById('randomToggle').checked;
-            applyFilters();
-        }
-
-        document.getElementById('searchInput').addEventListener('input', applyFilters);
-
-        // --- MODAL ---
-
-        function openModal(id) {
-            currentModalId = id;
-            const item = rawData.find(i => i.id === id);
-            const key = `${currentLevel}-${id}`;
-            const progress = userProgress[key] || { learned: false, liked: false };
-
-            // Header Info
-            const formattedId = item.id.toString().padStart(3, '0');
-            document.getElementById('m-id').textContent = `#${formattedId}`;
-            
-            const levelEl = document.getElementById('m-level');
-            levelEl.textContent = currentLevel.toUpperCase();
-            const levelColors = { n5: 'bg-blue-500', n4: 'bg-emerald-500', n3: 'bg-teal-500', n2: 'bg-orange-500', n1: 'bg-rose-500' };
-            levelEl.className = `text-xs font-bold text-white px-2 py-0.5 rounded-full ${levelColors[currentLevel] || 'bg-slate-500'}`;
-
-            document.getElementById('m-title').textContent = item.grammar_point;
-            document.getElementById('m-romaji').textContent = item.romaji;
-            document.getElementById('m-meaning').textContent = item.meaning;
-
-            // Render Connection Rule (dengan lokalisasi/terjemahan otomatis)
-            const connEl = document.getElementById('m-connection');
-            if (Array.isArray(item.connection_rule)) {
-                connEl.innerHTML = item.connection_rule.map(rule => `
-                    <div class="flex items-center gap-2 border-b border-amber-100 last:border-0 pb-1 last:pb-0 mb-1 last:mb-0">
-                        <span class="text-amber-500 text-lg leading-none">•</span>
-                        <span class="font-mono text-amber-900">${localizeTerm(rule)}</span>
-                    </div>
-                `).join('');
-            } else {
-                connEl.textContent = localizeTerm(item.connection_rule);
-            }
-            
-            const notes = document.getElementById('m-notes');
-            notes.innerHTML = item.usage_notes.map(n => `<li>${n}</li>`).join('');
-
-            const examples = document.getElementById('m-examples');
-            examples.innerHTML = item.examples.map(ex => `
-                <div class="bg-slate-50 p-3 rounded border-l-4 border-blue-400 flex justify-between items-start gap-3">
-                    <div class="flex-1">
-                        <p class="font-bold text-slate-800 jp-text text-lg">${ex.japanese}</p>
-                        <p class="text-xs text-slate-400 mb-1">${ex.furigana}</p>
-                        <p class="text-sm text-slate-600 italic">"${ex.translation}"</p>
-                    </div>
-                    <button onclick="playTTS('${ex.japanese.replace(/'/g, "\\'")}')" class="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-100 rounded-full transition-all mt-1" title="Dengarkan">
-                        <i data-lucide="volume-2" class="w-5 h-5"></i>
-                    </button>
-                </div>
-            `).join('');
-
-            const conjWrapper = document.getElementById('m-conjugation-wrapper');
-            const conjTable = document.getElementById('m-conjugations');
-            if (item.conjugations && item.conjugations.length > 0) {
-                conjWrapper.classList.remove('hidden');
-                conjTable.innerHTML = item.conjugations.map((c, i) => `
-                    <tr class="${i%2===0 ? 'bg-white' : 'bg-slate-50'}">
-                        <td class="p-2 border-b text-slate-500">${c.label}</td>
-                        <td class="p-2 border-b text-blue-700 jp-text">${c.polite}</td>
-                        <td class="p-2 border-b text-slate-700 jp-text">${c.plain}</td>
-                    </tr>
-                `).join('');
-            } else {
-                conjWrapper.classList.add('hidden');
-            }
-
-            document.getElementById('m-check').checked = progress.learned;
-            document.getElementById('m-star').checked = progress.liked;
-
-            const overlay = document.getElementById('modalOverlay');
-            const content = document.getElementById('modalContent');
-            overlay.classList.remove('hidden');
-            requestAnimationFrame(() => {
-                overlay.classList.remove('opacity-0');
-                content.classList.remove('scale-95');
-                content.classList.add('scale-100');
-            });
-            
-            // Render ulang ikon yang baru ditambahkan secara dinamis
-            lucide.createIcons();
-        }
-
-        function closeModal() {
-            const overlay = document.getElementById('modalOverlay');
-            const content = document.getElementById('modalContent');
-            overlay.classList.add('opacity-0');
-            content.classList.remove('scale-100');
-            content.classList.add('scale-95');
-            setTimeout(() => {
-                overlay.classList.add('hidden');
-                renderGrid();
-            }, 200);
-        }
-
-        function toggleFromModal(type) {
-            if (currentModalId !== null) {
-                toggleState(currentModalId, type);
-            }
-        }
-
-        document.getElementById('modalOverlay').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('modalOverlay')) closeModal();
-        });
-
-        // Init
-        lucide.createIcons();
-        updateFilterUI();
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
