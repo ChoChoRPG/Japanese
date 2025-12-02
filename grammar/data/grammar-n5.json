@@ -1,0 +1,3462 @@
+[
+  {
+    "id": 1,
+    "grammar_point": "～だ / ～です",
+    "romaji": "da / desu",
+    "jlpt_level": "N5",
+    "meaning": "Adalah (Kopula)",
+    "usage_notes": [
+      "Menunjukkan predikat kalimat positif.",
+      "'Desu' untuk sopan, 'Da' untuk kasual.",
+      "PENTING: Kata Sifat-i bisa pakai 'Desu' untuk sopan, tapi TIDAK BOLEH pakai 'Da' (cukup kata sifatnya saja)."
+    ],
+    "connection_rule": [
+      "Kata Benda / Kata Sifat-na + だ / です",
+      "Kata Sifat-i + です (Jangan pakai だ)"
+    ],
+    "conjugations": [
+      {
+        "label": "Positif (Sekarang)",
+        "polite": "～です",
+        "plain": "～だ (Khusus Noun/Na-Adj)"
+      },
+      {
+        "label": "Negatif (Sekarang)",
+        "polite": "～ではありません / ～じゃありません",
+        "plain": "～ではない / ～じゃない"
+      },
+      {
+        "label": "Positif (Lampau)",
+        "polite": "～でした",
+        "plain": "～だった"
+      },
+      {
+        "label": "Negatif (Lampau)",
+        "polite": "～ではありませんでした / ～じゃありませんでした",
+        "plain": "～ではなかった / ～じゃなかった"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "私は学生です。",
+        "furigana": "わたしは がくせい です。",
+        "translation": "Saya adalah mahasiswa. (Kata Benda)"
+      },
+      {
+        "japanese": "彼は元気だ。",
+        "furigana": "かれは げんき だ。",
+        "translation": "Dia sehat. (Kata Sifat-na / Kasual)"
+      },
+      {
+        "japanese": "この本は高いです。",
+        "furigana": "このほんは たかい です。",
+        "translation": "Buku ini mahal. (Kata Sifat-i)"
+      },
+      {
+        "japanese": "昨日は雨でした。",
+        "furigana": "きのうは あめ でした。",
+        "translation": "Kemarin hujan."
+      },
+      {
+        "japanese": "彼女は忙しくなかったです。",
+        "furigana": "かのじょは いそがしく なかった です。",
+        "translation": "Dia (perempuan) tidak sibuk."
+      },
+      {
+        "japanese": "これはペンじゃありません。",
+        "furigana": "これは ペン じゃありません。",
+        "translation": "Ini bukan pena."
+      },
+      {
+        "japanese": "あの人は先生だった。",
+        "furigana": "あのひとは せんせい だった。",
+        "translation": "Orang itu adalah guru."
+      },
+      {
+        "japanese": "今日は暑くなかったです。",
+        "furigana": "きょうは あつく なかった です。",
+        "translation": "Hari ini tidak panas."
+      },
+      {
+        "japanese": "彼は医者ではありませんでした。",
+        "furigana": "かれは いしゃ ではありませんでした。",
+        "translation": "Dia bukan dokter."
+      },
+      {
+        "japanese": "その映画は面白くなかった。",
+        "furigana": "そのえいがは おもしろく なかった。",
+        "translation": "Film itu tidak menarik."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "grammar_point": "～だけ",
+    "romaji": "dake",
+    "jlpt_level": "N5",
+    "meaning": "Hanya / Cuma",
+    "usage_notes": [
+      "Menyatakan batasan, tidak ada yang lain.",
+      "Menggantikan partikel 'o' atau 'ga' dalam kalimat."
+    ],
+    "connection_rule": [
+      "Kata Benda + だけ",
+      "Kata Kerja (Bentuk Kamus) + だけ",
+      "Kata Sifat-i/na + だけ"
+    ],
+    "examples": [
+      {
+        "japanese": "1000円だけ持っています。",
+        "furigana": "せんえん だけ もっています。",
+        "translation": "Saya hanya membawa 1000 yen."
+      },
+      {
+        "japanese": "見るだけです。",
+        "furigana": "みる だけ です。",
+        "translation": "Hanya melihat saja."
+      },
+      {
+        "japanese": "簡単なだけです。",
+        "furigana": "かんたんな だけ です。",
+        "translation": "Hanya mudah saja."
+      },
+      {
+        "japanese": "彼だけ来ました。",
+        "furigana": "かれ だけ きました。",
+        "translation": "Hanya dia yang datang."
+      },
+      {
+        "japanese": "今日は水だけ飲みます。",
+        "furigana": "きょうは みず だけ のみます。",
+        "translation": "Hari ini saya hanya minum air."
+      },
+      {
+        "japanese": "彼女は日本語だけ話せます。",
+        "furigana": "かのじょは にほんご だけ はなせます。",
+        "translation": "Dia (perempuan) hanya bisa berbicara bahasa Jepang."
+      },
+      {
+        "japanese": "この本は面白いだけです。",
+        "furigana": "このほんは おもしろい だけ です。",
+        "translation": "Buku ini hanya menarik saja."
+      },
+      {
+        "japanese": "私は学生だけど、働いています。",
+        "furigana": "わたしは がくせい だけど、はたらいて います。",
+        "translation": "Saya hanya mahasiswa, tapi saya bekerja."
+      },
+      {
+        "japanese": "彼は走るだけで疲れます。",
+        "furigana": "かれは はしる だけで つかれます。",
+        "translation": "Dia lelah hanya dengan berlari."
+      },
+      {
+        "japanese": "今日は勉強するだけにします。",
+        "furigana": "きょうは べんきょうする だけに します。",
+        "translation": "Hari ini saya hanya akan belajar saja."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "grammar_point": "～だろう",
+    "romaji": "darou",
+    "jlpt_level": "N5",
+    "meaning": "Mungkin / Kan? / Kelihatannya / Kupikir",
+    "usage_notes": [
+      "Bentuk kasual dari 'deshou'.",
+      "Menyatakan dugaan atau meminta persetujuan pendengar."
+    ],
+    "connection_rule": [
+      "Kata Kerja/Kata Sifat-i (Bentuk Biasa) + だろう",
+      "Kata Benda/Kata Sifat-na + だろう"
+    ],
+    "examples": [
+      {
+        "japanese": "明日は雨だろう。",
+        "furigana": "あしたは あめ だろう。",
+        "translation": "Besok mungkin hujan."
+      },
+      {
+        "japanese": "君は学生だろう？",
+        "furigana": "きみは がくせい だろう？",
+        "translation": "Kamu kan mahasiswa?"
+      },
+      {
+        "japanese": "彼は忙しいだろう。",
+        "furigana": "かれは いそがしい だろう。",
+        "translation": "Kupikir dia sibuk."
+      },
+      {
+        "japanese": "これは難しいだろう。",
+        "furigana": "これは むずかしい だろう。",
+        "translation": "Ini kelihatannya sulit."
+      },
+      {
+        "japanese": "彼女は先生だろう？",
+        "furigana": "かのじょは せんせい だろう？",
+        "translation": "Dia (perempuan) kan guru?"
+      },
+      {
+        "japanese": "この映画は面白いだろう。",
+        "furigana": "このえいがは おもしろい だろう。",
+        "translation": "Kupikir film ini menarik."
+      },
+      {
+        "japanese": "彼らは来るだろう。",
+        "furigana": "かれらは くる だろう。",
+        "translation": "Mereka mungkin akan datang."
+      },
+      {
+        "japanese": "今日は暑いだろう？",
+        "furigana": "きょうは あつい だろう？",
+        "translation": "Hari ini kan panas?"
+      },
+      {
+        "japanese": "君の名前は田中だろう。",
+        "furigana": "きみの なまえは たなか だろう。",
+        "translation": "Namamu kan Tanaka."
+      },
+      {
+        "japanese": "彼は医者だろう？",
+        "furigana": "かれは いしゃ だろう？",
+        "translation": "Dia kan dokter?"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "grammar_point": "～で (Tempat)",
+    "romaji": "de",
+    "jlpt_level": "N5",
+    "meaning": "Di (Lokasi Aktivitas)",
+    "usage_notes": [
+      "Menunjukkan tempat terjadinya suatu KEGIATAN/AKSI.",
+      "Jangan tertukar dengan 'ni' (yang hanya menunjukkan keberadaan)."
+    ],
+    "connection_rule": [
+      "Kata Benda (Tempat) + で"
+    ],
+    "examples": [
+      {
+        "japanese": "図書館で勉強します。",
+        "furigana": "としょかんで べんきょうします。",
+        "translation": "Belajar di perpustakaan."
+      },
+      {
+        "japanese": "公園で遊びます。",
+        "furigana": "こうえんで あそびます。",
+        "translation": "Bermain di taman."
+      },
+      {
+        "japanese": "レストランで食べます。",
+        "furigana": "レストランで たべます。",
+        "translation": "Makan di restoran."
+      },
+      {
+        "japanese": "家で映画を見ます。",
+        "furigana": "いえで えいがを みます。",
+        "translation": "Menonton film di rumah."
+      },
+      {
+        "japanese": "学校で日本語を勉強します。",
+        "furigana": "がっこうで にほんごを べんきょうします。",
+        "translation": "Belajar bahasa Jepang di sekolah."
+      },
+      {
+        "japanese": "駅で友達に会います。",
+        "furigana": "えきで ともだちに あいます。",
+        "translation": "Bertemu teman di stasiun."
+      },
+      {
+        "japanese": "会社で働きます。",
+        "furigana": "かいしゃで はたらきます。",
+        "translation": "Bekerja di perusahaan."
+      },
+      {
+        "japanese": "病院で薬をもらいます。",
+        "furigana": "びょういんで くすりを もらいます。",
+        "translation": "Mendapatkan obat di rumah sakit."
+      },
+      {
+        "japanese": "図書館で本を借ります。",
+        "furigana": "としょかんで ほんを かります。",
+        "translation": "Meminjam buku di perpustakaan."
+      },
+      {
+        "japanese": "カフェでコーヒーを飲みます。",
+        "furigana": "カフェで コーヒーを のみます。",
+        "translation": "Minum kopi di kafe."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "grammar_point": "～で (Cara/Sebab)",
+    "romaji": "de",
+    "jlpt_level": "N5",
+    "meaning": "Dengan / Menggunakan / Karena",
+    "usage_notes": [
+      "Arti 1: Menggunakan alat atau transportasi.",
+      "Arti 2: Karena (sebab akibat)."
+    ],
+    "connection_rule": [
+      "Kata Benda + で"
+    ],
+    "examples": [
+      {
+        "japanese": "箸で食べます。",
+        "furigana": "はしで たべます。",
+        "translation": "Makan dengan (menggunakan) sumpit."
+      },
+      {
+        "japanese": "病気で学校を休みました。",
+        "furigana": "びょうきで がっこうを やすみました。",
+        "translation": "Libur sekolah karena sakit."
+      },
+      {
+        "japanese": "電車で行きます。",
+        "furigana": "でんしゃで いきます。",
+        "translation": "Pergi dengan kereta."
+      },
+      {
+        "japanese": "事故で道が混んでいます。",
+        "furigana": "じこで みちが こんで います。",
+        "translation": "Jalan macet karena kecelakaan."
+      },
+      {
+        "japanese": "ペンで書きます。",
+        "furigana": "ペンで かきます。",
+        "translation": "Menulis dengan pena."
+      },
+      {
+        "japanese": "バスで学校に行きます。",
+        "furigana": "バスで がっこうに いきます。",
+        "translation": "Pergi ke sekolah dengan bus."
+      },
+      {
+        "japanese": "ナイフで切ります。",
+        "furigana": "ナイフで きります。",
+        "translation": "Memotong dengan pisau."
+      },
+      {
+        "japanese": "渋滞で遅れました。",
+        "furigana": "じゅうたいで おくれました。",
+        "translation": "Terlambat karena kemacetan."
+      },
+      {
+        "japanese": "自転車で公園に行きます。",
+        "furigana": "じてんしゃで こうえんに いきます。",
+        "translation": "Pergi ke taman dengan sepeda."
+      },
+      {
+        "japanese": "風邪で学校を休みました。",
+        "furigana": "かぜで がっこうを やすみました。",
+        "translation": "Libur sekolah karena flu."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "grammar_point": "～でしょう",
+    "romaji": "deshou",
+    "jlpt_level": "N5",
+    "meaning": "Mungkin / Bukankah?",
+    "usage_notes": [
+      "Bentuk sopan dari 'darou'.",
+      "Sering digunakan penyiar cuaca atau untuk konfirmasi sopan."
+    ],
+    "connection_rule": [
+      "Kata Kerja/Kata Sifat (Bentuk Biasa) + でしょう",
+      "Kata Benda/Kata Sifat-na + でしょう"
+    ],
+    "examples": [
+      {
+        "japanese": "この本は高いでしょう。",
+        "furigana": "このほんは たかい でしょう。",
+        "translation": "Buku ini mungkin mahal."
+      },
+      {
+        "japanese": "あなたは田中さんでしょう？",
+        "furigana": "あなたは たなかさん でしょう？",
+        "translation": "Anda Tuan Tanaka, kan?"
+      },
+      {
+        "japanese": "明日は雨でしょう。",
+        "furigana": "あしたは あめ でしょう。",
+        "translation": "Besok mungkin hujan."
+      },
+      {
+        "japanese": "彼は忙しいでしょう？",
+        "furigana": "かれは いそがしい でしょう？",
+        "translation": "Dia sibuk, kan?"
+      },
+      {
+        "japanese": "これは難しいでしょう。",
+        "furigana": "これは むずかしい でしょう。",
+        "translation": "Ini kelihatannya sulit."
+      },
+      {
+        "japanese": "彼女は先生でしょう？",
+        "furigana": "かのじょは せんせい でしょう？",
+        "translation": "Dia (perempuan) guru, kan?"
+      },
+      {
+        "japanese": "この映画は面白いでしょう。",
+        "furigana": "このえいがは おもしろい でしょう。",
+        "translation": "Kupikir film ini menarik."
+      },
+      {
+        "japanese": "彼らは来るでしょう。",
+        "furigana": "かれらは くる でしょう。",
+        "translation": "Mereka mungkin akan datang."
+      },
+      {
+        "japanese": "今日は暑いでしょう？",
+        "furigana": "きょうは あつい でしょう？",
+        "translation": "Hari ini panas, kan?"
+      },
+      {
+        "japanese": "君の名前は田中さんでしょう？",
+        "furigana": "きみの なまえは たなかさん でしょう？",
+        "translation": "Namamu Tuan Tanaka, kan?"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "grammar_point": "～が (Subjek)",
+    "romaji": "ga",
+    "jlpt_level": "N5",
+    "meaning": "Partikel Penanda Subjek",
+    "usage_notes": [
+      "Menandai subjek dari kata kerja intransitif, kata sifat, atau keberadaan (aru/iru)."
+    ],
+    "connection_rule": [
+      "Kata Benda + が"
+    ],
+    "examples": [
+      {
+        "japanese": "ドアが開きました。",
+        "furigana": "ドアが あきました。",
+        "translation": "Pintu terbuka."
+      },
+      {
+        "japanese": "象は鼻が長いです。",
+        "furigana": "ぞうは はなが ながい です。",
+        "translation": "Gajah hidungnya panjang."
+      },
+      {
+        "japanese": "猫がいます。",
+        "furigana": "ねこが います。",
+        "translation": "Ada kucing."
+      },
+      {
+        "japanese": "花がきれいです。",
+        "furigana": "はなが きれい です。",
+        "translation": "Bunganya indah."
+      },
+      {
+        "japanese": "雨が降っています。",
+        "furigana": "あめが ふっています。",
+        "translation": "Hujan sedang turun."
+      },
+      {
+        "japanese": "鳥が飛んでいます。",
+        "furigana": "とりが とんで います。",
+        "translation": "Burung sedang terbang."
+      },
+      {
+        "japanese": "山が高いです。",
+        "furigana": "やまが たかい です。",
+        "translation": "Gunung itu tinggi."
+      },
+      {
+        "japanese": "子供が遊んでいます。",
+        "furigana": "こどもが あそんで います。",
+        "translation": "Anak-anak sedang bermain."
+      },
+      {
+        "japanese": "風が強いです。",
+        "furigana": "かぜが つよい です。",
+        "translation": "Anginnya kencang."
+      },
+      {
+        "japanese": "魚が泳いでいます。",
+        "furigana": "さかなが およいで います。",
+        "translation": "Ikan sedang berenang."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "grammar_point": "～が (Tetapi)",
+    "romaji": "ga",
+    "jlpt_level": "N5",
+    "meaning": "Tetapi / Namun",
+    "usage_notes": [
+      "Menghubungkan dua kalimat yang bertentangan.",
+      "Bisa juga sebagai 'basa-basi' pembuka kalimat sopan."
+    ],
+    "connection_rule": [
+      "Kalimat 1 + が + Kalimat 2"
+    ],
+    "examples": [
+      {
+        "japanese": "薬を飲みましたが、治りません。",
+        "furigana": "くすりを のみました が、なおりません。",
+        "translation": "Sudah minum obat, tapi tidak sembuh."
+      },
+      {
+        "japanese": "行きたいですが、時間がありません。",
+        "furigana": "いきたい ですが、じかんが ありません。",
+        "translation": "Saya ingin pergi, tetapi tidak ada waktu."
+      },
+      {
+        "japanese": "天気はいいですが、風が強いです。",
+        "furigana": "てんきは いい ですが、かぜが つよい です。",
+        "translation": "Cuacanya bagus, namun anginnya kencang."
+      },
+      {
+        "japanese": "料理は美味しいですが、高いです。",
+        "furigana": "りょうりは おいしい ですが、たかい です。",
+        "translation": "Masakannya enak, tapi mahal."
+      },
+      {
+        "japanese": "彼は親切ですが、忙しいです。",
+        "furigana": "かれは しんせつ ですが、いそがしい です。",
+        "translation": "Dia baik hati, namun sibuk."
+      },
+      {
+        "japanese": "映画は面白かったですが、長かったです。",
+        "furigana": "えいがは おもしろかった ですが、ながかった です。",
+        "translation": "Filmnya menarik, tapi panjang."
+      },
+      {
+        "japanese": "新しい車が欲しいですが、高すぎます。",
+        "furigana": "あたらしい くるまが ほしい ですが、たかすぎます。",
+        "translation": "Saya ingin mobil baru, tetapi terlalu mahal."
+      },
+      {
+        "japanese": "彼女は美しいですが、優しくないです。",
+        "furigana": "かのじょは うつくしい ですが、やさしくない です。",
+        "translation": "Dia (perempuan) cantik, namun tidak baik hati."
+      },
+      {
+        "japanese": "旅行に行きたいですが、お金がありません。",
+        "furigana": "りょこうに いきたい ですが、おかねが ありません。",
+        "translation": "Saya ingin pergi berlibur, tapi tidak ada uang."
+      },
+      {
+        "japanese": "この店は便利ですが、品物が少ないです。",
+        "furigana": "このみせは べんり ですが、しなものが すくない です。",
+        "translation": "Toko ini nyaman, namun barangnya sedikit."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "grammar_point": "～がある",
+    "romaji": "ga aru",
+    "jlpt_level": "N5",
+    "meaning": "Ada (Benda Mati)",
+    "usage_notes": [
+      "Menyatakan keberadaan benda mati atau tanaman.",
+      "Juga berarti 'mempunyai' (misal: punya waktu/janji)."
+    ],
+    "connection_rule": [
+      "Kata Benda + がある"
+    ],
+    "examples": [
+      {
+        "japanese": "約束があります。",
+        "furigana": "やくそくが あります。",
+        "translation": "Saya ada janji."
+      },
+      {
+        "japanese": "机の上に本があります。",
+        "furigana": "つくえの うえに ほんが あります。",
+        "translation": "Di atas meja ada buku."
+      },
+      {
+        "japanese": "あそこにコンビニがあります。",
+        "furigana": "あそこに コンビニが あります。",
+        "translation": "Di sana ada toserba."
+      },
+      {
+        "japanese": "庭に花があります。",
+        "furigana": "にわに はなが あります。",
+        "translation": "Di taman ada bunga."
+      },
+      {
+        "japanese": "時間がありますか。",
+        "furigana": "じかんが ありますか。",
+        "translation": "Apakah kamu punya waktu?"
+      },
+      {
+        "japanese": "部屋にテレビがあります。",
+        "furigana": "へやに テレビが あります。",
+        "translation": "Di kamar ada televisi."
+      },
+      {
+        "japanese": "机の上にペンがあります。",
+        "furigana": "つくえの うえに ペンが あります。",
+        "translation": "Di atas meja ada pena."
+      },
+      {
+        "japanese": "公園にベンチがあります。",
+        "furigana": "こうえんに ベンチが あります。",
+        "translation": "Di taman ada bangku."
+      },
+      {
+        "japanese": "冷蔵庫に牛乳があります。",
+        "furigana": "れいぞうこに ぎゅうにゅうが あります。",
+        "translation": "Di kulkas ada susu."
+      },
+      {
+        "japanese": "机の上にノートがあります。",
+        "furigana": "つくえの うえに ノートが あります。",
+        "translation": "Di atas meja ada buku catatan."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "grammar_point": "～がいる",
+    "romaji": "ga iru",
+    "jlpt_level": "N5",
+    "meaning": "Ada (Makhluk Hidup)",
+    "usage_notes": [
+      "Menyatakan keberadaan manusia dan hewan."
+    ],
+    "connection_rule": [
+      "Kata Benda + がいる"
+    ],
+    "examples": [
+      {
+        "japanese": "あそこに犬がいます。",
+        "furigana": "あそこに いぬが います。",
+        "translation": "Di sana ada anjing."
+      },
+      {
+        "japanese": "教室に学生がいます。",
+        "furigana": "きょうしつに がくせいが います。",
+        "translation": "Di kelas ada mahasiswa."
+      },
+      {
+        "japanese": "公園に子供がいます。",
+        "furigana": "こうえんに こどもが います。",
+        "translation": "Di taman ada anak-anak."
+      },
+      {
+        "japanese": "家に猫がいます。",
+        "furigana": "いえに ねこが います。",
+        "translation": "Di rumah ada kucing."
+      },
+      {
+        "japanese": "部屋に友達がいますか。",
+        "furigana": "へやに ともだちが いますか。",
+        "translation": "Apakah ada teman di kamar?"
+      },
+      {
+        "japanese": "庭に鳥がいます。",
+        "furigana": "にわに とりが います。",
+        "translation": "Di taman ada burung."
+      },
+      {
+        "japanese": "学校に先生がいます。",
+        "furigana": "がっこうに せんせいが います。",
+        "translation": "Di sekolah ada guru."
+      },
+      {
+        "japanese": "動物園に象がいます。",
+        "furigana": "どうぶつえんに ぞうが います。",
+        "translation": "Di kebun binatang ada gajah."
+      },
+      {
+        "japanese": "公園に犬と猫がいます。",
+        "furigana": "こうえんに いぬと ねこが います。",
+        "translation": "Di taman ada anjing dan kucing."
+      },
+      {
+        "japanese": "家に兄弟がいます。",
+        "furigana": "いえに きょうだいが います。",
+        "translation": "Di rumah ada saudara."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "grammar_point": "～ほうがいい (Positif)",
+    "romaji": "hou ga ii",
+    "jlpt_level": "N5",
+    "meaning": "Sebaiknya melakukan...",
+    "usage_notes": [
+      "Memberikan saran.",
+      "Menggunakan Bentuk Lampau (TA) walaupun untuk masa depan."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk TA) + ほうがいい"
+    ],
+    "examples": [
+      {
+        "japanese": "もっと野菜を食べたほうがいいです。",
+        "furigana": "もっと やさいを たべた ほうがいいです。",
+        "translation": "Sebaiknya makan lebih banyak sayur."
+      },
+      {
+        "japanese": "早く寝たほうがいいですよ。",
+        "furigana": "はやく ねた ほうがいいですよ。",
+        "translation": "Sebaiknya tidur lebih awal."
+      },
+      {
+        "japanese": "運動したほうがいいです。",
+        "furigana": "うんどうした ほうがいいです。",
+        "translation": "Sebaiknya berolahraga."
+      },
+      {
+        "japanese": "水をたくさん飲んだほうがいいです。",
+        "furigana": "みずを たくさん のんだ ほうがいいです。",
+        "translation": "Sebaiknya minum banyak air."
+      },
+      {
+        "japanese": "勉強したほうがいいですよ。",
+        "furigana": "べんきょうした ほうがいいですよ。",
+        "translation": "Sebaiknya belajar."
+      },
+      {
+        "japanese": "医者に行ったほうがいいです。",
+        "furigana": "いしゃに いった ほうがいいです。",
+        "translation": "Sebaiknya pergi ke dokter."
+      },
+      {
+        "japanese": "もっと休んだほうがいいです。",
+        "furigana": "もっと やすんだ ほうがいいです。",
+        "translation": "Sebaiknya lebih banyak istirahat."
+      },
+      {
+        "japanese": "野菜を食べたほうがいいですよ。",
+        "furigana": "やさいを たべた ほうがいいですよ。",
+        "translation": "Sebaiknya makan sayur."
+      },
+      {
+        "japanese": "早く行ったほうがいいです。",
+        "furigana": "はやく いった ほうがいいです。",
+        "translation": "Sebaiknya pergi lebih awal."
+      },
+      {
+        "japanese": "毎日運動したほうがいいです。",
+        "furigana": "まいにち うんどうした ほうがいいです。",
+        "translation": "Sebaiknya berolahraga setiap hari."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "grammar_point": "～ないほうがいい (Negatif)",
+    "romaji": "nai hou ga ii",
+    "jlpt_level": "N5",
+    "meaning": "Sebaiknya jangan...",
+    "usage_notes": [
+      "Saran untuk tidak melakukan sesuatu."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk NAI) + ほうがいい"
+    ],
+    "examples": [
+      {
+        "japanese": "タバコを吸わないほうがいいです。",
+        "furigana": "タバコを すわない ほうがいいです。",
+        "translation": "Sebaiknya jangan merokok."
+      },
+      {
+        "japanese": "夜遅くまで起きないほうがいいですよ。",
+        "furigana": "よるおそくまで おきない ほうがいいですよ。",
+        "translation": "Sebaiknya jangan begadang."
+      },
+      {
+        "japanese": "甘いものを食べないほうがいいです。",
+        "furigana": "あまいものを たべない ほうがいいです。",
+        "translation": "Sebaiknya jangan makan makanan manis."
+      },
+      {
+        "japanese": "運動しないほうがいいです。",
+        "furigana": "うんどうしない ほうがいいです。",
+        "translation": "Sebaiknya jangan berolahraga."
+      },
+      {
+        "japanese": "お酒を飲まないほうがいいですよ。",
+        "furigana": "おさけを のまない ほうがいいですよ。",
+        "translation": "Sebaiknya jangan minum alkohol."
+      },
+      {
+        "japanese": "無理をしないほうがいいです。",
+        "furigana": "むりを しない ほうがいいです。",
+        "translation": "Sebaiknya jangan memaksakan diri."
+      },
+      {
+        "japanese": "遅刻しないほうがいいです。",
+        "furigana": "ちこくしない ほうがいいです。",
+        "translation": "Sebaiknya jangan terlambat."
+      },
+      {
+        "japanese": "辛い食べ物を食べないほうがいいですよ。",
+        "furigana": "からいたべものを たべない ほうがいいですよ。",
+        "translation": "Sebaiknya jangan makan makanan pedas."
+      },
+      {
+        "japanese": "スマホを使わないほうがいいです。",
+        "furigana": "スマホを つかわない ほうがいいです。",
+        "translation": "Sebaiknya jangan menggunakan ponsel."
+      },
+      {
+        "japanese": "無駄遣いをしないほうがいいです。",
+        "furigana": "むだづかいを しない ほうがいいです。",
+        "translation": "Sebaiknya jangan boros."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "grammar_point": "一番",
+    "romaji": "ichiban",
+    "jlpt_level": "N5",
+    "meaning": "Paling / Nomor satu",
+    "usage_notes": [
+      "Digunakan untuk Superlatif (Ter-)."
+    ],
+    "connection_rule": [
+      "Kata Benda + が + 一番 + Kata Sifat"
+    ],
+    "examples": [
+      {
+        "japanese": "クラスで誰が一番背が高いですか。",
+        "furigana": "クラスで だれが いちばん せがたかい ですか。",
+        "translation": "Siapa yang paling tinggi di kelas?"
+      },
+      {
+        "japanese": "この映画は一番面白いです。",
+        "furigana": "このえいがは いちばん おもしろい です。",
+        "translation": "Film ini yang paling menarik."
+      },
+      {
+        "japanese": "彼女はクラスで一番頭がいいです。",
+        "furigana": "かのじょは クラスで いちばん あたまが いい です。",
+        "translation": "Dia (perempuan) yang paling pintar di kelas."
+      },
+      {
+        "japanese": "このレストランは一番人気があります。",
+        "furigana": "このレストランは いちばん にんきが あります。",
+        "translation": "Restoran ini yang paling populer."
+      },
+      {
+        "japanese": "彼はチームで一番速く走ります。",
+        "furigana": "かれは チームで いちばん はやく はしります。",
+        "translation": "Dia yang paling cepat berlari di tim."
+      },
+      {
+        "japanese": "この本は一番面白かったです。",
+        "furigana": "このほんは いちばん おもしろかった です。",
+        "translation": "Buku ini yang paling menarik."
+      },
+      {
+        "japanese": "彼女はクラスで一番優しいです。",
+        "furigana": "かのじょは クラスで いちばん やさしい です。",
+        "translation": "Dia (perempuan) yang paling baik hati di kelas."
+      },
+      {
+        "japanese": "この山は一番高いです。",
+        "furigana": "このやまは いちばん たかい です。",
+        "translation": "Gunung ini yang paling tinggi."
+      },
+      {
+        "japanese": "彼はチームで一番強いです。",
+        "furigana": "かれは チームで いちばん つよい です。",
+        "translation": "Dia yang paling kuat di tim."
+      },
+      {
+        "japanese": "このケーキは一番美味しいです。",
+        "furigana": "このケーキは いちばん おいしい です。",
+        "translation": "Kue ini yang paling enak."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "grammar_point": "～か (Pilihan)",
+    "romaji": "ka",
+    "jlpt_level": "N5",
+    "meaning": "Atau",
+    "usage_notes": [
+      "Memilih antara dua opsi (A atau B)."
+    ],
+    "connection_rule": [
+      "Kata Benda + か + Kata Benda"
+    ],
+    "examples": [
+      {
+        "japanese": "明日かあさって、行きます。",
+        "furigana": "あしたか あさって、いきます。",
+        "translation": "Saya akan pergi besok atau lusa."
+      },
+      {
+        "japanese": "コーヒーかお茶、どちらがいいですか。",
+        "furigana": "コーヒーか おちゃ、どちらが いいですか。",
+        "translation": "Kopi atau teh, mana yang kamu suka?"
+      },
+      {
+        "japanese": "映画か本、どちらが好きですか。",
+        "furigana": "えいがか ほん、どちらが すきですか。",
+        "translation": "Film atau buku, mana yang kamu suka?"
+      },
+      {
+        "japanese": "犬か猫、どちらが飼いたいですか。",
+        "furigana": "いぬか ねこ、どちらが かいたい ですか。",
+        "translation": "Anjing atau kucing, mana yang ingin kamu pelihara?"
+      },
+      {
+        "japanese": "夏休みは海か山に行きたいです。",
+        "furigana": "なつやすみは うみか やまに いきたい です。",
+        "translation": "Liburan musim panas saya ingin pergi ke laut atau gunung."
+      },
+      {
+        "japanese": "昼ご飯はサンドイッチかおにぎり、どちらがいいですか。",
+        "furigana": "ひるごはんは サンドイッチか おにぎり、どちらが いいですか。",
+        "translation": "Makan siang, sandwich atau onigiri, mana yang kamu suka?"
+      },
+      {
+        "japanese": "週末は映画かショッピングに行きます。",
+        "furigana": "しゅうまつは えいがか ショッピングに いきます。",
+        "translation": "Akhir pekan saya pergi menonton film atau berbelanja."
+      },
+      {
+        "japanese": "朝ご飯はパンかご飯、どちらが好きですか。",
+        "furigana": "あさごはんは パンか ごはん、どちらが すきですか。",
+        "translation": "Sarapan, roti atau nasi, mana yang kamu suka?"
+      },
+      {
+        "japanese": "旅行は国内か海外、どちらがいいですか。",
+        "furigana": "りょこうは こくないか かいがい、どちらが いいですか。",
+        "translation": "Liburan, domestik atau luar negeri, mana yang kamu suka?"
+      },
+      {
+        "japanese": "飲み物は水かジュース、どちらが欲しいですか。",
+        "furigana": "のみものは みずか ジュース、どちらが ほしいですか。",
+        "translation": "Minuman, air atau jus, mana yang kamu inginkan?"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "grammar_point": "～か (Pertanyaan)",
+    "romaji": "ka",
+    "jlpt_level": "N5",
+    "meaning": "Partikel Tanya (?)",
+    "usage_notes": [
+      "Mengubah kalimat menjadi pertanyaan."
+    ],
+    "connection_rule": [
+      "Akhir Kalimat + か"
+    ],
+    "examples": [
+      {
+        "japanese": "これは何ですか。",
+        "furigana": "これは なん ですか。",
+        "translation": "Ini apa?"
+      },
+      {
+        "japanese": "あなたは学生ですか。",
+        "furigana": "あなたは がくせい ですか。",
+        "translation": "Apakah kamu mahasiswa?"
+      },
+      {
+        "japanese": "明日は休みですか。",
+        "furigana": "あしたは やすみ ですか。",
+        "translation": "Apakah besok libur?"
+      },
+      {
+        "japanese": "彼は先生ですか。",
+        "furigana": "かれは せんせい ですか。",
+        "translation": "Apakah dia guru?"
+      },
+      {
+        "japanese": "これはあなたの本ですか。",
+        "furigana": "これは あなたの ほん ですか。",
+        "translation": "Apakah ini bukumu?"
+      },
+      {
+        "japanese": "今日は暑いですか。",
+        "furigana": "きょうは あつい ですか。",
+        "translation": "Apakah hari ini panas?"
+      },
+      {
+        "japanese": "彼女は日本人ですか。",
+        "furigana": "かのじょは にほんじん ですか。",
+        "translation": "Apakah dia (perempuan) orang Jepang?"
+      },
+      {
+        "japanese": "あなたの名前は何ですか。",
+        "furigana": "あなたの なまえは なん ですか。",
+        "translation": "Siapa namamu?"
+      },
+      {
+        "japanese": "週末は暇ですか。",
+        "furigana": "しゅうまつは ひま ですか。",
+        "translation": "Apakah kamu punya waktu luang di akhir pekan?"
+      },
+      {
+        "japanese": "この映画は面白いですか。",
+        "furigana": "このえいがは おもしろい ですか。",
+        "translation": "Apakah film ini menarik?"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "grammar_point": "～から (Alasan)",
+    "romaji": "kara",
+    "jlpt_level": "N5",
+    "meaning": "Karena",
+    "usage_notes": [
+      "Menyatakan alasan yang bersifat subjektif."
+    ],
+    "connection_rule": [
+      "Kalimat (Bentuk Biasa/Sopan) + から"
+    ],
+    "examples": [
+      {
+        "japanese": "時間がないから、タクシーで行きます。",
+        "furigana": "じかんが ないから、タクシーで いきます。",
+        "translation": "Karena tidak ada waktu, pergi naik taksi."
+      },
+      {
+        "japanese": "疲れたから、もう帰ります。",
+        "furigana": "つかれたから、もう かえります。",
+        "translation": "Karena capek, saya pulang saja."
+      },
+      {
+        "japanese": "雨が降っているから、傘を持って行ってください。",
+        "furigana": "あめが ふっているから、かさを もって いってください。",
+        "translation": "Karena sedang hujan, tolong bawa payung."
+      },
+      {
+        "japanese": "忙しいから、手伝ってください。",
+        "furigana": "いそがしいから、てつだって ください。",
+        "translation": "Karena sibuk, tolong bantu saya."
+      },
+      {
+        "japanese": "風邪を引いたから、学校を休みます。",
+        "furigana": "かぜを ひいたから、がっこうを やすみます。",
+        "translation": "Karena masuk angin, saya akan absen dari sekolah."
+      },
+      {
+        "japanese": "道が混んでいるから、遅れます。",
+        "furigana": "みちが こんでいるから、おくれます。",
+        "translation": "Karena jalan macet, saya akan terlambat."
+      },
+      {
+        "japanese": "お腹が空いたから、食べに行きましょう。",
+        "furigana": "おなかが すいたから、たべに いきましょう。",
+        "translation": "Karena lapar, mari kita pergi makan."
+      },
+      {
+        "japanese": "疲れたから、休みます。",
+        "furigana": "つかれたから、やすみます。",
+        "translation": "Karena capek, saya akan istirahat."
+      },
+      {
+        "japanese": "寒いから、コートを着てください。",
+        "furigana": "さむいから、コートを きて ください。",
+        "translation": "Karena dingin, tolong pakai mantel."
+      },
+      {
+        "japanese": "忙しいから、後で電話します。",
+        "furigana": "いそがしいから、あとで でんわ します。",
+        "translation": "Karena sibuk, saya akan telepon nanti."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "grammar_point": "～から (Asal)",
+    "romaji": "kara",
+    "jlpt_level": "N5",
+    "meaning": "Dari (Waktu/Tempat)",
+    "usage_notes": [
+      "Menunjukkan titik awal."
+    ],
+    "connection_rule": [
+      "Kata Benda (Waktu/Tempat) + から"
+    ],
+    "examples": [
+      {
+        "japanese": "会議は一時からです。",
+        "furigana": "かいぎは いちじ から です。",
+        "translation": "Rapat dimulai dari jam 1."
+      },
+      {
+        "japanese": "駅から歩いて行きます。",
+        "furigana": "えきから あるいて いきます。",
+        "translation": "Pergi berjalan kaki dari stasiun."
+      },
+      {
+        "japanese": "夏休みは七月からです。",
+        "furigana": "なつやすみは しちがつ から です。",
+        "translation": "Liburan musim panas dimulai dari bulan Juli."
+      },
+      {
+        "japanese": "学校は九時から始まります。",
+        "furigana": "がっこうは くじ から はじまります。",
+        "translation": "Sekolah dimulai dari jam 9."
+      },
+      {
+        "japanese": "図書館は午前九時から開いています。",
+        "furigana": "としょかんは ごぜん くじ から あいて います。",
+        "translation": "Perpustakaan buka dari jam 9 pagi."
+      },
+      {
+        "japanese": "仕事は八時からです。",
+        "furigana": "しごとは はちじ から です。",
+        "translation": "Pekerjaan dimulai dari jam 8."
+      },
+      {
+        "japanese": "バスは駅から出発します。",
+        "furigana": "バスは えきから しゅっぱつ します。",
+        "translation": "Bus berangkat dari stasiun."
+      },
+      {
+        "japanese": "授業は十時から始まります。",
+        "furigana": "じゅぎょうは じゅうじ から はじまります。",
+        "translation": "Kelas dimulai dari jam 10."
+      },
+      {
+        "japanese": "映画は午後七時からです。",
+        "furigana": "えいがは ごご しちじ から です。",
+        "translation": "Film dimulai dari jam 7 malam."
+      },
+      {
+        "japanese": "空港は朝六時から開いています。",
+        "furigana": "くうこうは あさ ろくじ から あいて います。",
+        "translation": "Bandara buka dari jam 6 pagi."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "grammar_point": "～けれども",
+    "romaji": "keredomo",
+    "jlpt_level": "N5",
+    "meaning": "Meskipun / Tetapi",
+    "usage_notes": [
+      "Lebih formal daripada 'ga' atau 'kedo'.",
+      "Sering disingkat menjadi 'keredo'."
+    ],
+    "connection_rule": [
+      "Kalimat + けれども"
+    ],
+    "examples": [
+      {
+        "japanese": "探したけれども、見つからなかった。",
+        "furigana": "さがした けれども、みつからなかった。",
+        "translation": "Meskipun sudah dicari, tidak ketemu."
+      },
+      {
+        "japanese": "彼は来るけれども、遅れると思います。",
+        "furigana": "かれは くる けれども、おくれると おもいます。",
+        "translation": "Meskipun dia akan datang, saya pikir dia akan terlambat."
+      },
+      {
+        "japanese": "天気は良いけれども、風が強いです。",
+        "furigana": "てんきは よい けれども、かぜが つよい です。",
+        "translation": "Meskipun cuacanya bagus, anginnya kencang."
+      },
+      {
+        "japanese": "料理は美味しいけれども、高いです。",
+        "furigana": "りょうりは おいしい けれども、たかい です。",
+        "translation": "Meskipun masakannya enak, tapi mahal."
+      },
+      {
+        "japanese": "彼は親切けれども、忙しいです。",
+        "furigana": "かれは しんせつ けれども、いそがしい です。",
+        "translation": "Meskipun dia baik hati, namun sibuk."
+      },
+      {
+        "japanese": "映画は面白いけれども、長いです。",
+        "furigana": "えいがは おもしろい けれども、ながい です。",
+        "translation": "Meskipun filmnya menarik, tapi panjang."
+      },
+      {
+        "japanese": "彼女は美しいけれども、優しくないです。",
+        "furigana": "かのじょは うつくしい けれども、やさしくない です。",
+        "translation": "Meskipun dia (perempuan) cantik, namun tidak baik hati."
+      },
+      {
+        "japanese": "旅行に行きたいけれども、お金がありません。",
+        "furigana": "りょこうに いきたい けれども、おかねが ありません。",
+        "translation": "Meskipun saya ingin pergi berlibur, tapi tidak ada uang."
+      },
+      {
+        "japanese": "この店は便利けれども、品物が少ないです。",
+        "furigana": "このみせは べんり けれども、しなものが すくない です。",
+        "translation": "Meskipun toko ini nyaman, namun barangnya sedikit."
+      },
+      {
+        "japanese": "彼は頭がいいけれども、運動が苦手です。",
+        "furigana": "かれは あたまが いい けれども、うんどうが にがて です。",
+        "translation": "Meskipun dia pintar, tapi tidak pandai olahraga."
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "grammar_point": "～くらい / ぐらい",
+    "romaji": "kurai / gurai",
+    "jlpt_level": "N5",
+    "meaning": "Kira-kira / Sekitar",
+    "usage_notes": [
+      "Menyatakan perkiraan jumlah.",
+      "'Gurai' lebih sering dipakai untuk angka, tapi 'kurai' juga bisa."
+    ],
+    "connection_rule": [
+      "Kata Benda (Angka/Jumlah) + くらい"
+    ],
+    "examples": [
+      {
+        "japanese": "100人くらい来ました。",
+        "furigana": "ひゃくにん くらい きました。",
+        "translation": "Datang kira-kira 100 orang."
+      },
+      {
+        "japanese": "三時間ぐらい勉強しました。",
+        "furigana": "さんじかん ぐらい べんきょうしました。",
+        "translation": "Belajar sekitar tiga jam."
+      },
+      {
+        "japanese": "五千円くらいかかります。",
+        "furigana": "ごせんえん くらい かかります。",
+        "translation": "Biayanya kira-kira lima ribu yen."
+      },
+      {
+        "japanese": "二週間ぐらい休みます。",
+        "furigana": "にしゅうかん ぐらい やすみます。",
+        "translation": "Libur sekitar dua minggu."
+      },
+      {
+        "japanese": "十キロくらい走りました。",
+        "furigana": "じゅうキロ くらい はしりました。",
+        "translation": "Lari kira-kira sepuluh kilometer."
+      },
+      {
+        "japanese": "三百人ぐらい参加しました。",
+        "furigana": "さんびゃくにん ぐらい さんかしました。",
+        "translation": "Ikut serta sekitar tiga ratus orang."
+      },
+      {
+        "japanese": "一時間くらい待ちました。",
+        "furigana": "いちじかん くらい まちました。",
+        "translation": "Menunggu kira-kira satu jam."
+      },
+      {
+        "japanese": "二千円ぐらい払いました。",
+        "furigana": "にせんえん ぐらい はらいました。",
+        "translation": "Membayar sekitar dua ribu yen."
+      },
+      {
+        "japanese": "五時間くらい働きました。",
+        "furigana": "ごじかん くらい はたらきました。",
+        "translation": "Bekerja kira-kira lima jam."
+      },
+      {
+        "japanese": "八百人ぐらい集まりました。",
+        "furigana": "はっぴゃくにん ぐらい あつまりました。",
+        "translation": "Berkumpul sekitar delapan ratus orang."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "grammar_point": "まだ",
+    "romaji": "mada",
+    "jlpt_level": "N5",
+    "meaning": "Masih / Belum",
+    "usage_notes": [
+      "Jika diikuti Verba Positif = Masih.",
+      "Jika diikuti Verba Negatif = Belum."
+    ],
+    "connection_rule": [
+      "まだ + Kalimat"
+    ],
+    "examples": [
+      {
+        "japanese": "まだ雨が降っています。",
+        "furigana": "まだ あめが ふっています。",
+        "translation": "Hujan masih turun."
+      },
+      {
+        "japanese": "まだ決めていません。",
+        "furigana": "まだ きめていません。",
+        "translation": "Saya belum memutuskan."
+      },
+      {
+        "japanese": "まだ宿題をしています。",
+        "furigana": "まだ しゅくだいを しています。",
+        "translation": "Saya masih mengerjakan PR."
+      },
+      {
+        "japanese": "まだ昼ご飯を食べていません。",
+        "furigana": "まだ ひるごはんを たべていません。",
+        "translation": "Saya belum makan siang."
+      },
+      {
+        "japanese": "まだ仕事が終わっていません。",
+        "furigana": "まだ しごとが おわっていません。",
+        "translation": "Pekerjaan saya belum selesai."
+      },
+      {
+        "japanese": "まだテレビを見ています。",
+        "furigana": "まだ テレビを みています。",
+        "translation": "Saya masih menonton TV."
+      },
+      {
+        "japanese": "まだ本を読んでいません。",
+        "furigana": "まだ ほんを よんでいません。",
+        "translation": "Saya belum membaca buku."
+      },
+      {
+        "japanese": "まだ寝ていません。",
+        "furigana": "まだ ねていません。",
+        "translation": "Saya belum tidur."
+      },
+      {
+        "japanese": "まだ掃除をしています。",
+        "furigana": "まだ そうじを しています。",
+        "translation": "Saya masih membersihkan."
+      },
+      {
+        "japanese": "まだ友達に会っていません。",
+        "furigana": "まだ ともだちに あっていません。",
+        "translation": "Saya belum bertemu dengan teman."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "grammar_point": "～まで",
+    "romaji": "made",
+    "jlpt_level": "N5",
+    "meaning": "Sampai",
+    "usage_notes": [
+      "Titik akhir waktu atau tempat."
+    ],
+    "connection_rule": [
+      "Kata Benda (Waktu/Tempat) + まで"
+    ],
+    "examples": [
+      {
+        "japanese": "朝から晩まで働きます。",
+        "furigana": "あさから ばんまで はたらきます。",
+        "translation": "Bekerja dari pagi sampai malam."
+      },
+      {
+        "japanese": "駅まで歩きます。",
+        "furigana": "えきまで あるきます。",
+        "translation": "Berjalan sampai stasiun."
+      },
+      {
+        "japanese": "授業は三時までです。",
+        "furigana": "じゅぎょうは さんじ まで です。",
+        "translation": "Kelas sampai jam tiga."
+      },
+      {
+        "japanese": "図書館は八時まで開いています。",
+        "furigana": "としょかんは はちじ まで あいて います。",
+        "translation": "Perpustakaan buka sampai jam delapan."
+      },
+      {
+        "japanese": "仕事は五時までです。",
+        "furigana": "しごとは ごじ まで です。",
+        "translation": "Pekerjaan sampai jam lima."
+      },
+      {
+        "japanese": "バスは駅まで行きます。",
+        "furigana": "バスは えきまで いきます。",
+        "translation": "Bus pergi sampai stasiun."
+      },
+      {
+        "japanese": "映画は九時までです。",
+        "furigana": "えいがは くじ まで です。",
+        "translation": "Film sampai jam sembilan."
+      },
+      {
+        "japanese": "空港は十時まで開いています。",
+        "furigana": "くうこうは じゅうじ まで あいて います。",
+        "translation": "Bandara buka sampai jam sepuluh."
+      },
+      {
+        "japanese": "会議は六時までです。",
+        "furigana": "かいぎは ろくじ まで です。",
+        "translation": "Rapat sampai jam enam."
+      },
+      {
+        "japanese": "電車は駅まで行きます。",
+        "furigana": "でんしゃは えきまで いきます。",
+        "translation": "Kereta pergi sampai stasiun."
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "grammar_point": "～前に",
+    "romaji": "mae ni",
+    "jlpt_level": "N5",
+    "meaning": "Sebelum / Di depan",
+    "usage_notes": [
+      "Urutan waktu (sebelum melakukan X).",
+      "Posisi (di depan)."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk Kamus) + 前に",
+      "Kata Benda + の + 前に"
+    ],
+    "examples": [
+      {
+        "japanese": "寝る前に歯を磨きます。",
+        "furigana": "ねる まえに はを みがきます。",
+        "translation": "Menggosok gigi sebelum tidur."
+      },
+      {
+        "japanese": "駅の前に銀行があります。",
+        "furigana": "えきの まえに ぎんこうが あります。",
+        "translation": "Di depan stasiun ada bank."
+      },
+      {
+        "japanese": "食事の前に手を洗います。",
+        "furigana": "しょくじの まえに てを あらいます。",
+        "translation": "Mencuci tangan sebelum makan."
+      },
+      {
+        "japanese": "学校の前に公園があります。",
+        "furigana": "がっこうの まえに こうえんが あります。",
+        "translation": "Di depan sekolah ada taman."
+      },
+      {
+        "japanese": "仕事の前にコーヒーを飲みます。",
+        "furigana": "しごとの まえに コーヒーを のみます。",
+        "translation": "Minum kopi sebelum bekerja."
+      },
+      {
+        "japanese": "映画の前にポップコーンを買います。",
+        "furigana": "えいがの まえに ポップコーンを かいます。",
+        "translation": "Membeli popcorn sebelum menonton film."
+      },
+      {
+        "japanese": "運動の前にストレッチをします。",
+        "furigana": "うんどうの まえに ストレッチを します。",
+        "translation": "Melakukan peregangan sebelum berolahraga."
+      },
+      {
+        "japanese": "会議の前に資料を準備します。",
+        "furigana": "かいぎの まえに しりょうを じゅんびします。",
+        "translation": "Mempersiapkan materi sebelum rapat."
+      },
+      {
+        "japanese": "旅行の前に荷物をまとめます。",
+        "furigana": "りょこうの まえに にもつを まとめます。",
+        "translation": "Mengemas barang sebelum berpergian."
+      },
+      {
+        "japanese": "試験の前に勉強します。",
+        "furigana": "しけんの まえに べんきょうします。",
+        "translation": "Belajar sebelum ujian."
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "grammar_point": "～ませんか",
+    "romaji": "masenka",
+    "jlpt_level": "N5",
+    "meaning": "Maukah...? (Ajakan)",
+    "usage_notes": [
+      "Mengajak orang lain dengan sangat sopan (memberi pilihan untuk menolak)."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk MASU - tanpa masu) + ませんか"
+    ],
+    "examples": [
+      {
+        "japanese": "お茶を飲みませんか。",
+        "furigana": "おちゃを のみませんか。",
+        "translation": "Maukah minum teh?"
+      },
+      {
+        "japanese": "映画を見ませんか。",
+        "furigana": "えいがを みませんか。",
+        "translation": "Maukah menonton film?"
+      },
+      {
+        "japanese": "散歩しませんか。",
+        "furigana": "さんぽしませんか。",
+        "translation": "Maukah jalan-jalan?"
+      },
+      {
+        "japanese": "一緒に昼ご飯を食べませんか。",
+        "furigana": "いっしょに ひるごはんを たべませんか。",
+        "translation": "Maukah makan siang bersama?"
+      },
+      {
+        "japanese": "週末に遊びませんか。",
+        "furigana": "しゅうまつに あそびませんか。",
+        "translation": "Maukah bermain di akhir pekan?"
+      },
+      {
+        "japanese": "カラオケに行きませんか。",
+        "furigana": "カラオケに いきませんか。",
+        "translation": "Maukah pergi karaoke?"
+      },
+      {
+        "japanese": "新しいレストランに行きませんか。",
+        "furigana": "あたらしい レストランに いきませんか。",
+        "translation": "Maukah pergi ke restoran baru?"
+      },
+      {
+        "japanese": "コーヒーを飲みませんか。",
+        "furigana": "コーヒーを のみませんか。",
+        "translation": "Maukah minum kopi?"
+      },
+      {
+        "japanese": "公園でピクニックしませんか。",
+        "furigana": "こうえんで ピクニックしませんか。",
+        "translation": "Maukah piknik di taman?"
+      },
+      {
+        "japanese": "音楽を聴きませんか。",
+        "furigana": "おんがくを ききませんか。",
+        "translation": "Maukah mendengarkan musik?"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "grammar_point": "～ましょう",
+    "romaji": "mashou",
+    "jlpt_level": "N5",
+    "meaning": "Ayo... (Mari)",
+    "usage_notes": [
+      "Mengajak atau merespon ajakan (Let's do it)."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk MASU - tanpa masu) + ましょう"
+    ],
+    "examples": [
+      {
+        "japanese": "休憩しましょう。",
+        "furigana": "きゅうけい しましょう。",
+        "translation": "Ayo istirahat."
+      },
+      {
+        "japanese": "一緒に映画を見ましょう。",
+        "furigana": "いっしょに えいがを みましょう。",
+        "translation": "Ayo menonton film bersama."
+      },
+      {
+        "japanese": "散歩しましょう。",
+        "furigana": "さんぽ しましょう。",
+        "translation": "Ayo jalan-jalan."
+      },
+      {
+        "japanese": "昼ご飯を食べましょう。",
+        "furigana": "ひるごはんを たべましょう。",
+        "translation": "Ayo makan siang."
+      },
+      {
+        "japanese": "週末に遊びましょう。",
+        "furigana": "しゅうまつに あそびましょう。",
+        "translation": "Ayo bermain di akhir pekan."
+      },
+      {
+        "japanese": "カラオケに行きましょう。",
+        "furigana": "カラオケに いきましょう。",
+        "translation": "Ayo pergi karaoke."
+      },
+      {
+        "japanese": "新しいレストランに行きましょう。",
+        "furigana": "あたらしい レストランに いきましょう。",
+        "translation": "Ayo pergi ke restoran baru."
+      },
+      {
+        "japanese": "コーヒーを飲みましょう。",
+        "furigana": "コーヒーを のみましょう。",
+        "translation": "Ayo minum kopi."
+      },
+      {
+        "japanese": "公園でピクニックしましょう。",
+        "furigana": "こうえんで ピクニック しましょう。",
+        "translation": "Ayo piknik di taman."
+      },
+      {
+        "japanese": "音楽を聴きましょう。",
+        "furigana": "おんがくを ききましょう。",
+        "translation": "Ayo mendengarkan musik."
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "grammar_point": "～も",
+    "romaji": "mo",
+    "jlpt_level": "N5",
+    "meaning": "Juga / Pun",
+    "usage_notes": [
+      "Menggantikan partikel 'wa', 'o', atau 'ga' ketika kondisinya sama dengan sebelumnya."
+    ],
+    "connection_rule": [
+      "Kata Benda + も"
+    ],
+    "examples": [
+      {
+        "japanese": "山田さんも来ます。",
+        "furigana": "やまださんも きます。",
+        "translation": "Yamada-san juga datang."
+      },
+      {
+        "japanese": "私も学生です。",
+        "furigana": "わたしも がくせい です。",
+        "translation": "Saya juga mahasiswa."
+      },
+      {
+        "japanese": "猫も好きです。",
+        "furigana": "ねこも すき です。",
+        "translation": "Saya juga suka kucing."
+      },
+      {
+        "japanese": "彼も忙しいです。",
+        "furigana": "かれも いそがしい です。",
+        "translation": "Dia (laki-laki) juga sibuk."
+      },
+      {
+        "japanese": "本も読みます。",
+        "furigana": "ほんも よみます。",
+        "translation": "Saya juga membaca buku."
+      },
+      {
+        "japanese": "映画も見ます。",
+        "furigana": "えいがも みます。",
+        "translation": "Saya juga menonton film."
+      },
+      {
+        "japanese": "犬も飼っています。",
+        "furigana": "いぬも かっています。",
+        "translation": "Saya juga memelihara anjing."
+      },
+      {
+        "japanese": "彼女も来ます。",
+        "furigana": "かのじょも きます。",
+        "translation": "Dia (perempuan) juga datang."
+      },
+      {
+        "japanese": "音楽も聴きます。",
+        "furigana": "おんがくも ききます。",
+        "translation": "Saya juga mendengarkan musik."
+      },
+      {
+        "japanese": "友達もいます。",
+        "furigana": "ともだちも います。",
+        "translation": "Saya juga punya teman."
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "grammar_point": "もう",
+    "romaji": "mou",
+    "jlpt_level": "N5",
+    "meaning": "Sudah / Tidak ... lagi",
+    "usage_notes": [
+      "Positif: Sudah selesai.",
+      "Negatif: Tidak lagi (not anymore)."
+    ],
+    "connection_rule": [
+      "もう + Kata Kerja/Kalimat"
+    ],
+    "examples": [
+      {
+        "japanese": "もう帰りました。",
+        "furigana": "もう かえりました。",
+        "translation": "Sudah pulang."
+      },
+      {
+        "japanese": "もうお金がありません。",
+        "furigana": "もう おかねが ありません。",
+        "translation": "Sudah tidak punya uang (tidak punya uang lagi)."
+      },
+      {
+        "japanese": "もう食べました。",
+        "furigana": "もう たべました。",
+        "translation": "Sudah makan."
+      },
+      {
+        "japanese": "もう時間がありません。",
+        "furigana": "もう じかんが ありません。",
+        "translation": "Sudah tidak ada waktu (tidak ada waktu lagi)."
+      },
+      {
+        "japanese": "もう勉強しました。",
+        "furigana": "もう べんきょうしました。",
+        "translation": "Sudah belajar."
+      },
+      {
+        "japanese": "もう疲れました。",
+        "furigana": "もう つかれました。",
+        "translation": "Sudah capek."
+      },
+      {
+        "japanese": "もう仕事が終わりました。",
+        "furigana": "もう しごとが おわりました。",
+        "translation": "Pekerjaan sudah selesai."
+      },
+      {
+        "japanese": "もう雨が降っていません。",
+        "furigana": "もう あめが ふっていません。",
+        "translation": "Sudah tidak hujan (tidak hujan lagi)."
+      },
+      {
+        "japanese": "もう本を読みました。",
+        "furigana": "もう ほんを よみました。",
+        "translation": "Sudah membaca buku."
+      },
+      {
+        "japanese": "もう遊びません。",
+        "furigana": "もう あそびません。",
+        "translation": "Sudah tidak bermain (tidak bermain lagi)."
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "grammar_point": "～な",
+    "romaji": "na",
+    "jlpt_level": "N5",
+    "meaning": "Jangan! (Larangan Kasar)",
+    "usage_notes": [
+      "Larangan yang sangat kuat. Biasanya dipakai laki-laki, saat darurat, atau pada rambu-rambu."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk Kamus) + な"
+    ],
+    "examples": [
+      {
+        "japanese": "ここに入るな！",
+        "furigana": "ここに はいるな！",
+        "translation": "Jangan masuk ke sini!"
+      },
+      {
+        "japanese": "触るな！",
+        "furigana": "さわるな！",
+        "translation": "Jangan menyentuh!"
+      },
+      {
+        "japanese": "走るな！",
+        "furigana": "はしるな！",
+        "translation": "Jangan berlari!"
+      },
+      {
+        "japanese": "飲むな！",
+        "furigana": "のむな！",
+        "translation": "Jangan minum!"
+      },
+      {
+        "japanese": "騒ぐな！",
+        "furigana": "さわぐな！",
+        "translation": "Jangan ribut!"
+      },
+      {
+        "japanese": "写真を撮るな！",
+        "furigana": "しゃしんを とるな！",
+        "translation": "Jangan mengambil foto!"
+      },
+      {
+        "japanese": "入るな！",
+        "furigana": "はいるな！",
+        "translation": "Jangan masuk!"
+      },
+      {
+        "japanese": "触るな！",
+        "furigana": "さわるな！",
+        "translation": "Jangan menyentuh!"
+      },
+      {
+        "japanese": "走るな！",
+        "furigana": "はしるな！",
+        "translation": "Jangan berlari!"
+      },
+      {
+        "japanese": "飲むな！",
+        "furigana": "のむな！",
+        "translation": "Jangan minum!"
+      },
+      {
+        "japanese": "騒ぐな！",
+        "furigana": "さわぐな！",
+        "translation": "Jangan ribut!"
+      },
+      {
+        "japanese": "写真を撮るな！",
+        "furigana": "しゃしんを とるな！",
+        "translation": "Jangan mengambil foto!"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "grammar_point": "～ないでください",
+    "romaji": "naide kudasai",
+    "jlpt_level": "N5",
+    "meaning": "Tolong jangan...",
+    "usage_notes": [
+      "Larangan atau permintaan yang sopan."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk NAI) + でください"
+    ],
+    "examples": [
+      {
+        "japanese": "忘れないでください。",
+        "furigana": "わすれないで ください。",
+        "translation": "Tolong jangan lupa."
+      },
+      {
+        "japanese": "触らないでください。",
+        "furigana": "さわらないで ください。",
+        "translation": "Tolong jangan menyentuh."
+      },
+      {
+        "japanese": "走らないでください。",
+        "furigana": "はしらないで ください。",
+        "translation": "Tolong jangan berlari."
+      },
+      {
+        "japanese": "飲まないでください。",
+        "furigana": "のまないで ください。",
+        "translation": "Tolong jangan minum."
+      },
+      {
+        "japanese": "騒がないでください。",
+        "furigana": "さわがないで ください。",
+        "translation": "Tolong jangan ribut."
+      },
+      {
+        "japanese": "写真を撮らないでください。",
+        "furigana": "しゃしんを とらないで ください。",
+        "translation": "Tolong jangan mengambil foto."
+      },
+      {
+        "japanese": "入らないでください。",
+        "furigana": "はいらないで ください。",
+        "translation": "Tolong jangan masuk."
+      },
+      {
+        "japanese": "触らないでください。",
+        "furigana": "さわらないで ください。",
+        "translation": "Tolong jangan menyentuh."
+      },
+      {
+        "japanese": "走らないでください。",
+        "furigana": "はしらないで ください。",
+        "translation": "Tolong jangan berlari."
+      },
+      {
+        "japanese": "飲まないでください。",
+        "furigana": "のまないで ください。",
+        "translation": "Tolong jangan minum."
+      },
+      {
+        "japanese": "騒がないでください。",
+        "furigana": "さわがないで ください。",
+        "translation": "Tolong jangan ribut."
+      },
+      {
+        "japanese": "写真を撮らないでください。",
+        "furigana": "しゃしんを とらないで ください。",
+        "translation": "Tolong jangan mengambil foto."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "grammar_point": "～なる",
+    "romaji": "naru",
+    "jlpt_level": "N5",
+    "meaning": "Menjadi",
+    "usage_notes": [
+      "Perubahan kondisi dari satu keadaan ke keadaan lain."
+    ],
+    "connection_rule": [
+      "Kata Benda/Kata Sifat-na + になる",
+      "Kata Sifat-i (hilangkan i) + くなる"
+    ],
+    "conjugations": [
+      {
+        "label": "Positif (Sekarang)",
+        "polite": "なります",
+        "plain": "なる"
+      },
+      {
+        "label": "Negatif (Sekarang)",
+        "polite": "なりません",
+        "plain": "ならない"
+      },
+      {
+        "label": "Positif (Lampau)",
+        "polite": "なりました",
+        "plain": "なった"
+      },
+      {
+        "label": "Negatif (Lampau)",
+        "polite": "なりませんでした",
+        "plain": "ならなかった"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "大きくなりました。",
+        "furigana": "おおきく なりました。",
+        "translation": "Sudah menjadi besar."
+      },
+      {
+        "japanese": "静かになりました。",
+        "furigana": "しずかに なりました。",
+        "translation": "Menjadi sepi/tenang."
+      },
+      {
+        "japanese": "寒くなりました。",
+        "furigana": "さむく なりました。",
+        "translation": "Sudah menjadi dingin."
+      },
+      {
+        "japanese": "元気になりました。",
+        "furigana": "げんきに なりました。",
+        "translation": "Sudah menjadi sehat/semangat."
+      },
+      {
+        "japanese": "高くなりました。",
+        "furigana": "たかく なりました。",
+        "translation": "Sudah menjadi mahal/tinggi."
+      },
+      {
+        "japanese": "便利になりました。",
+        "furigana": "べんりに なりました。",
+        "translation": "Sudah menjadi praktis/mudah."
+      },
+      {
+        "japanese": "暑くなりました。",
+        "furigana": "あつく なりました。",
+        "translation": "Sudah menjadi panas."
+      },
+      {
+        "japanese": "有名になりました。",
+        "furigana": "ゆうめいに なりました。",
+        "translation": "Sudah menjadi terkenal."
+      },
+      {
+        "japanese": "楽しくなりました。",
+        "furigana": "たのしく なりました。",
+        "translation": "Sudah menjadi menyenangkan."
+      },
+      {
+        "japanese": "忙しくなりました。",
+        "furigana": "いそがしく なりました。",
+        "translation": "Sudah menjadi sibuk."
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "grammar_point": "～に (Waktu/Tujuan)",
+    "romaji": "ni",
+    "jlpt_level": "N5",
+    "meaning": "Pada (Waktu) / Ke (Tujuan) / Di (Keberadaan)",
+    "usage_notes": [
+      "Partikel multifungsi.",
+      "1. Waktu spesifik.",
+      "2. Tujuan pergerakan.",
+      "3. Lokasi keberadaan (dengan aru/iru)."
+    ],
+    "connection_rule": [
+      "Kata Benda + に"
+    ],
+    "examples": [
+      {
+        "japanese": "6時に起きます。",
+        "furigana": "ろくじに おきます。",
+        "translation": "Bangun pada jam 6."
+      },
+      {
+        "japanese": "日本に住んでいます。",
+        "furigana": "にほんに すんで います。",
+        "translation": "Tinggal di Jepang."
+      },
+      {
+        "japanese": "図書館に本があります。",
+        "furigana": "としょかんに ほんが あります。",
+        "translation": "Di perpustakaan ada buku."
+      },
+      {
+        "japanese": "学校に行きます。",
+        "furigana": "がっこうに いきます。",
+        "translation": "Pergi ke sekolah."
+      },
+      {
+        "japanese": "金曜日に会います。",
+        "furigana": "きんようびに あいます。",
+        "translation": "Bertemu pada hari Jumat."
+      },
+      {
+        "japanese": "公園に犬がいます。",
+        "furigana": "こうえんに いぬが います。",
+        "translation": "Di taman ada anjing."
+      },
+      {
+        "japanese": "友達に手紙を書きます。",
+        "furigana": "ともだちに てがみを かきます。",
+        "translation": "Menulis surat kepada teman."
+      },
+      {
+        "japanese": "日曜日に映画を見ます。",
+        "furigana": "にちようびに えいがを みます。",
+        "translation": "Menonton film pada hari Minggu."
+      },
+      {
+        "japanese": "会社に行きます。",
+        "furigana": "かいしゃに いきます。",
+        "translation": "Pergi ke kantor."
+      },
+      {
+        "japanese": "部屋に猫がいます。",
+        "furigana": "へやに ねこが います。",
+        "translation": "Di kamar ada kucing."
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "grammar_point": "～に/へ",
+    "romaji": "ni/he",
+    "jlpt_level": "N5",
+    "meaning": "Ke (Arah)",
+    "usage_notes": [
+      "'He' (dibaca 'e') menekankan arah pergerakan.",
+      "'Ni' menekankan titik tujuan."
+    ],
+    "connection_rule": [
+      "Tempat + に/へ"
+    ],
+    "examples": [
+      {
+        "japanese": "学校へ行きます。",
+        "furigana": "がっこうへ いきます。",
+        "translation": "Pergi ke sekolah."
+      },
+      {
+        "japanese": "駅に行きます。",
+        "furigana": "えきに いきます。",
+        "translation": "Pergi ke stasiun."
+      },
+      {
+        "japanese": "公園へ行きます。",
+        "furigana": "こうえんへ いきます。",
+        "translation": "Pergi ke taman."
+      },
+      {
+        "japanese": "図書館に行きます。",
+        "furigana": "としょかんに いきます。",
+        "translation": "Pergi ke perpustakaan."
+      },
+      {
+        "japanese": "会社へ行きます。",
+        "furigana": "かいしゃへ いきます。",
+        "translation": "Pergi ke kantor."
+      },
+      {
+        "japanese": "病院に行きます。",
+        "furigana": "びょういんに いきます。",
+        "translation": "Pergi ke rumah sakit."
+      },
+      {
+        "japanese": "空港へ行きます。",
+        "furigana": "くうこうへ いきます。",
+        "translation": "Pergi ke bandara."
+      },
+      {
+        "japanese": "レストランに行きます。",
+        "furigana": "レストランに いきます。",
+        "translation": "Pergi ke restoran."
+      },
+      {
+        "japanese": "美術館へ行きます。",
+        "furigana": "びじゅつかんへ いきます。",
+        "translation": "Pergi ke museum seni."
+      },
+      {
+        "japanese": "映画館に行きます。",
+        "furigana": "えいがかんに いきます。",
+        "translation": "Pergi ke bioskop."
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "grammar_point": "～に行きます",
+    "romaji": "ni ikimasu",
+    "jlpt_level": "N5",
+    "meaning": "Pergi untuk (tujuan aktivitas)",
+    "usage_notes": [
+      "Pergi ke suatu tempat dengan tujuan melakukan sesuatu."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk MASU - tanpa masu) + に行く"
+    ],
+    "examples": [
+      {
+        "japanese": "服を買いに行きます。",
+        "furigana": "ふくを かいに いきます。",
+        "translation": "Pergi untuk membeli baju."
+      },
+      {
+        "japanese": "友達に会いに行きます。",
+        "furigana": "ともだちに あいに いきます。",
+        "translation": "Pergi untuk bertemu teman."
+      },
+      {
+        "japanese": "図書館に本を借りに行きます。",
+        "furigana": "としょかんに ほんを かりに いきます。",
+        "translation": "Pergi ke perpustakaan untuk meminjam buku."
+      },
+      {
+        "japanese": "映画を見に行きます。",
+        "furigana": "えいがを みに いきます。",
+        "translation": "Pergi untuk menonton film."
+      },
+      {
+        "japanese": "レストランに食べに行きます。",
+        "furigana": "レストランに たべに いきます。",
+        "translation": "Pergi ke restoran untuk makan."
+      },
+      {
+        "japanese": "公園に散歩しに行きます。",
+        "furigana": "こうえんに さんぽしに いきます。",
+        "translation": "Pergi ke taman untuk jalan-jalan."
+      },
+      {
+        "japanese": "銀行にお金を下ろしに行きます。",
+        "furigana": "ぎんこうに おかねを おろしに いきます。",
+        "translation": "Pergi ke bank untuk menarik uang."
+      },
+      {
+        "japanese": "郵便局に手紙を出しに行きます。",
+        "furigana": "ゆうびんきょくに てがみを だしに いきます。",
+        "translation": "Pergi ke kantor pos untuk mengirim surat."
+      },
+      {
+        "japanese": "薬を買いに行きます。",
+        "furigana": "くすりを かいに いきます。",
+        "translation": "Pergi untuk membeli obat."
+      },
+      {
+        "japanese": "美容院に髪を切りに行きます。",
+        "furigana": "びよういんに かみを きりに いきます。",
+        "translation": "Pergi ke salon untuk memotong rambut."
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "grammar_point": "～にする",
+    "romaji": "ni suru",
+    "jlpt_level": "N5",
+    "meaning": "Memutuskan / Memilih",
+    "usage_notes": [
+      "Sering digunakan saat memesan makanan di restoran."
+    ],
+    "connection_rule": [
+      "Kata Benda + にする"
+    ],
+    "examples": [
+      {
+        "japanese": "カレーにします。",
+        "furigana": "カレーに します。",
+        "translation": "Saya pilih (putuskan pesan) kare."
+      },
+      {
+        "japanese": "寿司にします。",
+        "furigana": "すしに します。",
+        "translation": "Saya pilih (putuskan pesan) sushi."
+      },
+      {
+        "japanese": "ラーメンにします。",
+        "furigana": "ラーメンに します。",
+        "translation": "Saya pilih (putuskan pesan) ramen."
+      },
+      {
+        "japanese": "天ぷらにします。",
+        "furigana": "てんぷらに します。",
+        "translation": "Saya pilih (putuskan pesan) tempura."
+      },
+      {
+        "japanese": "うどんにします。",
+        "furigana": "うどんに します。",
+        "translation": "Saya pilih (putuskan pesan) udon."
+      },
+      {
+        "japanese": "そばにします。",
+        "furigana": "そばに します。",
+        "translation": "Saya pilih (putuskan pesan) soba."
+      },
+      {
+        "japanese": "焼き鳥にします。",
+        "furigana": "やきとりに します。",
+        "translation": "Saya pilih (putuskan pesan) yakitori."
+      },
+      {
+        "japanese": "お好み焼きにします。",
+        "furigana": "おこのみやきに します。",
+        "translation": "Saya pilih (putuskan pesan) okonomiyaki."
+      },
+      {
+        "japanese": "刺身にします。",
+        "furigana": "さしみに します。",
+        "translation": "Saya pilih (putuskan pesan) sashimi."
+      },
+      {
+        "japanese": "餃子にします。",
+        "furigana": "ぎょうざに します。",
+        "translation": "Saya pilih (putuskan pesan) gyoza."
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "grammar_point": "～の (Kepemilikan)",
+    "romaji": "no",
+    "jlpt_level": "N5",
+    "meaning": "Milik / Punya (Possessive)",
+    "usage_notes": [
+      "Menghubungkan dua kata benda."
+    ],
+    "connection_rule": [
+      "Kata Benda 1 + の + Kata Benda 2"
+    ],
+    "examples": [
+      {
+        "japanese": "私の父",
+        "furigana": "わたしの ちち",
+        "translation": "Ayah saya."
+      },
+      {
+        "japanese": "彼の本",
+        "furigana": "かれの ほん",
+        "translation": "Buku dia (laki-laki)."
+      },
+      {
+        "japanese": "日本の文化",
+        "furigana": "にほんの ぶんか",
+        "translation": "Budaya Jepang."
+      },
+      {
+        "japanese": "学校の先生",
+        "furigana": "がっこうの せんせい",
+        "translation": "Guru sekolah."
+      },
+      {
+        "japanese": "友達の家",
+        "furigana": "ともだちの いえ",
+        "translation": "Rumah teman."
+      },
+      {
+        "japanese": "猫の名前",
+        "furigana": "ねこの なまえ",
+        "translation": "Nama kucing."
+      },
+      {
+        "japanese": "会社の車",
+        "furigana": "かいしゃの くるま",
+        "translation": "Mobil perusahaan."
+      },
+      {
+        "japanese": "映画のチケット",
+        "furigana": "えいがの チケット",
+        "translation": "Tiket film."
+      },
+      {
+        "japanese": "音楽の先生",
+        "furigana": "おんがくの せんせい",
+        "translation": "Guru musik."
+      },
+      {
+        "japanese": "本のページ",
+        "furigana": "ほんの ページ",
+        "translation": "Halaman buku."
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "grammar_point": "～の (Nominalisasi)",
+    "romaji": "no",
+    "jlpt_level": "N5",
+    "meaning": "Hal / Yang... (Bendaisasi)",
+    "usage_notes": [
+      "Mengubah kata kerja menjadi kata benda agar bisa diberi partikel."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk Biasa) + の"
+    ],
+    "examples": [
+      {
+        "japanese": "日本語を勉強するのは楽しいです。",
+        "furigana": "にほんごを べんきょうするのは たのしい です。",
+        "translation": "Belajar bahasa Jepang itu menyenangkan."
+      },
+      {
+        "japanese": "映画を見るのが好きです。",
+        "furigana": "えいがを みるのが すき です。",
+        "translation": "Saya suka menonton film."
+      },
+      {
+        "japanese": "料理を作るのは難しいです。",
+        "furigana": "りょうりを つくるのは むずかしい です。",
+        "translation": "Memasak itu sulit."
+      },
+      {
+        "japanese": "音楽を聴くのが楽しいです。",
+        "furigana": "おんがくを きくのが たのしい です。",
+        "translation": "Mendengarkan musik itu menyenangkan."
+      },
+      {
+        "japanese": "本を読むのは好きです。",
+        "furigana": "ほんを よむのは すき です。",
+        "translation": "Saya suka membaca buku."
+      },
+      {
+        "japanese": "旅行するのが楽しみです。",
+        "furigana": "りょこうするのが たのしみ です。",
+        "translation": "Saya menantikan untuk bepergian."
+      },
+      {
+        "japanese": "スポーツをするのは健康にいいです。",
+        "furigana": "スポーツを するのは けんこうに いい です。",
+        "translation": "Berolahraga itu baik untuk kesehatan."
+      },
+      {
+        "japanese": "写真を撮るのが好きです。",
+        "furigana": "しゃしんを とるのが すき です。",
+        "translation": "Saya suka mengambil foto."
+      },
+      {
+        "japanese": "勉強するのは大切です。",
+        "furigana": "べんきょうするのは たいせつ です。",
+        "translation": "Belajar itu penting."
+      },
+      {
+        "japanese": "歌うのが楽しいです。",
+        "furigana": "うたうのが たのしい です。",
+        "translation": "Bernyanyi itu menyenangkan."
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "grammar_point": "～ので",
+    "romaji": "node",
+    "jlpt_level": "N5",
+    "meaning": "Karena (Sopan)",
+    "usage_notes": [
+      "Menjelaskan sebab akibat secara objektif dan sopan.",
+      "Lebih halus daripada 'kara'."
+    ],
+    "connection_rule": [
+      "Kata Kerja/Kata Sifat-i (Biasa) + ので",
+      "Kata Benda/Kata Sifat-na + な + ので"
+    ],
+    "examples": [
+      {
+        "japanese": "用事があるので、失礼します。",
+        "furigana": "ようじが あるので、しつれい します。",
+        "translation": "Karena ada urusan, saya permisi dulu."
+      },
+      {
+        "japanese": "雨が降っているので、傘を持って行きます。",
+        "furigana": "あめが ふっているので、かさを もって いきます。",
+        "translation": "Karena sedang hujan, saya akan membawa payung."
+      },
+      {
+        "japanese": "疲れたので、休みます。",
+        "furigana": "つかれたので、やすみます。",
+        "translation": "Karena lelah, saya akan istirahat."
+      },
+      {
+        "japanese": "時間がないので、急ぎます。",
+        "furigana": "じかんが ないので、いそぎます。",
+        "translation": "Karena tidak ada waktu, saya akan buru-buru."
+      },
+      {
+        "japanese": "風邪を引いたので、学校を休みました。",
+        "furigana": "かぜを ひいたので、がっこうを やすみました。",
+        "translation": "Karena terkena flu, saya tidak masuk sekolah."
+      },
+      {
+        "japanese": "道が混んでいるので、遅れます。",
+        "furigana": "みちが こんでいるので、おくれます。",
+        "translation": "Karena jalanan macet, saya akan terlambat."
+      },
+      {
+        "japanese": "お腹が空いたので、ご飯を食べます。",
+        "furigana": "おなかが すいたので、ごはんを たべます。",
+        "translation": "Karena lapar, saya akan makan."
+      },
+      {
+        "japanese": "忙しいので、手伝ってください。",
+        "furigana": "いそがしいので、てつだって ください。",
+        "translation": "Karena sibuk, tolong bantu saya."
+      },
+      {
+        "japanese": "電車が遅れたので、会議に遅刻しました。",
+        "furigana": "でんしゃが おくれたので、かいぎに ちこくしました。",
+        "translation": "Karena kereta terlambat, saya terlambat ke rapat."
+      },
+      {
+        "japanese": "寒いので、コートを着ます。",
+        "furigana": "さむいので、コートを きます。",
+        "translation": "Karena dingin, saya akan memakai mantel."
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "grammar_point": "～のが上手",
+    "romaji": "no ga jouzu",
+    "jlpt_level": "N5",
+    "meaning": "Pandai / Jago melakukan...",
+    "usage_notes": [
+      "Digunakan untuk memuji keahlian orang lain."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk Kamus) + のが上手"
+    ],
+    "examples": [
+      {
+        "japanese": "彼は絵を描くのが上手です。",
+        "furigana": "かれは えを かくのが じょうず です。",
+        "translation": "Dia pandai menggambar."
+      },
+      {
+        "japanese": "彼女はピアノを弾くのが上手です。",
+        "furigana": "かのじょは ピアノを ひくのが じょうず です。",
+        "translation": "Dia pandai bermain piano."
+      },
+      {
+        "japanese": "田中さんは料理を作るのが上手です。",
+        "furigana": "たなかさんは りょうりを つくるのが じょうず です。",
+        "translation": "Tuan Tanaka pandai memasak."
+      },
+      {
+        "japanese": "彼はサッカーをするのが上手です。",
+        "furigana": "かれは サッカーを するのが じょうず です。",
+        "translation": "Dia pandai bermain sepak bola."
+      },
+      {
+        "japanese": "鈴木さんは歌うのが上手です。",
+        "furigana": "すずきさんは うたうのが じょうず です。",
+        "translation": "Tuan Suzuki pandai bernyanyi."
+      },
+      {
+        "japanese": "彼女はダンスをするのが上手です。",
+        "furigana": "かのじょは ダンスを するのが じょうず です。",
+        "translation": "Dia pandai menari."
+      },
+      {
+        "japanese": "山田さんは写真を撮るのが上手です。",
+        "furigana": "やまださんは しゃしんを とるのが じょうず です。",
+        "translation": "Tuan Yamada pandai mengambil foto."
+      },
+      {
+        "japanese": "彼は英語を話すのが上手です。",
+        "furigana": "かれは えいごを はなすのが じょうず です。",
+        "translation": "Dia pandai berbicara bahasa Inggris."
+      },
+      {
+        "japanese": "佐藤さんはギターを弾くのが上手です。",
+        "furigana": "さとうさんは ギターを ひくのが じょうず です。",
+        "translation": "Tuan Sato pandai bermain gitar."
+      },
+      {
+        "japanese": "彼女は泳ぐのが上手です。",
+        "furigana": "かのじょは およぐのが じょうず です。",
+        "translation": "Dia pandai berenang."
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "grammar_point": "～のが好き",
+    "romaji": "no ga suki",
+    "jlpt_level": "N5",
+    "meaning": "Suka melakukan...",
+    "usage_notes": [
+      "Menyatakan hobi atau kesukaan terhadap aktivitas."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk Kamus) + のが好き"
+    ],
+    "examples": [
+      {
+        "japanese": "私は料理を作るのが好きです。",
+        "furigana": "わたしは りょうりを つくるのが すきです。",
+        "translation": "Saya suka memasak."
+      },
+      {
+        "japanese": "彼は読書をするのが好きです。",
+        "furigana": "かれは どくしょを するのが すきです。",
+        "translation": "Dia suka membaca buku."
+      },
+      {
+        "japanese": "彼女は音楽を聴くのが好きです。",
+        "furigana": "かのじょは おんがくを きくのが すきです。",
+        "translation": "Dia suka mendengarkan musik."
+      },
+      {
+        "japanese": "田中さんは旅行するのが好きです。",
+        "furigana": "たなかさんは りょこうするのが すきです。",
+        "translation": "Tuan Tanaka suka bepergian."
+      },
+      {
+        "japanese": "私は映画を見るのが好きです。",
+        "furigana": "わたしは えいがを みるのが すきです。",
+        "translation": "Saya suka menonton film."
+      },
+      {
+        "japanese": "鈴木さんはスポーツをするのが好きです。",
+        "furigana": "すずきさんは スポーツを するのが すきです。",
+        "translation": "Tuan Suzuki suka berolahraga."
+      },
+      {
+        "japanese": "彼女は写真を撮るのが好きです。",
+        "furigana": "かのじょは しゃしんを とるのが すきです。",
+        "translation": "Dia suka mengambil foto."
+      },
+      {
+        "japanese": "山田さんは歌うのが好きです。",
+        "furigana": "やまださんは うたうのが すきです。",
+        "translation": "Tuan Yamada suka bernyanyi."
+      },
+      {
+        "japanese": "彼はダンスをするのが好きです。",
+        "furigana": "かれは ダンスを するのが すきです。",
+        "translation": "Dia suka menari."
+      },
+      {
+        "japanese": "佐藤さんはギターを弾くのが好きです。",
+        "furigana": "さとうさんは ギターを ひくのが すきです。",
+        "translation": "Tuan Sato suka bermain gitar."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "grammar_point": "～のが下手",
+    "romaji": "no ga heta",
+    "jlpt_level": "N5",
+    "meaning": "Tidak pandai / Jelek dalam...",
+    "usage_notes": [
+      "Menyatakan ketidakmampuan diri sendiri (merendah)."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk Kamus) + のが下手"
+    ],
+    "examples": [
+      {
+        "japanese": "歌うのが下手です。",
+        "furigana": "うたうのが へた です。",
+        "translation": "Saya tidak pandai bernyanyi."
+      },
+      {
+        "japanese": "料理を作るのが下手です。",
+        "furigana": "りょうりを つくるのが へた です。",
+        "translation": "Saya tidak pandai memasak."
+      },
+      {
+        "japanese": "泳ぐのが下手です。",
+        "furigana": "およぐのが へた です。",
+        "translation": "Saya tidak pandai berenang."
+      },
+      {
+        "japanese": "絵を描くのが下手です。",
+        "furigana": "えを かくのが へた です。",
+        "translation": "Saya tidak pandai menggambar."
+      },
+      {
+        "japanese": "ダンスをするのが下手です。",
+        "furigana": "ダンスを するのが へた です。",
+        "translation": "Saya tidak pandai menari."
+      },
+      {
+        "japanese": "ピアノを弾くのが下手です。",
+        "furigana": "ピアノを ひくのが へた です。",
+        "translation": "Saya tidak pandai bermain piano."
+      },
+      {
+        "japanese": "写真を撮るのが下手です。",
+        "furigana": "しゃしんを とるのが へた です。",
+        "translation": "Saya tidak pandai mengambil foto."
+      },
+      {
+        "japanese": "ギターを弾くのが下手です。",
+        "furigana": "ギターを ひくのが へた です。",
+        "translation": "Saya tidak pandai bermain gitar."
+      },
+      {
+        "japanese": "スポーツをするのが下手です。",
+        "furigana": "スポーツを するのが へた です。",
+        "translation": "Saya tidak pandai berolahraga."
+      },
+      {
+        "japanese": "英語を話すのが下手です。",
+        "furigana": "えいごを はなすのが へた です。",
+        "translation": "Saya tidak pandai berbicara bahasa Inggris."
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "grammar_point": "～すぎる",
+    "romaji": "sugiru",
+    "jlpt_level": "N5",
+    "meaning": "Terlalu...",
+    "usage_notes": [
+      "Menunjukkan sesuatu yang berlebihan.",
+      "Sering bermakna negatif."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk MASU - tanpa masu) + すぎる",
+      "Kata Sifat (buang i/na) + すぎる"
+    ],
+    "conjugations": [
+      {
+        "label": "Positif (Sekarang)",
+        "polite": "すぎます",
+        "plain": "すぎる"
+      },
+      {
+        "label": "Negatif (Sekarang)",
+        "polite": "すぎません",
+        "plain": "すぎない"
+      },
+      {
+        "label": "Positif (Lampau)",
+        "polite": "すぎました",
+        "plain": "すぎた"
+      },
+      {
+        "label": "Negatif (Lampau)",
+        "polite": "すぎませんでした",
+        "plain": "すぎなかった"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "飲みすぎました。",
+        "furigana": "のみすぎました。",
+        "translation": "Terlalu banyak minum."
+      },
+      {
+        "japanese": "この靴は高すぎます。",
+        "furigana": "このくつは たかすぎます。",
+        "translation": "Sepatu ini terlalu mahal."
+      },
+      {
+        "japanese": "彼は働きすぎです。",
+        "furigana": "かれは はたらきすぎ です。",
+        "translation": "Dia bekerja terlalu keras."
+      },
+      {
+        "japanese": "食べすぎないでください。",
+        "furigana": "たべすぎないで ください。",
+        "translation": "Tolong jangan makan terlalu banyak."
+      },
+      {
+        "japanese": "この映画は長すぎました。",
+        "furigana": "このえいがは ながすぎました。",
+        "translation": "Film ini terlalu panjang."
+      },
+      {
+        "japanese": "彼女は話しすぎました。",
+        "furigana": "かのじょは はなしすぎました。",
+        "translation": "Dia (perempuan) terlalu banyak bicara."
+      },
+      {
+        "japanese": "この部屋は暑すぎます。",
+        "furigana": "このへやは あつすぎます。",
+        "translation": "Kamar ini terlalu panas."
+      },
+      {
+        "japanese": "彼は運動しすぎです。",
+        "furigana": "かれは うんどうしすぎ です。",
+        "translation": "Dia terlalu banyak berolahraga."
+      },
+      {
+        "japanese": "勉強しすぎないでください。",
+        "furigana": "べんきょうしすぎないで ください。",
+        "translation": "Tolong jangan belajar terlalu keras."
+      },
+      {
+        "japanese": "このケーキは甘すぎました。",
+        "furigana": "このケーキは あますぎました。",
+        "translation": "Kue ini terlalu manis."
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "grammar_point": "～たい",
+    "romaji": "tai",
+    "jlpt_level": "N5",
+    "meaning": "Ingin (melakukan)",
+    "usage_notes": [
+      "Menyatakan keinginan diri sendiri.",
+      "Tidak boleh dipakai untuk menyatakan keinginan orang lain (gunakan tagaru)."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk MASU - tanpa masu) + たい"
+    ],
+    "conjugations": [
+      {
+        "label": "Positif (Sekarang)",
+        "polite": "～たいです",
+        "plain": "～たい"
+      },
+      {
+        "label": "Negatif (Sekarang)",
+        "polite": "～たくないです",
+        "plain": "～たくない"
+      },
+      {
+        "label": "Positif (Lampau)",
+        "polite": "～たかったです",
+        "plain": "～たかった"
+      },
+      {
+        "label": "Negatif (Lampau)",
+        "polite": "～たくなかったです",
+        "plain": "～たくなかった"
+      }
+    ],
+    "examples": [
+      {
+        "japanese": "海に行きたいです。",
+        "furigana": "うみに いきたい です。",
+        "translation": "Saya ingin pergi ke laut."
+      },
+      {
+        "japanese": "新しい車を買いたいです。",
+        "furigana": "あたらしい くるまを かいたい です。",
+        "translation": "Saya ingin membeli mobil baru."
+      },
+      {
+        "japanese": "寿司を食べたいです。",
+        "furigana": "すしを たべたい です。",
+        "translation": "Saya ingin makan sushi."
+      },
+      {
+        "japanese": "映画を見たいです。",
+        "furigana": "えいがを みたい です。",
+        "translation": "Saya ingin menonton film."
+      },
+      {
+        "japanese": "日本に行きたいです。",
+        "furigana": "にほんに いきたい です。",
+        "translation": "Saya ingin pergi ke Jepang."
+      },
+      {
+        "japanese": "ピアノを弾きたいです。",
+        "furigana": "ピアノを ひきたい です。",
+        "translation": "Saya ingin bermain piano."
+      },
+      {
+        "japanese": "友達と会いたいです。",
+        "furigana": "ともだちと あいたい です。",
+        "translation": "Saya ingin bertemu dengan teman."
+      },
+      {
+        "japanese": "本を読みたいです。",
+        "furigana": "ほんを よみたい です。",
+        "translation": "Saya ingin membaca buku."
+      },
+      {
+        "japanese": "山に登りたいです。",
+        "furigana": "やまに のぼりたい です。",
+        "translation": "Saya ingin mendaki gunung."
+      },
+      {
+        "japanese": "音楽を聴きたいです。",
+        "furigana": "おんがくを ききたい です。",
+        "translation": "Saya ingin mendengarkan musik."
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "grammar_point": "～たことがある",
+    "romaji": "ta koto ga aru",
+    "jlpt_level": "N5",
+    "meaning": "Pernah (melakukan)",
+    "usage_notes": [
+      "Menceritakan pengalaman di masa lalu."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk TA) + ことがある"
+    ],
+    "examples": [
+      {
+        "japanese": "富士山に登ったことがあります。",
+        "furigana": "ふじさんに のぼった ことが あります。",
+        "translation": "Saya pernah mendaki Gunung Fuji."
+      },
+      {
+        "japanese": "寿司を食べたことがありますか。",
+        "furigana": "すしを たべた ことが ありますか。",
+        "translation": "Apakah kamu pernah makan sushi?"
+      },
+      {
+        "japanese": "日本に行ったことがあります。",
+        "furigana": "にほんに いった ことが あります。",
+        "translation": "Saya pernah pergi ke Jepang."
+      },
+      {
+        "japanese": "映画を見たことがあります。",
+        "furigana": "えいがを みた ことが あります。",
+        "translation": "Saya pernah menonton film."
+      },
+      {
+        "japanese": "ピアノを弾いたことがありますか。",
+        "furigana": "ピアノを ひいた ことが ありますか。",
+        "translation": "Apakah kamu pernah bermain piano?"
+      },
+      {
+        "japanese": "富士山に登ったことがありますか。",
+        "furigana": "ふじさんに のぼった ことが ありますか。",
+        "translation": "Apakah kamu pernah mendaki Gunung Fuji?"
+      },
+      {
+        "japanese": "寿司を食べたことがあります。",
+        "furigana": "すしを たべた ことが あります。",
+        "translation": "Saya pernah makan sushi."
+      },
+      {
+        "japanese": "日本に行ったことがありますか。",
+        "furigana": "にほんに いった ことが ありますか。",
+        "translation": "Apakah kamu pernah pergi ke Jepang?"
+      },
+      {
+        "japanese": "映画を見たことがありますか。",
+        "furigana": "えいがを みた ことが ありますか。",
+        "translation": "Apakah kamu pernah menonton film?"
+      },
+      {
+        "japanese": "ピアノを弾いたことがあります。",
+        "furigana": "ピアノを ひいた ことが あります。",
+        "translation": "Saya pernah bermain piano."
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "grammar_point": "～ている",
+    "romaji": "te iru",
+    "jlpt_level": "N5",
+    "meaning": "Sedang... / Dalam keadaan...",
+    "usage_notes": [
+      "1. Aksi yang sedang berlangsung (Continuous).",
+      "2. Kebiasaan berulang.",
+      "3. Keadaan yang masih berlanjut (misal: menikah, tinggal)."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk TE) + いる"
+    ],
+    "examples": [
+      {
+        "japanese": "今、テレビを見ています。",
+        "furigana": "いま、テレビを みて います。",
+        "translation": "Sekarang sedang menonton TV."
+      },
+      {
+        "japanese": "東京に住んでいます。",
+        "furigana": "とうきょうに すんで います。",
+        "translation": "Tinggal di Tokyo (keadaan)."
+      },
+      {
+        "japanese": "毎朝ジョギングをしています。",
+        "furigana": "まいあさ ジョギングを して います。",
+        "translation": "Setiap pagi saya berlari (kebiasaan)."
+      },
+      {
+        "japanese": "彼は本を読んでいます。",
+        "furigana": "かれは ほんを よんで います。",
+        "translation": "Dia sedang membaca buku."
+      },
+      {
+        "japanese": "私は学生です。",
+        "furigana": "わたしは がくせい です。",
+        "translation": "Saya adalah seorang pelajar."
+      },
+      {
+        "japanese": "彼女はピアノを弾いています。",
+        "furigana": "かのじょは ピアノを ひいて います。",
+        "translation": "Dia (perempuan) sedang bermain piano."
+      },
+      {
+        "japanese": "犬が庭で遊んでいます。",
+        "furigana": "いぬが にわで あそんで います。",
+        "translation": "Anjing sedang bermain di halaman."
+      },
+      {
+        "japanese": "私は毎日新聞を読んでいます。",
+        "furigana": "わたしは まいにち しんぶんを よんで います。",
+        "translation": "Saya membaca koran setiap hari."
+      },
+      {
+        "japanese": "彼は車を運転しています。",
+        "furigana": "かれは くるまを うんてんして います。",
+        "translation": "Dia sedang mengemudi mobil."
+      },
+      {
+        "japanese": "彼女は料理を作っています。",
+        "furigana": "かのじょは りょうりを つくって います。",
+        "translation": "Dia (perempuan) sedang memasak."
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "grammar_point": "～てください",
+    "romaji": "te kudasai",
+    "jlpt_level": "N5",
+    "meaning": "Tolong...",
+    "usage_notes": [
+      "Meminta orang lain melakukan sesuatu dengan sopan."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk TE) + ください"
+    ],
+    "examples": [
+      {
+        "japanese": "ちょっと待ってください。",
+        "furigana": "ちょっと まって ください。",
+        "translation": "Tolong tunggu sebentar."
+      },
+      {
+        "japanese": "名前を書いてください。",
+        "furigana": "なまえを かいて ください。",
+        "translation": "Tolong tulis nama Anda."
+      },
+      {
+        "japanese": "ドアを閉めてください。",
+        "furigana": "ドアを しめて ください。",
+        "translation": "Tolong tutup pintunya."
+      },
+      {
+        "japanese": "質問を聞いてください。",
+        "furigana": "しつもんを きいて ください。",
+        "translation": "Tolong dengarkan pertanyaannya."
+      },
+      {
+        "japanese": "窓を開けてください。",
+        "furigana": "まどを あけて ください。",
+        "translation": "Tolong buka jendelanya."
+      },
+      {
+        "japanese": "手を洗ってください。",
+        "furigana": "てを あらって ください。",
+        "translation": "Tolong cuci tangan Anda."
+      },
+      {
+        "japanese": "本を返してください。",
+        "furigana": "ほんを かえして ください。",
+        "translation": "Tolong kembalikan bukunya."
+      },
+      {
+        "japanese": "写真を見せてください。",
+        "furigana": "しゃしんを みせて ください。",
+        "translation": "Tolong tunjukkan fotonya."
+      },
+      {
+        "japanese": "道を教えてください。",
+        "furigana": "みちを おしえて ください。",
+        "translation": "Tolong beri tahu saya jalannya."
+      },
+      {
+        "japanese": "電話をかけてください。",
+        "furigana": "でんわを かけて ください。",
+        "translation": "Tolong telepon."
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "grammar_point": "～てもいい",
+    "romaji": "te mo ii",
+    "jlpt_level": "N5",
+    "meaning": "Boleh...",
+    "usage_notes": [
+      "Memberi izin atau meminta izin."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk TE) + もいい"
+    ],
+    "examples": [
+      {
+        "japanese": "写真を撮ってもいいですか。",
+        "furigana": "しゃしんを とっても いいですか。",
+        "translation": "Bolehkah saya mengambil foto?"
+      },
+      {
+        "japanese": "ここで休んでもいいです。",
+        "furigana": "ここで やすんでも いい です。",
+        "translation": "Boleh istirahat di sini."
+      },
+      {
+        "japanese": "窓を開けてもいいですか。",
+        "furigana": "まどを あけても いい ですか。",
+        "translation": "Bolehkah saya membuka jendela?"
+      },
+      {
+        "japanese": "この本を借りてもいいですか。",
+        "furigana": "このほんを かりても いい ですか。",
+        "translation": "Bolehkah saya meminjam buku ini?"
+      },
+      {
+        "japanese": "音楽を聴いてもいいですか。",
+        "furigana": "おんがくを きいても いい ですか。",
+        "translation": "Bolehkah saya mendengarkan musik?"
+      },
+      {
+        "japanese": "ここで写真を撮ってもいいです。",
+        "furigana": "ここで しゃしんを とっても いい です。",
+        "translation": "Boleh mengambil foto di sini."
+      },
+      {
+        "japanese": "外に出てもいいですか。",
+        "furigana": "そとに でても いい ですか。",
+        "translation": "Bolehkah saya keluar?"
+      },
+      {
+        "japanese": "このペンを使ってもいいですか。",
+        "furigana": "このペンを つかっても いい ですか。",
+        "translation": "Bolehkah saya menggunakan pena ini?"
+      },
+      {
+        "japanese": "友達と話してもいいですか。",
+        "furigana": "ともだちと はなしても いい ですか。",
+        "translation": "Bolehkah saya berbicara dengan teman?"
+      },
+      {
+        "japanese": "テレビを見てもいいですか。",
+        "furigana": "テレビを みても いい ですか。",
+        "translation": "Bolehkah saya menonton TV?"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "grammar_point": "～てから",
+    "romaji": "te kara",
+    "jlpt_level": "N5",
+    "meaning": "Setelah (melakukan A, lalu B)",
+    "usage_notes": [
+      "Menunjukkan urutan kegiatan yang kronologis."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk TE) + から"
+    ],
+    "examples": [
+      {
+        "japanese": "宿題をしてから、遊びます。",
+        "furigana": "しゅくだいを してから、あそびます。",
+        "translation": "Setelah mengerjakan PR, bermain."
+      },
+      {
+        "japanese": "朝ご飯を食べてから、学校に行きます。",
+        "furigana": "あさごはんを たべてから、がっこうに いきます。",
+        "translation": "Setelah sarapan, pergi ke sekolah."
+      },
+      {
+        "japanese": "本を読んでから、寝ます。",
+        "furigana": "ほんを よんでから、ねます。",
+        "translation": "Setelah membaca buku, tidur."
+      },
+      {
+        "japanese": "仕事が終わってから、帰ります。",
+        "furigana": "しごとが おわってから、かえります。",
+        "translation": "Setelah pekerjaan selesai, pulang."
+      },
+      {
+        "japanese": "映画を見てから、夕食を食べます。",
+        "furigana": "えいがを みてから、ゆうしょくを たべます。",
+        "translation": "Setelah menonton film, makan malam."
+      },
+      {
+        "japanese": "運動してから、シャワーを浴びます。",
+        "furigana": "うんどうしてから、シャワーを あびます。",
+        "translation": "Setelah berolahraga, mandi."
+      },
+      {
+        "japanese": "友達と会ってから、買い物に行きます。",
+        "furigana": "ともだちと あってから、かいものに いきます。",
+        "translation": "Setelah bertemu teman, pergi berbelanja."
+      },
+      {
+        "japanese": "音楽を聴いてから、勉強します。",
+        "furigana": "おんがくを きいてから、べんきょうします。",
+        "translation": "Setelah mendengarkan musik, belajar."
+      },
+      {
+        "japanese": "掃除してから、休みます。",
+        "furigana": "そうじしてから、やすみます。",
+        "translation": "Setelah membersihkan, istirahat."
+      },
+      {
+        "japanese": "写真を撮ってから、アルバムに入れます。",
+        "furigana": "しゃしんを とってから、アルバムに いれます。",
+        "translation": "Setelah mengambil foto, memasukkannya ke album."
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "grammar_point": "～てはいけない",
+    "romaji": "te wa ikenai",
+    "jlpt_level": "N5",
+    "meaning": "Tidak boleh / Dilarang",
+    "usage_notes": [
+      "Larangan tegas berdasarkan aturan."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk TE) + はいけない/はいけません"
+    ],
+    "examples": [
+      {
+        "japanese": "ここでお酒を飲んではいけません。",
+        "furigana": "ここで おさけを のんでは いけません。",
+        "translation": "Dilarang minum alkohol di sini."
+      },
+      {
+        "japanese": "教室で携帯電話を使ってはいけません。",
+        "furigana": "きょうしつで けいたいでんわを つかっては いけません。",
+        "translation": "Dilarang menggunakan ponsel di kelas."
+      },
+      {
+        "japanese": "図書館で大声で話してはいけません。",
+        "furigana": "としょかんで おおごえで はなしては いけません。",
+        "translation": "Dilarang berbicara dengan suara keras di perpustakaan."
+      },
+      {
+        "japanese": "道路で遊んではいけません。",
+        "furigana": "どうろで あそんでは いけません。",
+        "translation": "Dilarang bermain di jalan."
+      },
+      {
+        "japanese": "学校に遅刻してはいけません。",
+        "furigana": "がっこうに ちこくしては いけません。",
+        "translation": "Dilarang terlambat ke sekolah."
+      },
+      {
+        "japanese": "ここでタバコを吸ってはいけません。",
+        "furigana": "ここで タバコを すっては いけません。",
+        "translation": "Dilarang merokok di sini."
+      },
+      {
+        "japanese": "電車の中で食べてはいけません。",
+        "furigana": "でんしゃの なかで たべては いけません。",
+        "translation": "Dilarang makan di dalam kereta."
+      },
+      {
+        "japanese": "試験中にカンニングしてはいけません。",
+        "furigana": "しけんちゅうに カンニングしては いけません。",
+        "translation": "Dilarang mencontek saat ujian."
+      },
+      {
+        "japanese": "博物館で写真を撮ってはいけません。",
+        "furigana": "はくぶつかんで しゃしんを とっては いけません。",
+        "translation": "Dilarang mengambil foto di museum."
+      },
+      {
+        "japanese": "公園でゴミを捨ててはいけません。",
+        "furigana": "こうえんで ゴミを すてては いけません。",
+        "translation": "Dilarang membuang sampah di taman."
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "grammar_point": "～と",
+    "romaji": "to",
+    "jlpt_level": "N5",
+    "meaning": "Dan / Bersama",
+    "usage_notes": [
+      "Menghubungkan kata benda secara lengkap (semua disebut).",
+      "Atau menunjukkan partner (Bersama)."
+    ],
+    "connection_rule": [
+      "Kata Benda + と"
+    ],
+    "examples": [
+      {
+        "japanese": "りんごとみかんを買いました。",
+        "furigana": "りんごと みかんを かいました。",
+        "translation": "Saya membeli apel dan jeruk."
+      },
+      {
+        "japanese": "家族と来ました。",
+        "furigana": "かぞくと きました。",
+        "translation": "Datang bersama keluarga."
+      },
+      {
+        "japanese": "本とノートを持っています。",
+        "furigana": "ほんと ノートを もっています。",
+        "translation": "Saya membawa buku dan catatan."
+      },
+      {
+        "japanese": "友達と映画を見に行きます。",
+        "furigana": "ともだちと えいがを みに いきます。",
+        "translation": "Pergi menonton film bersama teman."
+      },
+      {
+        "japanese": "犬と散歩します。",
+        "furigana": "いぬと さんぽします。",
+        "translation": "Berjalan-jalan bersama anjing."
+      },
+      {
+        "japanese": "パンとバターを食べました。",
+        "furigana": "パンと バターを たべました。",
+        "translation": "Saya makan roti dan mentega."
+      },
+      {
+        "japanese": "先生と話しました。",
+        "furigana": "せんせいと はなしました。",
+        "translation": "Saya berbicara dengan guru."
+      },
+      {
+        "japanese": "音楽とダンスが好きです。",
+        "furigana": "おんがくと ダンスが すきです。",
+        "translation": "Saya suka musik dan tari."
+      },
+      {
+        "japanese": "兄とサッカーをします。",
+        "furigana": "あにと サッカーを します。",
+        "translation": "Bermain sepak bola bersama kakak laki-laki."
+      },
+      {
+        "japanese": "魚と野菜を食べます。",
+        "furigana": "さかなと やさいを たべます。",
+        "translation": "Saya makan ikan dan sayuran."
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "grammar_point": "～つもりだ",
+    "romaji": "tsumori da",
+    "jlpt_level": "N5",
+    "meaning": "Berencana / Berniat",
+    "usage_notes": [
+      "Menyatakan niat yang kuat atau rencana yang sudah dipikirkan."
+    ],
+    "connection_rule": [
+      "Kata Kerja (Bentuk Kamus / NAI) + つもりだ"
+    ],
+    "examples": [
+      {
+        "japanese": "夏休みに旅行するつもりです。",
+        "furigana": "なつやすみに りょこうする つもり です。",
+        "translation": "Saya berencana berlibur di musim panas."
+      },
+      {
+        "japanese": "来年、日本に留学するつもりです。",
+        "furigana": "らいねん、にほんに りゅうがくする つもり です。",
+        "translation": "Saya berencana untuk belajar di Jepang tahun depan."
+      },
+      {
+        "japanese": "週末に友達と会うつもりです。",
+        "furigana": "しゅうまつに ともだちと あう つもり です。",
+        "translation": "Saya berencana bertemu dengan teman pada akhir pekan."
+      },
+      {
+        "japanese": "新しい仕事を探すつもりです。",
+        "furigana": "あたらしい しごとを さがす つもり です。",
+        "translation": "Saya berencana mencari pekerjaan baru."
+      },
+      {
+        "japanese": "健康のために運動するつもりです。",
+        "furigana": "けんこうの ために うんどうする つもり です。",
+        "translation": "Saya berencana berolahraga demi kesehatan."
+      },
+      {
+        "japanese": "来月、引っ越すつもりです。",
+        "furigana": "らいげつ、ひっこす つもり です。",
+        "translation": "Saya berencana pindah bulan depan."
+      },
+      {
+        "japanese": "毎日日本語を勉強するつもりです。",
+        "furigana": "まいにち にほんごを べんきょうする つもり です。",
+        "translation": "Saya berencana belajar bahasa Jepang setiap hari."
+      },
+      {
+        "japanese": "夏に海に行くつもりです。",
+        "furigana": "なつに うみに いく つもり です。",
+        "translation": "Saya berencana pergi ke laut di musim panas."
+      },
+      {
+        "japanese": "新しい車を買うつもりです。",
+        "furigana": "あたらしい くるまを かう つもり です。",
+        "translation": "Saya berencana membeli mobil baru."
+      },
+      {
+        "japanese": "将来、医者になるつもりです。",
+        "furigana": "しょうらい、いしゃに なる つもり です。",
+        "translation": "Saya berencana menjadi dokter di masa depan."
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "grammar_point": "～や",
+    "romaji": "ya",
+    "jlpt_level": "N5",
+    "meaning": "Dan... (dan lain-lain)",
+    "usage_notes": [
+      "Menyebutkan sebagian contoh saja, tidak semuanya disebut.",
+      "Sering diakhiri dengan 'nado' (dll)."
+    ],
+    "connection_rule": [
+      "Kata Benda + や + Kata Benda"
+    ],
+    "examples": [
+      {
+        "japanese": "カバンの中に本やペンがあります。",
+        "furigana": "カバンのなかに ほんや ペンが あります。",
+        "translation": "Di dalam tas ada buku, pena, dan lainnya."
+      },
+      {
+        "japanese": "机の上にノートや消しゴムがあります。",
+        "furigana": "つくえのうえに ノートや けしゴムが あります。",
+        "translation": "Di atas meja ada buku catatan, penghapus, dan lainnya."
+      },
+      {
+        "japanese": "冷蔵庫に果物や野菜があります。",
+        "furigana": "れいぞうこに くだものや やさいが あります。",
+        "translation": "Di dalam kulkas ada buah-buahan, sayuran, dan lainnya."
+      },
+      {
+        "japanese": "本棚に小説や漫画があります。",
+        "furigana": "ほんだなに しょうせつや まんがが あります。",
+        "translation": "Di rak buku ada novel, manga, dan lainnya."
+      },
+      {
+        "japanese": "机の引き出しに文房具やノートがあります。",
+        "furigana": "つくえの ひきだしに ぶんぼうぐや ノートが あります。",
+        "translation": "Di laci meja ada alat tulis, buku catatan, dan lainnya."
+      },
+      {
+        "japanese": "カバンの中に財布や鍵があります。",
+        "furigana": "カバンのなかに さいふや かぎが あります。",
+        "translation": "Di dalam tas ada dompet, kunci, dan lainnya."
+      },
+      {
+        "japanese": "机の上に時計や写真があります。",
+        "furigana": "つくえのうえに とけいや しゃしんが あります。",
+        "translation": "Di atas meja ada jam, foto, dan lainnya."
+      },
+      {
+        "japanese": "冷蔵庫に飲み物やお菓子があります。",
+        "furigana": "れいぞうこに のみものや おかしが あります。",
+        "translation": "Di dalam kulkas ada minuman, makanan ringan, dan lainnya."
+      },
+      {
+        "japanese": "本棚に辞書や参考書があります。",
+        "furigana": "ほんだなに じしょや さんこうしょが あります。",
+        "translation": "Di rak buku ada kamus, buku referensi, dan lainnya."
+      },
+      {
+        "japanese": "机の引き出しに手紙や写真があります。",
+        "furigana": "つくえの ひきだしに てがみや しゃしんが あります。",
+        "translation": "Di laci meja ada surat, foto, dan lainnya."
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "grammar_point": "～より～のほうが",
+    "romaji": "yori ~ no hou ga",
+    "jlpt_level": "N5",
+    "meaning": "Lebih ... daripada ...",
+    "usage_notes": [
+      "Digunakan untuk membandingkan dua benda.",
+      "'Yori' ditempelkan pada benda yang kalah/kurang.",
+      "'No hou ga' ditempelkan pada benda yang menang/lebih."
+    ],
+    "connection_rule": [
+      "Kata Benda A + より + Kata Benda B + のほうが"
+    ],
+    "examples": [
+      {
+        "japanese": "バスより電車のほうが速いです。",
+        "furigana": "バスより でんしゃの ほうが はやい です。",
+        "translation": "Kereta lebih cepat daripada bus."
+      },
+      {
+        "japanese": "猫より犬のほうが大きいです。",
+        "furigana": "ねこより いぬの ほうが おおきい です。",
+        "translation": "Anjing lebih besar daripada kucing."
+      },
+      {
+        "japanese": "夏より冬のほうが寒いです。",
+        "furigana": "なつより ふゆの ほうが さむい です。",
+        "translation": "Musim dingin lebih dingin daripada musim panas."
+      },
+      {
+        "japanese": "コーヒーよりお茶のほうが好きです。",
+        "furigana": "コーヒーより おちゃの ほうが すき です。",
+        "translation": "Saya lebih suka teh daripada kopi."
+      },
+      {
+        "japanese": "車より自転車のほうが健康にいいです。",
+        "furigana": "くるまより じてんしゃの ほうが けんこうに いい です。",
+        "translation": "Sepeda lebih baik untuk kesehatan daripada mobil."
+      },
+      {
+        "japanese": "映画より本のほうが面白いです。",
+        "furigana": "えいがより ほんの ほうが おもしろい です。",
+        "translation": "Buku lebih menarik daripada film."
+      },
+      {
+        "japanese": "山より海のほうが好きです。",
+        "furigana": "やまより うみの ほうが すき です。",
+        "translation": "Saya lebih suka laut daripada gunung."
+      },
+      {
+        "japanese": "電車より飛行機のほうが速いです。",
+        "furigana": "でんしゃより ひこうきの ほうが はやい です。",
+        "translation": "Pesawat lebih cepat daripada kereta."
+      },
+      {
+        "japanese": "夏休みより冬休みのほうが好きです。",
+        "furigana": "なつやすみより ふゆやすみの ほうが すき です。",
+        "translation": "Saya lebih suka liburan musim dingin daripada liburan musim panas."
+      },
+      {
+        "japanese": "犬より猫のほうがかわいいです。",
+        "furigana": "いぬより ねこの ほうが かわいい です。",
+        "translation": "Kucing lebih imut daripada anjing."
+      }
+    ]
+  }
+]

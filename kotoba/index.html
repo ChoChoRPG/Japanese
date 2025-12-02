@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cho - Hapalan Kanji & Kotoba</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Supabase dari CDN (Script Eksternal tetap di sini agar loading cepat) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+    <div class="app-header">
+        <div class="logo-group">
+            <img src="img/logo.svg" alt="Logo" class="logo-img">
+        </div>
+        
+        <div class="header-controls">
+            <!-- Login Button -->
+            <button class="auth-btn" id="headerAuthBtn" onclick="openAuthModal()">Login</button>
+            
+            <!-- Dark Mode Toggle -->
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="Ganti Tema">
+                <!-- Icon injected by JS -->
+            </button>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Greeting Element -->
+        <h4 id="user-greeting" class="user-greeting"></h4>
+        
+        <div class="tab-group">
+            <button class="tab-btn active" onclick="setTab('vocab')">Kosakata</button>
+            <button class="tab-btn" onclick="setTab('kanji')">Peta Kanji</button>
+        </div>
+
+        <!-- === FLASHCARD KOSAKATA === -->
+        <div id="vocab-section" class="section active">
+            <div class="level-group" id="vocab-levels">
+                <button class="lvl-btn" onclick="loadVocab('n5')">N5</button>
+                <button class="lvl-btn" onclick="loadVocab('n4')">N4</button>
+                <button class="lvl-btn" onclick="loadVocab('n3')">N3</button>
+                <button class="lvl-btn" onclick="loadVocab('n2')">N2</button>
+                <button class="lvl-btn" onclick="loadVocab('n1')">N1</button>
+            </div>
+            
+            <div id="vocab-canvas-area" style="display:none;">
+                <div class="card-canvas-wrapper" id="cardWrapper">
+                    <canvas id="vocabCanvas"></canvas>
+                </div>
+                
+                <div class="fc-controls-area">
+                    <div class="fc-func-row">
+                        <button id="btn-filter" class="act-btn" onclick="toggleFilter()" title="Filter: Hanya Belum Hafal">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/></svg>
+                        </button>
+                        <button id="btn-random" class="act-btn" onclick="toggleRandom()" title="Mode Acak">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+                        </button>
+                        <button id="btn-tts" class="act-btn" onclick="toggleTTS()" title="Text-to-Speech">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        </button>
+                        <button id="btn-auto" class="act-btn" onclick="openAutoSettings()" title="Putar Otomatis">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="bottom-actions">
+                        <button id="btn-vocab-known" class="vocab-known-btn action-bottom-btn" onclick="toggleVocabKnown()">
+                            Tandai Sudah Hafal
+                        </button>
+                        <button class="list-btn action-bottom-btn" onclick="openKnownList()">
+                            Daftar Hafalan
+                        </button>
+                    </div>
+
+                    <div class="fc-nav-row">
+                        <button class="act-btn" onclick="prevCard()" title="Sebelumnya">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                        </button>
+                        <button class="act-btn" onclick="nextCard()" title="Selanjutnya">
+                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="status-msg">Klik <b>Huruf Merah</b> untuk Detail Kanji • Klik Kosong untuk Balik</div>
+            </div>
+            <br>
+            <div id="vocab-msg" class="status-msg">Pilih level yang disediakan.</div>
+        </div>
+
+        <!-- === HEATMAP KANJI === -->
+        <div id="kanji-section" class="section">
+            <div class="level-group" id="kanji-levels">
+                <button class="lvl-btn" onclick="loadKanjiData('n5')">N5</button>
+                <button class="lvl-btn" onclick="loadKanjiData('n4')">N4</button>
+                <button class="lvl-btn" onclick="loadKanjiData('n3')">N3</button>
+                <button class="lvl-btn" onclick="loadKanjiData('n2')">N2</button>
+                <button class="lvl-btn" onclick="loadKanjiData('n1')">N1</button>
+            </div>
+
+            <div class="stats-bar"><div id="k-progress" class="stats-fill"></div></div>
+            <div style="text-align:center; font-size:0.8rem; opacity:0.6; margin-bottom:10px;">
+                Hafal: <span id="k-count">0</span> / <span id="k-total">0</span>
+            </div>
+
+            <div id="kanji-grid" class="heatmap-grid">
+                <div style="grid-column:1/-1; text-align:center; padding:20px; opacity:0.5;">Pilih level di atas</div>
+            </div>
+            <div class="status-msg" style="font-size:0.8rem;">Klik Kiri: Detail • Klik Kanan: Tandai Hafal</div>
+        </div>
+    </div>
+
+    <!-- MODAL DETAIL KANJI -->
+    <div id="modal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="big-kanji" id="m-char">?</div>
+                <div style="flex:1">
+                    <span class="label">Arti (Indonesia)</span>
+                    <div id="m-mean" style="font-size:1.3rem; font-weight:bold;">...</div>
+                    <div id="m-mean-en" style="font-size:0.9rem; opacity:0.6; font-style:italic;">...</div>
+                </div>
+            </div>
+            <div class="reading-row">
+                <div class="reading-col">
+                    <span class="label">Kunyomi</span>
+                    <div id="m-kun" class="reading-list" style="color:var(--primary);"></div>
+                </div>
+                <div class="reading-col" style="text-align:right">
+                    <span class="label">Onyomi</span>
+                    <div id="m-on" class="reading-list" style="color:#0984e3;"></div>
+                </div>
+            </div>
+            <button id="m-btn" class="toggle-btn" onclick="toggleKnownFromModal()">Tandai Sudah Hafal</button>
+            <div style="text-align:right; margin-top:15px;">
+                <button onclick="closeModal()" style="background:rgba(0,0,0,0.1); border:none; padding:8px 15px; border-radius:8px; cursor:pointer; color:var(--text);">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL LIST HAFALAN -->
+    <div id="list-modal" class="modal-overlay" onclick="if(event.target===this)closeListModal()">
+        <div class="modal list-modal">
+            <h3 style="margin-top:0; color:var(--primary);">Kosakata Terhafal</h3>
+            <div id="known-list-content"></div>
+            <div style="text-align:right; margin-top:15px; padding-top:10px; border-top:1px solid rgba(0,0,0,0.1);">
+                <button onclick="closeListModal()" style="background:rgba(0,0,0,0.1); border:none; padding:8px 15px; border-radius:8px; cursor:pointer; color:var(--text);">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL AUTO SETTINGS -->
+    <div id="auto-modal" class="modal-overlay">
+        <div class="modal auto-modal">
+            <h3 style="margin-top:0; text-align:center;">Kecepatan Putar</h3>
+            <div class="range-container">
+                <span id="range-val" class="range-val">3</span> Detik
+                <input type="range" id="speed-range" min="1" max="10" value="3" oninput="document.getElementById('range-val').innerText=this.value">
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button onclick="startAutoPlay()" class="toggle-btn" style="background:var(--secondary); color:white;">Mulai (OK)</button>
+                <button onclick="closeAutoSettings()" class="toggle-btn" style="background:rgba(0,0,0,0.1);">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL AUTHENTICATION -->
+    <div id="auth-modal" class="modal-overlay">
+        <div class="modal auth-modal">
+            <h3 style="margin-top:0; text-align:center; color: var(--primary);">Akun Supabase</h3>
+            <div class="auth-form">
+                <input type="text" id="auth-username" placeholder="ID Pengguna (Bebas)">
+                
+                <!-- WRAPPER UNTUK PASSWORD & EYE ICON -->
+                <div class="password-wrapper">
+                    <input type="password" id="auth-password" placeholder="Password">
+                    <svg class="eye-icon" onclick="togglePasswordVisibility()" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                    </svg>
+                </div>
+                
+                <!-- HINT CASE SENSITIVE -->
+                <div class="auth-hint">⚠️ Perhatikan huruf besar & kecil pada password</div>
+                
+                <!-- TOMBOL LUPA PASSWORD DI SINI -->
+                <div style="text-align:right; margin-bottom:10px; font-size:0.8rem;">
+                    <span onclick="handleForgot()" style="cursor:pointer; color:var(--primary); text-decoration:underline;">Lupa Password?</span>
+                </div>
+
+                <button class="toggle-btn" style="background: var(--primary); color: white;" onclick="handleLogin()">Login (ID & Password)</button>
+                <button class="toggle-btn" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);" onclick="handleSignup()">Daftar Baru</button>
+            </div>
+            <div id="auth-msg" class="auth-msg"></div>
+            <div style="text-align:center; margin-top:10px;">
+                <button onclick="closeAuthModal()" style="background:none; border:none; color:var(--text); cursor:pointer; opacity:0.6;">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOAD MAIN SCRIPT -->
+    <script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendahuluan - NihonGo</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        jp: ['"Noto Sans JP"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-slate-900 bg-white dark:bg-slate-950 dark:text-white transition-colors duration-300">
+
+    <!-- Navbar Simple -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 p-1.5 rounded-lg">
+                    <i class="ph-bold ph-asterisk-simple text-xl"></i>
+                </div>
+                <span class="font-bold text-lg tracking-tight">NihonGo</span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white">Kembali ke Home</a>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="max-w-3xl mx-auto px-6 pt-32 pb-20">
+        <div class="mb-8">
+            <span class="text-sm font-bold text-green-500 uppercase tracking-wide">Langkah 1</span>
+            <h1 class="text-4xl font-extrabold mt-2 mb-4">Pendahuluan: Mengenal Bahasa Jepang</h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                Sebelum memulai perjalanan menghafal ribuan Kanji, mari kita pahami dulu struktur dasar bahasa yang akan kamu pelajari.
+            </p>
+        </div>
+
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+            <div class="bg-slate-50 dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 mb-8">
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                    <i class="ph-fill ph-info text-blue-500"></i> Sistem Penulisan
+                </h3>
+                <p class="text-slate-600 dark:text-slate-400 mb-4">Bahasa Jepang menggunakan 3 jenis huruf sekaligus:</p>
+                <ul class="space-y-2">
+                    <li class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-pink-100 dark:bg-pink-900/30 text-pink-600 flex items-center justify-center font-bold text-xs">あ</span>
+                        <span><strong>Hiragana:</strong> Untuk kata asli Jepang dan tata bahasa.</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center font-bold text-xs">ア</span>
+                        <span><strong>Katakana:</strong> Untuk kata serapan asing (contoh: "Kompyuta").</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 flex items-center justify-center font-bold text-xs">漢</span>
+                        <span><strong>Kanji:</strong> Simbol yang mewakili arti/makna kata.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-4">Siap untuk mulai?</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-8">
+                Langkah pertama kamu adalah menguasai Hiragana. Ini adalah pondasi mutlak sebelum belajar hal lain.
+            </p>
+
+            <button class="w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-xl hover:bg-slate-800 dark:hover:bg-slate-200 transition-all shadow-lg shadow-slate-900/20">
+                Mulai Belajar Hiragana <i class="ph-bold ph-arrow-right ml-2"></i>
+            </button>
+        </div>
+    </main>
+
+    <script>
+        // Check theme
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>

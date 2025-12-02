@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metode Ilmiah - NihonGo</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Custom CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tailwind Config (Colors need to be here for CDN) -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        jp: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    colors: {
+                        pastel: {
+                            yellow: '#FEF9C3',
+                            lime: '#D9F99D',
+                            pink: '#FCE7F3',
+                            teal: '#CCFBF1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-slate-900 bg-white dark:bg-slate-950 dark:text-white transition-colors duration-300">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 p-1.5 rounded-lg">
+                    <i class="ph-bold ph-asterisk-simple text-xl"></i>
+                </div>
+                <span class="font-bold text-lg tracking-tight">NihonGo</span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white">Kembali ke Home</a>
+        </div>
+    </nav>
+
+    <!-- Header / Hero -->
+    <header class="pt-32 pb-16 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-pastel-yellow/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-pastel-pink/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div class="bg-noise absolute inset-0 opacity-40"></div>
+        </div>
+        
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-indigo-500 uppercase bg-indigo-50 dark:bg-indigo-900/30 rounded-full border border-indigo-100 dark:border-indigo-800">
+                Cognitive Science
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+                Kami Tidak Mengajar.<br>
+                Kami <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600">Me-Hacking</span> Otakmu.
+            </h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                NihonGo tidak dibangun oleh guru biasa, melainkan berdasarkan 9 prinsip psikologi kognitif modern. Inilah alasan mengapa metode kami bekerja seperti sihir.
+            </p>
+        </div>
+    </header>
+
+    <!-- Content Body -->
+    <main class="max-w-4xl mx-auto px-6 pb-24">
+        
+        <!-- Section 1: The Foundation -->
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <span class="text-3xl">🧠</span> Fondasi Memori Jangka Panjang
+            </h2>
+
+            <!-- 1. Spaced Repetition -->
+            <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 mb-8 border border-slate-200 dark:border-slate-800 relative overflow-hidden group hover:border-indigo-200 dark:hover:border-indigo-900 transition-colors">
+                <div class="absolute top-0 right-0 bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Metode #1</div>
+                <div class="flex gap-6 flex-col md:flex-row">
+                    <div class="shrink-0">
+                        <div class="w-16 h-16 rounded-2xl bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-3xl">
+                            <i class="ph-fill ph-clock-counter-clockwise"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Spaced Repetition (Metode Jarak Waktu)</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Otak manusia didesain untuk melupakan. Ini disebut "Forgetting Curve". Kami melawannya dengan algoritma SRS. Sistem kami akan memaksa kamu mengingat materi tepat sebelum kamu melupakannya.
+                        </p>
+                        <div class="bg-white dark:bg-slate-950 p-4 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 text-sm font-mono text-slate-500">
+                            Jadwal Review: Hari 1 &rarr; Hari 3 &rarr; Hari 7 &rarr; Hari 14 &rarr; Hari 30
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Active Recall -->
+            <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 mb-8 border border-slate-200 dark:border-slate-800 relative overflow-hidden hover:border-red-200 dark:hover:border-red-900 transition-colors">
+                <div class="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Metode #2</div>
+                <div class="flex gap-6 flex-col md:flex-row">
+                    <div class="shrink-0">
+                        <div class="w-16 h-16 rounded-2xl bg-red-100 dark:bg-red-900/50 flex items-center justify-center text-red-600 dark:text-red-400 text-3xl">
+                            <i class="ph-fill ph-brain"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Active Recall (Uji Ingat Aktif)</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Membaca ulang catatan adalah ilusi kompetensi. Di NihonGo, kamu tidak "membaca", kamu "diuji". Kami menyembunyikan jawaban dan memaksa otakmu bekerja keras menggali memori. Rasa "sulit" saat mengingat itulah tanda otakmu sedang membentuk koneksi saraf baru.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Retrieval Practice -->
+            <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 mb-8 border border-slate-200 dark:border-slate-800 relative overflow-hidden hover:border-orange-200 dark:hover:border-orange-900 transition-colors">
+                 <div class="absolute top-0 right-0 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Metode #3</div>
+                 <div class="flex gap-6 flex-col md:flex-row">
+                     <div class="shrink-0">
+                         <div class="w-16 h-16 rounded-2xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center text-orange-600 dark:text-orange-400 text-3xl">
+                             <i class="ph-fill ph-barbell"></i>
+                         </div>
+                     </div>
+                     <div>
+                         <h3 class="text-xl font-bold mb-2">Retrieval Practice</h3>
+                         <p class="text-slate-600 dark:text-slate-400 mb-4">
+                             Gym untuk memori. Mirip Active Recall, tapi fokus pada variasi soal. Kami tidak hanya memberi soal pilihan ganda, tapi juga isian, menyusun kalimat, dan mendengarkan, agar otot ingatanmu fleksibel.
+                         </p>
+                     </div>
+                 </div>
+             </div>
+        </div>
+
+        <!-- Section 2: Structuring Information -->
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <span class="text-3xl">🧩</span> Struktur & Koneksi
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 4. Interleaving -->
+                <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 relative overflow-hidden hover:border-purple-200 dark:hover:border-purple-900 transition-colors h-full">
+                    <div class="absolute top-0 right-0 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Metode #4</div>
+                    <div class="flex flex-col gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center text-purple-600 dark:text-purple-400 text-3xl">
+                            <i class="ph-fill ph-shuffle"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Interleaving</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Jangan belajar satu topik sampai mati (Blocking). Kami mencampur Hiragana, Grammar, dan Kanji dalam satu sesi 15 menit. Otak dipaksa membedakan pola yang berbeda, membuat pemahaman lebih mendalam.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- 5. Chunking -->
+                 <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 relative overflow-hidden hover:border-teal-200 dark:hover:border-teal-900 transition-colors h-full">
+                    <div class="absolute top-0 right-0 bg-teal-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Metode #5</div>
+                    <div class="flex flex-col gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center text-teal-600 dark:text-teal-400 text-3xl">
+                            <i class="ph-fill ph-squares-four"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Chunking</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Menghafal 2000 Kanji sekaligus itu mustahil. Kami memecahnya menjadi "chunks" kecil per tema: Waktu, Tempat, Keluarga. Informasi yang terkelompok lebih mudah "dicerna" oleh memori kerja.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Elaborative Encoding -->
+                <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 relative overflow-hidden hover:border-pink-200 dark:hover:border-pink-900 transition-colors h-full">
+                    <div class="absolute top-0 right-0 bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Metode #6</div>
+                    <div class="flex flex-col gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-pink-100 dark:bg-pink-900/50 flex items-center justify-center text-pink-600 dark:text-pink-400 text-3xl">
+                            <i class="ph-fill ph-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Elaborative Encoding</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Mengaitkan info baru dengan yang lama. Contoh: Kata "Kawaii" mirip suara "Kawai" (sungai), bayangkan sungai yang lucu. Kami menyediakan fitur "Mnemonic" untuk setiap kosakata sulit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- 7. Dual Coding -->
+                 <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 relative overflow-hidden hover:border-blue-200 dark:hover:border-blue-900 transition-colors h-full">
+                    <div class="absolute top-0 right-0 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Metode #7</div>
+                    <div class="flex flex-col gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-3xl">
+                            <i class="ph-fill ph-image"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Dual Coding</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Otak memproses visual dan teks di jalur berbeda. Kami menggabungkan Kanji (Visual) dengan Arti (Teks) dan Audio. Dua jalur lebih kuat daripada satu, membuat ingatan jauh lebih lekat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Mastery -->
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <span class="text-3xl">🚀</span> Penguasaan Konteks
+            </h2>
+
+            <!-- 8. Contextual Learning -->
+            <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 mb-8 border border-slate-200 dark:border-slate-800 relative overflow-hidden hover:border-green-200 dark:hover:border-green-900 transition-colors">
+                <div class="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Metode #8</div>
+                <div class="flex gap-6 flex-col md:flex-row">
+                    <div class="shrink-0">
+                        <div class="w-16 h-16 rounded-2xl bg-green-100 dark:bg-green-900/50 flex items-center justify-center text-green-600 dark:text-green-400 text-3xl">
+                            <i class="ph-fill ph-chat-teardrop-text"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Contextual Learning</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Belajar kata "Iku" (Pergi) dalam daftar list itu membosankan dan tidak efektif. Di NihonGo, kamu belajar langsung dalam kalimat nyata. Otak manusia mengingat cerita dan situasi, bukan data mentah.
+                        </p>
+                        <div class="bg-white dark:bg-slate-950 p-4 rounded-xl border border-dashed border-green-200 dark:border-green-900 shadow-sm">
+                            <p class="font-jp text-lg font-bold">明日、学校に行く。</p>
+                            <p class="text-sm text-slate-500">Ashita, gakkou ni <span class="text-green-600 font-bold">iku</span>. (Besok pergi ke sekolah)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. Teaching Method -->
+            <div class="bg-slate-50 dark:bg-slate-900 rounded-3xl p-8 mb-8 border border-slate-200 dark:border-slate-800 relative overflow-hidden hover:border-amber-200 dark:hover:border-amber-900 transition-colors">
+                <div class="absolute top-0 right-0 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">Metode #9</div>
+                <div class="flex gap-6 flex-col md:flex-row">
+                    <div class="shrink-0">
+                        <div class="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 text-3xl">
+                            <i class="ph-fill ph-presentation-chart"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Teaching Method (Feynman Technique)</h3>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Cara terbaik belajar adalah mengajar. Di forum komunitas NihonGo (Paket Zen), kami mendorong siswa untuk menjawab pertanyaan siswa lain. Menjelaskan konsep ke orang lain memaksa otakmu menyederhanakan dan memahami materi ke level terdalam.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-3xl p-10 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-noise opacity-10"></div>
+            <div class="relative z-10">
+                <h2 class="text-3xl font-bold mb-4">The Gold Standard</h2>
+                <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">
+                    Kombinasi Spaced Repetition + Active Recall + Interleaving adalah standar emas penelitian kognitif saat ini. Dan semuanya sudah tertanam otomatis di sistem NihonGo.
+                </p>
+                <a href="index.html#pricing" class="inline-block px-8 py-4 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-bold rounded-xl hover:scale-105 transition-transform">
+                    Buktikan Sendiri Sekarang
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-4xl mx-auto px-6 py-10 border-t border-slate-100 dark:border-slate-800 text-center text-sm text-slate-500">
+        <p>&copy; 2024 NihonGo. Powered by Science.</p>
+    </footer>
+
+    <script>
+        // Check theme
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>
