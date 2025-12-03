@@ -3,165 +3,778 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cho・Grammar</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
+    <title>Grammar Library - Nihon Science</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --primary-blue: #0f172a;
+            --secondary-blue: #1e293b;
+            --accent-red: #e11d48;
+            --science-cyan: #0ea5e9;
+            --success-green: #10b981;
+            --gold: #f59e0b;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 12px;
+            --max-width: 1280px;
+            --font-jp: 'Noto Sans JP', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .font-heading { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .jp-text { font-family: var(--font-jp); }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        .logo { 
+            font-size: 1.25rem; font-weight: 800; color: var(--primary-blue); 
+            display: flex; align-items: center; gap: 8px; text-decoration: none;
+        }
+
+        /* --- HERO MINI --- */
+        .hero-mini {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1e3a8a 100%);
+            color: white;
+            padding: 60px 0 100px;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: -60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-mini::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px; opacity: 0.3; pointer-events: none;
+        }
+        
+        /* --- PROGRESS BAR --- */
+        .progress-container {
+            max-width: 600px; margin: 20px auto 0;
+            background: rgba(255,255,255,0.1); border-radius: 50px;
+            padding: 4px; display: flex; align-items: center; gap: 12px;
+        }
+        .progress-bar-bg {
+            flex-grow: 1; height: 8px; background: rgba(0,0,0,0.2); border-radius: 4px; overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%; background: var(--science-cyan); width: 0%; transition: width 0.5s ease;
+        }
+        .progress-text { font-size: 0.85rem; font-weight: 600; min-width: 80px; text-align: right;}
+
+        /* --- LEVEL TABS --- */
+        .level-tabs-container {
+            display: flex; justify-content: center; gap: 10px;
+            margin-top: 30px; flex-wrap: wrap;
+        }
+        .btn-level {
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7);
+            padding: 8px 20px; border-radius: 20px;
+            font-weight: 700; cursor: pointer; transition: 0.2s;
+            min-width: 60px;
+        }
+        .btn-level:hover { background: rgba(255,255,255,0.2); color: white; }
+        .btn-level.active {
+            background: white; color: var(--primary-blue); border-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: scale(1.05);
+        }
+        /* Level Colors */
+        .btn-level[data-level="n5"].active { color: #3b82f6; }
+        .btn-level[data-level="n4"].active { color: #10b981; }
+        .btn-level[data-level="n3"].active { color: #f59e0b; }
+        .btn-level[data-level="n2"].active { color: #f97316; }
+        .btn-level[data-level="n1"].active { color: #ef4444; }
+
+        /* --- FILTERS --- */
+        .filter-section {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 16px;
+            background: white; padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+            position: relative;
+            z-index: 10;
+            margin-top: 20px;
+        }
+
+        /* Desktop Filter (Buttons) */
+        .filter-group { 
+            display: flex; gap: 10px; 
+            overflow-x: auto; 
+            padding: 4px;
+            scrollbar-width: none;
+        }
+        .filter-group::-webkit-scrollbar { display: none; }
+        
+        .btn-filter {
+            padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border);
+            background: white; color: var(--text-light); font-weight: 600; font-size: 0.9rem;
+            cursor: pointer; transition: 0.2s; white-space: nowrap;
+            display: flex; align-items: center; gap: 6px;
+            flex-shrink: 0;
+        }
+        .btn-filter:hover { background: var(--bg-light); color: var(--primary-blue); border-color: #cbd5e1; }
+        .btn-filter.active {
+            background: var(--primary-blue); color: white; border-color: var(--primary-blue);
+        }
+        .btn-filter[data-filter="liked"].active { background: var(--accent-red); border-color: var(--accent-red); }
+        .btn-filter[data-filter="learned"].active { background: var(--success-green); border-color: var(--success-green); }
+
+        /* Mobile Filter (Radios) */
+        .mobile-filter-group {
+            display: none; /* Hide on desktop */
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+        .radio-label {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.9rem; font-weight: 600; color: var(--text-light);
+            white-space: nowrap; cursor: pointer;
+            padding: 4px 0;
+        }
+        .radio-label input[type="radio"] {
+            accent-color: var(--primary-blue);
+            width: 18px; height: 18px;
+            cursor: pointer;
+        }
+        /* Custom colors for specific radio values */
+        .radio-label:has(input[value="liked"]) input { accent-color: var(--accent-red); }
+        .radio-label:has(input[value="learned"]) input { accent-color: var(--success-green); }
+
+
+        .search-box {
+            position: relative; flex-grow: 1; max-width: 300px;
+        }
+        .search-box input {
+            width: 100%; padding: 10px 10px 10px 36px;
+            border-radius: 8px; border: 1px solid var(--border);
+            font-family: inherit; font-size: 0.9rem;
+        }
+        .search-box i {
+            position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        /* --- GRID LAYOUT --- */
+        .grammar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            padding-bottom: 80px;
+        }
+
+        /* --- CARD STYLE --- */
+        .card {
+            background: white; border: 1px solid var(--border); border-radius: 16px;
+            overflow: hidden; transition: 0.3s; position: relative;
+            display: flex; flex-direction: column;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: var(--science-cyan);
+        }
+        .card.learned { border-left: 4px solid var(--success-green); }
+
+        .card-header {
+            padding: 20px; border-bottom: 1px solid var(--bg-light);
+            display: flex; justify-content: space-between; align-items: flex-start;
+        }
+        .grammar-title { font-size: 1.4rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 4px; line-height: 1.3; }
+        .grammar-romaji { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+        .level-badge {
+            background: var(--primary-blue); color: white;
+            font-size: 0.75rem; font-weight: 700; padding: 4px 8px; border-radius: 6px;
+            text-transform: uppercase;
+        }
+        .level-badge.n5 { background: #3b82f6; }
+        .level-badge.n4 { background: #10b981; }
+        .level-badge.n3 { background: #f59e0b; }
+        .level-badge.n2 { background: #f97316; }
+        .level-badge.n1 { background: #ef4444; }
+
+        .card-body { padding: 20px; flex-grow: 1; }
+        .meaning { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: var(--text-dark); }
+        .usage-note {
+            font-size: 0.9rem; color: var(--text-light);
+            background: var(--bg-light); padding: 10px; border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .usage-note ul { padding-left: 20px; margin: 0; }
+
+        .card-footer {
+            padding: 16px 20px; border-top: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            background: #fafbfc;
+        }
+
+        .action-group { display: flex; gap: 12px; }
+        
+        .btn-icon {
+            background: none; border: none; cursor: pointer;
+            color: #94a3b8; transition: 0.2s; display: flex; align-items: center; gap: 6px;
+            font-size: 0.9rem; font-weight: 600;
+            padding: 4px 8px; border-radius: 6px;
+        }
+        .btn-icon:hover { background: rgba(0,0,0,0.05); color: var(--text-dark); }
+        
+        .btn-like.active { color: var(--accent-red); }
+        .btn-like.active svg { fill: var(--accent-red); }
+        .btn-check { color: var(--text-light); }
+        .btn-check.active { color: var(--success-green); }
+        .btn-check:hover { color: var(--success-green); }
+        
+        .btn-detail { color: var(--science-cyan); font-weight: 600; font-size: 0.9rem; cursor: pointer; }
+        .btn-detail:hover { text-decoration: underline; }
+
+        /* --- MODAL (Scrollable Page Strategy) --- */
+        /* Strategi baru: Scroll di overlay, bukan di dalam modal */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px);
+            z-index: 1000; 
+            display: none; 
+            
+            /* Penting untuk scroll */
+            overflow-y: auto; 
+            padding: 20px 10px;
+            align-items: flex-start; /* Mulai dari atas */
+            justify-content: center;
+            
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+
+        .modal {
+            background: white; width: 100%; max-width: 600px;
+            /* Reset tinggi agar tumbuh sesuai konten */
+            height: auto; 
+            min-height: auto;
+            border-radius: 20px; 
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            /* Center vertikal jika konten pendek */
+            margin: auto; 
+            position: relative;
+            transform: scale(0.95); transition: transform 0.3s;
+        }
+        .modal-overlay.open .modal { transform: scale(1); }
+
+        .modal-header {
+            padding: 24px; border-bottom: 1px solid var(--border);
+            background: white; border-radius: 20px 20px 0 0;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .close-modal { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-light); padding: 4px; }
+
+        .modal-content { 
+            padding: 24px; 
+            /* Tidak ada overflow di sini, biarkan memanjang */
+        }
+        
+        .section-title {
+            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;
+            color: var(--text-light); margin-bottom: 12px; font-weight: 700;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .connection-box {
+            background: #f1f5f9; border-left: 4px solid var(--science-cyan);
+            padding: 16px; border-radius: 4px; margin-bottom: 24px; font-family: monospace; font-size: 0.95rem;
+        }
+
+        .example-item { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px dashed var(--border); }
+        .example-item:last-child { border-bottom: none; margin-bottom: 0; }
+        .jp-sentence { font-size: 1.1rem; font-weight: 500; margin-bottom: 4px; color: var(--primary-blue); }
+        .id-sentence { font-size: 0.95rem; color: var(--text-light); font-style: italic; }
+
+        /* --- RESPONSIVE OPTIMIZATION --- */
+        
+        @media (max-width: 768px) {
+            .filter-section { 
+                padding: 16px;
+                flex-direction: column; 
+                align-items: stretch;
+            }
+            .search-box { margin-right: 0; max-width: 100%; }
+        }
+
+        @media (max-width: 640px) {
+            /* Mobile Filter Logic */
+            .filter-group { display: none; } /* Hide Button Group */
+            .mobile-filter-group { display: flex; } /* Show Radio Group */
+
+            /* Hide Search Icon on Mobile & Reset Padding */
+            .search-box i { display: none; }
+            .search-box input { padding-left: 12px; }
+
+            .container { padding: 0 16px; }
+            .hero-mini { padding: 40px 0 90px; border-radius: 0 0 20px 20px; margin-bottom: -50px; }
+            .logo { font-size: 1.1rem; }
+            .logo span:nth-child(2) { display: none; }
+            
+            .level-tabs-container { gap: 8px; margin-top: 20px; }
+            .btn-level { padding: 6px 16px; font-size: 0.9rem; min-width: auto; }
+            
+            .grammar-grid { grid-template-columns: 1fr; gap: 16px; }
+            
+            /* Card Compact */
+            .card-header, .card-body { padding: 16px; }
+            .card-footer { padding: 12px 16px; }
+        }
+    </style>
 </head>
 <body>
 
-    <div id="levelSelectionView">
-        <div class="hero-section">
-            <h1 class="hero-title">Grammar・Bunpou</h1>
-            <p class="hero-subtitle">Pilih level JLPT Anda untuk mulai belajar</p>
+    <header>
+        <div class="container">
+            <div class="nav-flex">
+                <a href="../index.html" class="logo">
+                    <i data-lucide="arrow-left" size="20"></i>
+                    NIHON<span style="color:var(--accent-red)">SCIENCE</span>
+                    <span style="font-weight:400; font-size:0.9rem; color:var(--text-light); margin-left:8px;">| Grammar Library</span>
+                </a>
+                <div style="font-weight: 600; color: var(--primary-blue); font-size: 0.9rem;" id="headerLevelDisplay">
+                    Level: <span class="level-badge n5" style="padding: 2px 8px; border-radius: 4px; color: white;">N5</span>
+                </div>
+            </div>
         </div>
-        
-        <div class="level-grid">
-            <div onclick="selectLevel('n5')" class="level-card card-n5">
-                <div class="icon-circle">N5</div>
-                <h3 class="level-title">Beginner</h3>
-                <p class="level-desc">Dasar tata bahasa</p>
-            </div>
+    </header>
 
-            <div onclick="selectLevel('n4')" class="level-card card-n4">
-                <div class="icon-circle">N4</div>
-                <h3 class="level-title">Elementary</h3>
-                <p class="level-desc">Konjugasi lanjutan</p>
-            </div>
-
-            <div onclick="selectLevel('n3')" class="level-card card-n3">
-                <div class="icon-circle">N3</div>
-                <h3 class="level-title">Intermediate</h3>
-                <p class="level-desc">Bahasa sehari-hari</p>
-            </div>
+    <!-- Mini Hero -->
+    <div class="hero-mini">
+        <div class="container">
+            <h1 class="font-heading" style="margin-bottom: 8px;">Master Grammar <span id="heroLevelText">N5</span></h1>
+            <p style="opacity: 0.9;">Pahami pola kalimat dasar dengan pendekatan logika.</p>
             
-            <div onclick="selectLevel('n2')" class="level-card card-n2">
-                <div class="icon-circle">N2</div>
-                <h3 class="level-title">Pre-Advanced</h3>
-                <p class="level-desc">Bisnis & Formal</p>
+            <!-- Progress -->
+            <div class="progress-container">
+                <i data-lucide="trophy" size="16" color="#f59e0b"></i>
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" id="progressBar" style="width: 0%"></div>
+                </div>
+                <div class="progress-text" id="progressText">0 / 0</div>
             </div>
 
-            <div onclick="selectLevel('n1')" class="level-card card-n1">
-                <div class="icon-circle">N1</div>
-                <h3 class="level-title">Advanced</h3>
-                <p class="level-desc">Akademik & Koran</p>
+            <!-- Level Selector -->
+            <div class="level-tabs-container">
+                <button class="btn-level active" onclick="changeLevel('n5')" data-level="n5">N5</button>
+                <button class="btn-level" onclick="changeLevel('n4')" data-level="n4">N4</button>
+                <button class="btn-level" onclick="changeLevel('n3')" data-level="n3">N3</button>
+                <button class="btn-level" onclick="changeLevel('n2')" data-level="n2">N2</button>
+                <button class="btn-level" onclick="changeLevel('n1')" data-level="n1">N1</button>
             </div>
         </div>
     </div>
 
-    <div id="grammarListView">
+    <!-- Main Content -->
+    <div class="container" style="margin-top: 80px;">
         
-        <header class="app-header">
-            <div class="header-content">
-                <div class="top-bar">
-                    <button onclick="goBack()" class="back-btn">
-                        <i data-lucide="arrow-left"></i>
-                    </button>
-                    <h2 class="header-title">
-                        Grammar <span id="levelBadge" class="level-badge">N5</span>
-                    </h2>
-                </div>
-
-                <div class="controls-bar">
-                    <div class="filter-tabs">
-                        <button onclick="setFilter('all')" class="filter-btn" data-filter="all">Semua</button>
-                        <button onclick="setFilter('unlearned')" class="filter-btn" data-filter="unlearned">Belum</button>
-                        <button onclick="setFilter('learned')" class="filter-btn" data-filter="learned">Sudah</button>
-                        <button onclick="setFilter('liked')" class="filter-btn" data-filter="liked">Disukai</button>
-                    </div>
-
-                    <div class="right-controls">
-                        <label class="toggle-label">
-                            <input type="checkbox" id="randomToggle" onchange="toggleRandom()">
-                            <span>Acak</span>
-                        </label>
-                        <div class="search-box">
-                            <i data-lucide="search" class="search-icon"></i>
-                            <input type="text" id="searchInput" placeholder="Cari..." class="search-input">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <main class="scroll-area">
-            <div id="grammarGrid" class="grammar-grid">
-                </div>
-
-            <div id="emptyState" class="empty-state">
-                <i data-lucide="filter" class="empty-icon"></i>
-                <p>Tidak ada grammar yang cocok dengan filter ini.</p>
-            </div>
-        </main>
-    </div>
-
-    <div id="modalOverlay" class="modal-overlay">
-        <div id="modalContent" class="modal-content">
-            <div class="modal-header">
-                <div>
-                    <div class="modal-tags">
-                        <span id="m-id" class="tag-id"></span>
-                        <span id="m-level" class="tag-level"></span>
-                    </div>
-                    <h2 id="m-title" class="modal-title jp-text"></h2>
-                    <p id="m-romaji" class="modal-subtitle"></p>
-                </div>
-                <button onclick="closeModal()" class="back-btn">
-                    <i data-lucide="x"></i>
+        <!-- Filters -->
+        <div class="filter-section">
+            <!-- Desktop Buttons -->
+            <div class="filter-group">
+                <button class="btn-filter active" onclick="filterGrammar('all')" data-filter="all">Semua</button>
+                <button class="btn-filter" onclick="filterGrammar('learned')" data-filter="learned">
+                    <i data-lucide="check-circle-2" size="16"></i> Sudah Belajar
+                </button>
+                <button class="btn-filter" onclick="filterGrammar('unlearned')" data-filter="unlearned">
+                    <i data-lucide="circle" size="16"></i> Belum
+                </button>
+                <button class="btn-filter" onclick="filterGrammar('liked')" data-filter="liked">
+                    <i data-lucide="heart" size="16"></i> Disukai
                 </button>
             </div>
-            
-            <div class="modal-body">
-                <div>
-                    <span class="section-label">Arti</span>
-                    <p id="m-meaning" class="meaning-text"></p>
-                </div>
 
-                <div class="connection-box">
-                    <h3 class="connection-title">
-                        <i data-lucide="link" style="width:16px;"></i> Rumus Sambungan
-                    </h3>
-                    <div id="m-connection"></div>
-                </div>
-
-                <div>
-                    <h3 class="section-label" style="background:none; color:#64748b; padding-left:0;">Catatan</h3>
-                    <ul id="m-notes" class="notes-list"></ul>
-                </div>
-
-                <div id="m-conjugation-wrapper" class="hidden" style="margin-bottom: 1.5rem;">
-                    <h3 class="section-label" style="background:none; color:#64748b; padding-left:0;">Perubahan Bentuk</h3>
-                    <table class="conj-table">
-                        <tbody id="m-conjugations"></tbody>
-                    </table>
-                </div>
-
-                <div>
-                    <h3 class="section-label" style="background:none; color:#64748b; padding-left:0;">Contoh Kalimat</h3>
-                    <div id="m-examples"></div>
-                </div>
+            <!-- Mobile Radios -->
+            <div class="mobile-filter-group">
+                <label class="radio-label">
+                    <input type="radio" name="mobileFilter" value="all" checked onchange="filterGrammar(this.value)"> 
+                    Semua
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="mobileFilter" value="learned" onchange="filterGrammar(this.value)"> 
+                    Sudah Belajar
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="mobileFilter" value="unlearned" onchange="filterGrammar(this.value)"> 
+                    Belum
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="mobileFilter" value="liked" onchange="filterGrammar(this.value)"> 
+                    Disukai
+                </label>
             </div>
 
-            <div class="modal-footer">
-                <label class="check-wrapper" style="display:flex; align-items:center; gap:0.5rem;">
-                    <input type="checkbox" id="m-check" class="check-input" onchange="toggleFromModal('learned')">
-                    <div class="custom-check" style="width:20px; height:20px;">
-                        <i data-lucide="check" style="width:14px; height:14px;"></i>
-                    </div>
-                    <span style="font-weight:600; font-size:0.9rem; color:#475569;">Sudah Hafal</span>
-                </label>
-                
-                <label class="star-label">
-                    <input type="checkbox" id="m-star" class="star-input" onchange="toggleFromModal('liked')">
-                    <i data-lucide="star" class="star-icon" style="width:24px; height:24px;"></i>
-                </label>
+            <div class="search-box">
+                <i data-lucide="search" size="18"></i>
+                <input type="text" id="searchInput" placeholder="Cari grammar, arti..." oninput="searchGrammar()">
+            </div>
+        </div>
+
+        <!-- Grid -->
+        <div class="grammar-grid" id="grammarContainer">
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-light);">
+                <i data-lucide="loader-2" class="animate-spin" size="32"></i>
+                <p style="margin-top:10px;">Memuat Data Grammar...</p>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Detail Modal -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <span class="level-badge n5" id="modalLevel">N5</span>
+                    <h2 class="jp-text" style="font-size: 1.8rem; color: var(--primary-blue); margin-top: 4px;" id="modalTitle">...</h2>
+                    <span style="color:var(--text-light); font-weight:500;" id="modalRomaji">...</span>
+                </div>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-content">
+                <div style="margin-bottom: 24px;">
+                    <div class="section-title"><i data-lucide="book-open" size="16"></i> Arti & Penggunaan</div>
+                    <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;" id="modalMeaning">...</p>
+                    <div class="usage-note" id="modalNotes">...</div>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <div class="section-title"><i data-lucide="link" size="16"></i> Pola Sambungan (Connection)</div>
+                    <div class="connection-box" id="modalConnection">...</div>
+                </div>
+
+                <div>
+                    <div class="section-title"><i data-lucide="messages-square" size="16"></i> Contoh Kalimat</div>
+                    <div id="modalExamples"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        lucide.createIcons();
+
+        let currentLevel = 'n5';
+        let allGrammar = [];
+        let userProgress = { learned: [], liked: [] };
+        let currentFilter = 'all';
+
+        async function loadGrammarData(level) {
+            currentLevel = level.toLowerCase();
+            updateLevelUI(currentLevel);
+            
+            userProgress.learned = JSON.parse(localStorage.getItem(`learnedGrammar_${currentLevel}`)) || [];
+            userProgress.liked = JSON.parse(localStorage.getItem(`likedGrammar_${currentLevel}`)) || [];
+
+            const container = document.getElementById('grammarContainer');
+            container.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-light);">
+                    <i data-lucide="loader-2" class="animate-spin" size="32"></i>
+                    <p style="margin-top:10px;">Memuat Data ${level.toUpperCase()}...</p>
+                </div>
+            `;
+            lucide.createIcons();
+
+            try {
+                const response = await fetch(`data/grammar-${currentLevel}.json`);
+                if (!response.ok) throw new Error("File not found");
+                allGrammar = await response.json();
+                renderCards(allGrammar);
+                updateProgressUI();
+            } catch (error) {
+                console.warn(`Mode Preview: Menggunakan Fallback Data untuk ${currentLevel}`, error);
+                allGrammar = generateFallbackData(currentLevel);
+                renderCards(allGrammar);
+                updateProgressUI();
+            }
+        }
+
+        function changeLevel(level) {
+            loadGrammarData(level);
+        }
+
+        function updateLevelUI(level) {
+            document.querySelectorAll('.btn-level').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.dataset.level === level) btn.classList.add('active');
+            });
+
+            const levelUpper = level.toUpperCase();
+            document.getElementById('heroLevelText').innerText = levelUpper;
+            
+            const badge = document.querySelector('#headerLevelDisplay .level-badge');
+            badge.innerText = levelUpper;
+            badge.className = `level-badge ${level}`;
+        }
+
+        function generateFallbackData(level) {
+            if (level === 'n5') {
+                 return [
+                    {
+                        "id": 1,
+                        "grammar_point": "～だ / ～です",
+                        "romaji": "da / desu",
+                        "jlpt_level": "N5",
+                        "meaning": "Adalah (Kopula)",
+                        "usage_notes": ["Menunjukkan predikat kalimat positif.", "'Desu' untuk sopan, 'Da' untuk kasual."],
+                        "connection_rule": ["Kata Benda / Kata Sifat-na + だ / です"],
+                        "examples": [{"japanese": "私は学生です。", "translation": "Saya adalah mahasiswa."}]
+                    },
+                    {
+                         "id": 46,
+                        "grammar_point": "～てから",
+                        "romaji": "te kara",
+                        "jlpt_level": "N5",
+                        "meaning": "Setelah (melakukan A, lalu B)",
+                        "usage_notes": ["Menunjukkan urutan kegiatan yang kronologis."],
+                        "connection_rule": ["Kata Kerja (Bentuk TE) + から"],
+                        "examples": [{"japanese": "宿題をしてから、遊びます。", "translation": "Setelah mengerjakan PR, bermain."}]
+                    }
+                ];
+            } else {
+                return [
+                    {
+                        "id": 1,
+                        "grammar_point": `Contoh Grammar ${level.toUpperCase()}`,
+                        "romaji": "bunpou example",
+                        "jlpt_level": level.toUpperCase(),
+                        "meaning": `Arti Grammar ${level.toUpperCase()}`,
+                        "usage_notes": ["Ini adalah data contoh karena file JSON belum terdeteksi."],
+                        "connection_rule": ["Verb + Pattern"],
+                        "examples": [{"japanese": "これは例文です。", "translation": "Ini adalah contoh kalimat."}]
+                    }
+                ];
+            }
+        }
+
+        function renderCards(data) {
+            const container = document.getElementById('grammarContainer');
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-light);">
+                        <p>Tidak ada grammar yang ditemukan.</p>
+                    </div>`;
+                return;
+            }
+
+            data.forEach(item => {
+                const isLearned = userProgress.learned.includes(item.id);
+                const isLiked = userProgress.liked.includes(item.id);
+                const card = document.createElement('div');
+                card.className = `card ${isLearned ? 'learned' : ''}`;
+                
+                card.onclick = (e) => { 
+                    if (!e.target.closest('.card-footer')) {
+                        openModal(item);
+                    }
+                };
+
+                const shortNote = Array.isArray(item.usage_notes) ? item.usage_notes[0] : item.usage_notes;
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div>
+                            <div class="grammar-title jp-text">${item.grammar_point}</div>
+                            <div class="grammar-romaji">${item.romaji}</div>
+                        </div>
+                        <span class="level-badge ${currentLevel}">${item.jlpt_level || currentLevel.toUpperCase()}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="meaning">${item.meaning}</div>
+                        <div class="usage-note">${shortNote}</div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-detail">Lihat Detail</div>
+                        <div class="action-group">
+                            <button class="btn-icon btn-like ${isLiked ? 'active' : ''}" onclick="toggleLike(this, ${item.id}, event)">
+                                <i data-lucide="heart" size="18" fill="${isLiked ? 'var(--accent-red)' : 'none'}"></i>
+                            </button>
+                            <button class="btn-icon btn-check ${isLearned ? 'active' : ''}" onclick="toggleLearned(this, ${item.id}, event)">
+                                <i data-lucide="${isLearned ? 'check-circle-2' : 'circle'}" size="18"></i>
+                                ${isLearned ? 'Selesai' : 'Belum'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function toggleLike(btn, id, event) {
+            event.stopPropagation();
+            
+            const index = userProgress.liked.indexOf(id);
+            if (index === -1) {
+                userProgress.liked.push(id);
+                btn.classList.add('active');
+                btn.querySelector('svg').setAttribute('fill', 'var(--accent-red)');
+            } else {
+                userProgress.liked.splice(index, 1);
+                btn.classList.remove('active');
+                btn.querySelector('svg').setAttribute('fill', 'none');
+            }
+            saveProgress();
+            if (currentFilter === 'liked') filterGrammar('liked');
+        }
+
+        function toggleLearned(btn, id, event) {
+            event.stopPropagation();
+            
+            const index = userProgress.learned.indexOf(id);
+            const card = btn.closest('.card');
+            
+            if (index === -1) {
+                userProgress.learned.push(id);
+                btn.classList.add('active');
+                btn.innerHTML = `<i data-lucide="check-circle-2" size="18"></i> Selesai`;
+                card.classList.add('learned');
+            } else {
+                userProgress.learned.splice(index, 1);
+                btn.classList.remove('active');
+                btn.innerHTML = `<i data-lucide="circle" size="18"></i> Belum`;
+                card.classList.remove('learned');
+            }
+            lucide.createIcons();
+            saveProgress();
+            updateProgressUI();
+
+            if (currentFilter === 'learned' || currentFilter === 'unlearned') {
+                filterGrammar(currentFilter);
+            }
+        }
+
+        function saveProgress() {
+            localStorage.setItem(`learnedGrammar_${currentLevel}`, JSON.stringify(userProgress.learned));
+            localStorage.setItem(`likedGrammar_${currentLevel}`, JSON.stringify(userProgress.liked));
+        }
+
+        function updateProgressUI() {
+            const total = allGrammar.length;
+            const validLearned = allGrammar.filter(g => userProgress.learned.includes(g.id)).length;
+            const percentage = total === 0 ? 0 : (validLearned / total) * 100;
+            document.getElementById('progressBar').style.width = `${percentage}%`;
+            document.getElementById('progressText').innerText = `${validLearned} / ${total}`;
+        }
+
+        function filterGrammar(type) {
+            currentFilter = type;
+            
+            // Sync Desktop Buttons
+            document.querySelectorAll('.btn-filter').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === type) btn.classList.add('active');
+            });
+
+            // Sync Mobile Radios
+            const radio = document.querySelector(`input[name="mobileFilter"][value="${type}"]`);
+            if (radio) radio.checked = true;
+
+            let filtered = allGrammar;
+            if (type === 'learned') {
+                filtered = allGrammar.filter(g => userProgress.learned.includes(g.id));
+            } else if (type === 'unlearned') {
+                filtered = allGrammar.filter(g => !userProgress.learned.includes(g.id));
+            } else if (type === 'liked') {
+                filtered = allGrammar.filter(g => userProgress.liked.includes(g.id));
+            }
+
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            if (term) {
+                filtered = filtered.filter(g => 
+                    (g.grammar_point && g.grammar_point.toLowerCase().includes(term)) ||
+                    (g.meaning && g.meaning.toLowerCase().includes(term)) ||
+                    (g.romaji && g.romaji.toLowerCase().includes(term))
+                );
+            }
+
+            renderCards(filtered);
+        }
+
+        function searchGrammar() {
+            filterGrammar(currentFilter);
+        }
+
+        function openModal(item) {
+            document.getElementById('modalTitle').innerText = item.grammar_point;
+            document.getElementById('modalRomaji').innerText = item.romaji;
+            
+            const level = item.jlpt_level ? item.jlpt_level.toLowerCase() : currentLevel;
+            const badge = document.getElementById('modalLevel');
+            badge.innerText = level.toUpperCase();
+            badge.className = `level-badge ${level}`;
+
+            document.getElementById('modalMeaning').innerText = item.meaning;
+            
+            const notes = Array.isArray(item.usage_notes) 
+                ? `<ul>${item.usage_notes.map(n => `<li>${n}</li>`).join('')}</ul>` 
+                : item.usage_notes;
+            document.getElementById('modalNotes').innerHTML = notes;
+
+            const connect = Array.isArray(item.connection_rule)
+                ? item.connection_rule.join('<br>')
+                : item.connection_rule;
+            document.getElementById('modalConnection').innerHTML = connect;
+
+            const exContainer = document.getElementById('modalExamples');
+            exContainer.innerHTML = item.examples.map(ex => `
+                <div class="example-item">
+                    <div class="jp-sentence jp-text">${ex.japanese}</div>
+                    <div class="id-sentence">${ex.translation}</div>
+                </div>
+            `).join('');
+
+            document.getElementById('detailModal').classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('detailModal').classList.remove('open');
+        }
+
+        document.getElementById('detailModal').addEventListener('click', (e) => {
+            if (e.target.id === 'detailModal') closeModal();
+        });
+
+        // Initialize (Default N5)
+        loadGrammarData('n5');
+
+    </script>
 </body>
 </html>

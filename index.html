@@ -3,169 +3,628 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Namedly - Landing Page</title>
-    <!-- Font Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Icon Library -->
+    <title>Nihon Science - Belajar Jepang Metode Sains</title>
+    <!-- Font: Inter & Plus Jakarta Sans untuk nuansa modern/sains -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Memanggil file CSS eksternal -->
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --primary-blue: #0f172a; /* Deep Science Blue */
+            --secondary-blue: #1e293b;
+            --accent-red: #e11d48;    /* Japan Red */
+            --science-cyan: #0ea5e9;  /* Data/Tech color */
+            --gold: #f59e0b;          /* Best Seller color */
+            --success: #10b981;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --radius: 16px;
+            --max-width: 1280px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .btn {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .container-fluid {
+            width: 100%;
+            padding: 0 40px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); background: #334155; }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        .btn-outline:hover { background: var(--primary-blue); color: white; }
+
+        .btn-red {
+            background: var(--accent-red);
+            color: white;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.4);
+        }
+        .btn-red:hover { background: #be123c; transform: translateY(-2px); }
+
+        .btn-cyan {
+            background: white;
+            color: var(--science-cyan);
+            border: 2px solid var(--science-cyan);
+        }
+        .btn-cyan:hover { background: var(--science-cyan); color: white; }
+
+        /* --- HEADER --- */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 0;
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { font-weight: 600; color: var(--text-dark); font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--accent-red); }
+
+        /* --- HERO SECTION (Redesigned) --- */
+        .hero {
+            padding: 120px 0 140px;
+            background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* Background Pattern (Science Dots) */
+        .hero-pattern {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+            background-size: 32px 32px;
+            opacity: 0.4;
+            z-index: 0;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge-science {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: #e0f2fe; color: var(--science-cyan);
+            padding: 6px 16px; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 700;
+            margin-bottom: 32px;
+            border: 1px solid #bae6fd;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+        
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--science-cyan) 0%, var(--primary-blue) 100%);
+            --webkit-background-clip: text;
+            --webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto; margin-right: auto;
+        }
+
+        /* --- CURRICULUM GRID (6 Items) --- */
+        .curriculum { padding: 80px 0; background: white; }
+        
+        .section-header { text-align: center; margin-bottom: 60px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 16px; letter-spacing: -0.02em; }
+        .section-header p { color: var(--text-light); font-size: 1.1rem; }
+
+        .grid-6 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .learn-card {
+            background: white;
+            padding: 32px;
+            border-radius: var(--radius);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .learn-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--science-cyan);
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.1);
+        }
+
+        .card-icon-box {
+            width: 50px; height: 50px;
+            border-radius: 12px;
+            background: #f1f5f9;
+            color: var(--primary-blue);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .learn-card:hover .card-icon-box { background: var(--primary-blue); color: white; }
+
+        .learn-card h3 { font-size: 1.25rem; margin-bottom: 10px; font-weight: 700; }
+        .learn-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
+        .learn-card a { 
+            margin-top: auto; padding-top: 16px; 
+            font-weight: 600; color: var(--science-cyan); 
+            display: flex; align-items: center; gap: 4px;
+        }
+
+        /* --- TESTIMONIALS (Equal Height) --- */
+        .testimonials { background: var(--primary-blue); color: white; padding: 100px 0; position: relative; }
+        
+        .testimonials-bg {
+            position: absolute; top:0; left:0; width:100%; height:100%;
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px; pointer-events: none;
+        }
+
+        .testimonials .section-header h2 { color: white; }
+        .testimonials .section-header p { color: #94a3b8; }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            /* Equal Height Magic */
+            align-items: stretch; 
+        }
+
+        .testi-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 32px;
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .testi-content {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            color: #e2e8f0;
+            flex-grow: 1; /* Pushes author down */
+            font-style: italic;
+        }
+
+        .testi-author { display: flex; align-items: center; gap: 12px; }
+        .avatar {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--science-cyan), var(--primary-blue));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: white; border: 2px solid rgba(255,255,255,0.2);
+        }
+        .author-info h4 { font-size: 1rem; font-weight: 700; color: white; line-height: 1.2; }
+        .author-info span { font-size: 0.85rem; color: #94a3b8; }
+
+        /* --- PRICING (4 Columns) --- */
+        .pricing { padding: 100px 0; }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            align-items: stretch; /* Make cards equal height */
+        }
+
+        .price-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        /* Hover effect for Plan 1-3 only */
+        .price-card:not(.static-card):hover {
+            transform: translateY(-8px);
+            border-color: #cbd5e1;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        /* Specific Card Styles */
+        .price-card.zen { border: 2px solid var(--gold); background: #fffbeb; }
+        .price-card.samurai { border: 2px solid var(--accent-red); background: #fff1f2; }
+        
+        /* Plan 4: Course (Static, No Hover, Distinct Look) */
+        .price-card.static-card {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
+        }
+        .price-card.static-card h3, 
+        .price-card.static-card .price, 
+        .price-card.static-card li { color: white; }
+        .price-card.static-card .price span { color: #94a3b8; }
+        .price-card.static-card .plan-desc { color: #cbd5e1; }
+        .price-card.static-card li i { color: var(--science-cyan); }
+        .price-card.static-card .btn { 
+            background: white; color: var(--primary-blue); width: 100%; font-weight: 800;
+        }
+
+        .plan-name { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; display: block; }
+        .plan-desc { font-size: 0.9rem; color: var(--text-light); margin-bottom: 20px; min-height: 40px; }
+        
+        .price { font-size: 2rem; font-weight: 800; margin-bottom: 4px; color: var(--primary-blue); letter-spacing: -0.03em; }
+        .price span { font-size: 0.9rem; font-weight: 500; color: var(--text-light); letter-spacing: normal; }
+        
+        .price-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 24px; display: block; }
+
+        .feature-list { margin-bottom: 32px; flex-grow: 1; }
+        .feature-list li { margin-bottom: 10px; font-size: 0.9rem; display: flex; gap: 10px; line-height: 1.4; }
+        .feature-list li i { color: var(--success); flex-shrink: 0; margin-top: 3px; }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px; border-radius: 6px;
+            font-size: 0.7rem; font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+        }
+        .badge-bestseller { background: var(--gold); color: #78350f; }
+        .badge-value { background: var(--accent-red); color: white; }
+
+        /* --- FOOTER --- */
+        footer { background: white; padding: 80px 0 40px; border-top: 1px solid #e2e8f0; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
+        .footer-brand p { color: var(--text-light); font-size: 0.95rem; max-width: 300px; margin-top: 16px; }
+        .footer-col h4 { font-size: 1rem; font-weight: 700; margin-bottom: 20px; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a { color: var(--text-light); font-size: 0.9rem; }
+        .footer-col a:hover { color: var(--primary-blue); }
+
+        /* --- LOGIN MODAL --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px);
+            z-index: 2000; display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+
+        .login-box {
+            background: white; padding: 40px; border-radius: 20px;
+            width: 100%; max-width: 420px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative; transform: translateY(20px); transition: transform 0.3s;
+        }
+        .modal-overlay.open .login-box { transform: translateY(0); }
+
+        .close-modal {
+            position: absolute; top: 20px; right: 20px;
+            background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #94a3b8;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input {
+            width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px;
+            font-size: 1rem; transition: 0.2s;
+        }
+        .form-group input:focus { outline: none; border-color: var(--primary-blue); box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .grid-6 { grid-template-columns: repeat(2, 1fr); }
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3.5rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .grid-6, .testi-grid, .pricing-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .container-fluid { padding: 0 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+    </style>
 </head>
 <body>
 
     <!-- NAVBAR -->
     <header>
-        <div class="container">
+        <div class="container-fluid">
             <nav>
-                <div class="logo">
-                    <i data-lucide="flower-2" style="margin-right: 8px;"></i>
-                </div>
+                <a href="#" class="logo">
+                    <i data-lucide="atom" size="28" stroke-width="2.5"></i>
+                    NIHON<span style="color:var(--accent-red)">SCIENCE</span>
+                </a>
                 <div class="nav-links">
-                    <a href="#">Products</a>
-                    <a href="#">Resources</a>
-                    <a href="#">Pricing</a>
+                    <a href="#belajar">Belajar</a>
+                    <a href="#laporan">Laporan</a>
+                    <a href="#harga">Harga</a>
                 </div>
+                <button class="btn btn-primary" onclick="toggleLogin()">Login Masuk</button>
             </nav>
         </div>
     </header>
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="container">
-            <span class="hero-eyebrow">Eyebrow text to label this content</span>
-            <h1>A bold headline that delivers</h1>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-primary">Call to action</a>
-                <a href="#" class="btn btn-secondary">Secondary</a>
+        <div class="hero-pattern"></div>
+        <div class="container hero-content">
+            <div class="badge-science"><i data-lucide="brain-circuit" size="16"></i> METODE PENELITIAN SAINS</div>
+            <h1>Belajar Bahasa Jepang <br><span>Berbasis Neurosains</span></h1>
+            <p>Tinggalkan cara lama menghafal buta. Gunakan algoritma SRS (Spaced Repetition) dan pemetaan memori otak untuk menguasai Kanji, Grammar, dan Percakapan 3x lebih cepat.</p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="#harga" class="btn btn-red">Mulai Sekarang</a>
+                <a href="grammar/index.html" class="btn btn-outline">Lihat Library Grammar</a>
             </div>
         </div>
     </section>
 
-    <!-- FEATURES SECTION -->
-    <section class="section-padding">
+    <!-- MATERI (6 ITEM GRID) -->
+    <section id="belajar" class="curriculum">
         <div class="container">
-            <div class="features-grid">
-                <!-- Card 1 -->
-                <div class="feature-card">
-                    <div class="feature-image img-1"></div>
-                    <div class="feature-content">
-                        <h3>This outstanding object</h3>
-                        <p>Call out a feature, benefit, or value of your site or product that can stand on its own.</p>
-                        <a href="grammar/index.html" class="cta-link">Call to action <i data-lucide="arrow-right" size="16"></i></a>
-                    </div>
-                </div>
-                <!-- Card 2 -->
-                <div class="feature-card">
-                    <div class="feature-image img-2"></div>
-                    <div class="feature-content">
-                        <h3>This astounding article</h3>
-                        <p>Cards are a great way to organize content in a collection—products, case studies, services, and more.</p>
-                        <a href="#" class="cta-link">Call to action <i data-lucide="arrow-right" size="16"></i></a>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="feature-card">
-                    <div class="feature-image img-3"></div>
-                    <div class="feature-content">
-                        <h3>This brilliant bit</h3>
-                        <p>Add more cards to this little stack to build out a grid of whatever size and shape you need.</p>
-                        <a href="#" class="cta-link">Call to action <i data-lucide="arrow-right" size="16"></i></a>
-                    </div>
-                </div>
+            <div class="section-header">
+                <h2>Kurikulum Terstruktur</h2>
+                <p>Materi lengkap dari dasar hingga mahir, disusun berdasarkan efisiensi penyerapan otak.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS SECTION -->
-    <section class="section-padding" style="background-color: #fff;">
-        <div class="container">
-            <h2>Testimonials</h2>
-            <p class="sub-heading">Here's what people are saying</p>
-
-            <div class="testimonial-grid">
-                <div class="testi-card">
-                    <p class="testi-quote">Your expectations will fly sky high. I felt like I was soaring.</p>
-                    <div class="testi-user">
-                        <div class="avatar av-blue"><i data-lucide="smile" size="20"></i></div>
-                        <div class="user-info">
-                            <h4>Wanda Wingleton</h4>
-                            <span>Lepidopterist at Butterflai</span>
-                        </div>
-                    </div>
+            <div class="grid-6">
+                <!-- Item 1 -->
+                <div class="learn-card">
+                    <div class="card-icon-box"><i data-lucide="pen-tool"></i></div>
+                    <h3>Belajar Hiragana</h3>
+                    <p>Fondasi tulisan Jepang. Kuasai 46 karakter dasar dengan teknik asosiasi gambar visual.</p>
+                    <a href="#">Mulai Belajar <i data-lucide="arrow-right" size="16"></i></a>
                 </div>
-                <div class="testi-card">
-                    <p class="testi-quote">Using this felt like it transformed me completely.</p>
-                    <div class="testi-user">
-                        <div class="avatar av-green"><i data-lucide="smile" size="20"></i></div>
-                        <div class="user-info">
-                            <h4>Carl Caterpillar</h4>
-                            <span>Growth at Cocoon & Co.</span>
-                        </div>
-                    </div>
+                <!-- Item 2 -->
+                <div class="learn-card">
+                    <div class="card-icon-box"><i data-lucide="type"></i></div>
+                    <h3>Belajar Katakana</h3>
+                    <p>Kuasai tulisan untuk kata serapan asing. Penting untuk membaca menu dan istilah teknis.</p>
+                    <a href="#">Mulai Belajar <i data-lucide="arrow-right" size="16"></i></a>
                 </div>
-                <div class="testi-card">
-                    <p class="testi-quote">In the garden of life, some things are just very sweet. This is one of them.</p>
-                    <div class="testi-user">
-                        <div class="avatar av-orange"><i data-lucide="smile" size="20"></i></div>
-                        <div class="user-info">
-                            <h4>Andi Antennae</h4>
-                            <span>Transport at Suite Nectar</span>
-                        </div>
-                    </div>
+                <!-- Item 3 -->
+                <div class="learn-card">
+                    <div class="card-icon-box"><i data-lucide="scroll-text"></i></div>
+                    <h3>Kanji & Radikal</h3>
+                    <p>Pahami makna di balik goresan. Belajar Kanji bukan menghafal, tapi memahami logika bentuknya.</p>
+                    <a href="#">Mulai Belajar <i data-lucide="arrow-right" size="16"></i></a>
                 </div>
-                <div class="testi-card">
-                    <p class="testi-quote">Your expectations will fly sky high. I felt like I was soaring.</p>
-                    <div class="testi-user">
-                        <div class="avatar av-blue"><i data-lucide="smile" size="20"></i></div>
-                        <div class="user-info">
-                            <h4>Wanda Wingleton</h4>
-                            <span>Lepidopterist at Butterflai</span>
-                        </div>
-                    </div>
+                <!-- Item 4 -->
+                <div class="learn-card">
+                    <div class="card-icon-box"><i data-lucide="network"></i></div>
+                    <h3>Tata Kalimat (Bunpou)</h3>
+                    <p>Bedah struktur kalimat (S-O-V) dengan logika matematika yang pasti, bukan sekadar perasaan.</p>
+                    <a href="grammar/index.html">Lihat Grammar <i data-lucide="arrow-right" size="16"></i></a>
+                </div>
+                <!-- Item 5 -->
+                <div class="learn-card">
+                    <div class="card-icon-box"><i data-lucide="database"></i></div>
+                    <h3>Kosakata (Kotoba)</h3>
+                    <p>Ribuan kosakata dikelompokkan berdasarkan frekuensi penggunaan sehari-hari (Frequency List).</p>
+                    <a href="#">Mulai Belajar <i data-lucide="arrow-right" size="16"></i></a>
+                </div>
+                <!-- Item 6 -->
+                <div class="learn-card">
+                    <div class="card-icon-box"><i data-lucide="globe-2"></i></div>
+                    <h3>Lain-lain & Budaya</h3>
+                    <p>Konteks sosial, onomatopoeia, dan psikolinguistik Jepang untuk percakapan alami.</p>
+                    <a href="#">Jelajahi <i data-lucide="arrow-right" size="16"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PRICING SECTION -->
-    <section class="section-padding">
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="testimonials-bg"></div>
         <div class="container">
+            <div class="section-header" style="position: relative; z-index: 2;">
+                <h2>Kata Mereka</h2>
+                <p>Hasil nyata dari ribuan pelajar yang telah lulus JLPT.</p>
+            </div>
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <div class="testi-content">
+                        "Saya gagal N3 dua kali karena cuma menghafal. Setelah pakai metode sains di sini, saya jadi paham 'kenapa' polanya begitu. Akhirnya lulus dengan skor 160/180!"
+                    </div>
+                    <div class="testi-author">
+                        <div class="avatar">AD</div>
+                        <div class="author-info">
+                            <h4>Andi Dermawan</h4>
+                            <span>Mahasiswa Sastra Jepang</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-content">
+                        "Fitur laporannya sangat detail. Saya bisa melihat grafik retensi memori saya. Sangat membantu untuk tahu kapan harus review ulang materi yang hampir lupa."
+                    </div>
+                    <div class="testi-author">
+                        <div class="avatar">SK</div>
+                        <div class="author-info">
+                            <h4>Siti Khadijah</h4>
+                            <span>Software Engineer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-content">
+                        "Materi Kanji-nya jenius. Memecah kanji rumit menjadi radikal-radikal sederhana membuat saya bisa mengingat 1000 kanji dalam waktu 3 bulan saja."
+                    </div>
+                    <div class="testi-author">
+                        <div class="avatar">BP</div>
+                        <div class="author-info">
+                            <h4>Budi Pratama</h4>
+                            <span>Dokter Umum</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="harga" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Investasi Belajar</h2>
+                <p>Pilih paket yang sesuai dengan target Anda. Sekali bayar untuk akses seumur hidup (Kecuali Kursus).</p>
+            </div>
+            
             <div class="pricing-grid">
-                <div class="pricing-card">
-                    <span class="plan-name">Plan 1</span>
-                    <span class="plan-desc">For individuals</span>
-                    <div class="price">$2 <span>/ month</span></div>
-                    <ul class="features-list">
-                        <li><i data-lucide="check" size="16"></i> Feature 1</li>
-                        <li><i data-lucide="check" size="16"></i> Feature 2</li>
-                        <li><i data-lucide="check" size="16"></i> Feature 3</li>
+                
+                <!-- PLAN 1: FREE -->
+                <div class="price-card">
+                    <span class="badge" style="background:#e2e8f0; color:#475569;">Starter</span>
+                    <span class="plan-name">Free</span>
+                    <span class="plan-desc">Coba metode sains dasar.</span>
+                    <div class="price">Rp 0</div>
+                    <span class="price-sub">Selamanya</span>
+                    <ul class="feature-list">
+                        <li><i data-lucide="check"></i> Kanji N5</li>
+                        <li><i data-lucide="check"></i> Kosakata N5</li>
+                        <li><i data-lucide="check"></i> Grammar N5</li>
+                        <li><i data-lucide="check"></i> Hiragana & Katakana</li>
                     </ul>
-                    <button class="btn btn-secondary pricing-btn">Sign up</button>
+                    <button class="btn btn-outline" style="width:100%; margin-top:auto;">Daftar Gratis</button>
                 </div>
-                <div class="pricing-card">
-                    <span class="plan-name">Plan 2</span>
-                    <span class="plan-desc">For medium teams</span>
-                    <div class="price">$5 <span>/ month</span></div>
-                    <ul class="features-list">
-                        <li><i data-lucide="check" size="16"></i> All the Plan #2 features</li>
-                        <li><i data-lucide="check" size="16"></i> Feature 4</li>
-                        <li><i data-lucide="check" size="16"></i> Feature 5</li>
+
+                <!-- PLAN 2: ZEN -->
+                <div class="price-card zen">
+                    <span class="badge badge-bestseller">Best Seller</span>
+                    <span class="plan-name">Zen</span>
+                    <span class="plan-desc">Untuk pemula yang serius.</span>
+                    <div class="price">Rp 59.000</div>
+                    <span class="price-sub">Sekali Bayar (Lifetime)</span>
+                    <ul class="feature-list">
+                        <li><i data-lucide="check"></i> <strong>Semua Fitur Free</strong></li>
+                        <li><i data-lucide="check"></i> Materi N4 - N3 Lengkap</li>
+                        <li><i data-lucide="check"></i> Kanji & Grammar N4-N3</li>
+                        <li><i data-lucide="check"></i> TTS (Text to Sound)</li>
+                        <li><i data-lucide="check"></i> Free JFT A2 & JLPT N3-N5 Test</li>
+                        <li><i data-lucide="check"></i> Save Progress & Laporan</li>
                     </ul>
-                    <button class="btn btn-primary pricing-btn">Sign up</button>
+                    <button class="btn btn-primary" style="width:100%; margin-top:auto;">Pilih Zen</button>
                 </div>
-                <div class="pricing-card">
-                    <span class="plan-name">Plan 3</span>
-                    <span class="plan-desc">For large teams</span>
-                    <div class="price">$10 <span>/ month</span></div>
-                    <ul class="features-list">
-                        <li><i data-lucide="check" size="16"></i> All the Plan #2 features</li>
-                        <li><i data-lucide="check" size="16"></i> Feature 6</li>
-                        <li><i data-lucide="check" size="16"></i> Feature 7</li>
+
+                <!-- PLAN 3: SAMURAI -->
+                <div class="price-card samurai">
+                    <span class="badge badge-value">Best Value Lifetime</span>
+                    <span class="plan-name">Samurai</span>
+                    <span class="plan-desc">Paket master terlengkap.</span>
+                    <div class="price">Rp 129.000</div>
+                    <span class="price-sub">Sekali Bayar (Lifetime)</span>
+                    <ul class="feature-list">
+                        <li><i data-lucide="check"></i> <strong>Semua Benefit Zen</strong></li>
+                        <li><i data-lucide="check"></i> All Materi (N5 - N1)</li>
+                        <li><i data-lucide="check"></i> JLPT Test N5 - N1</li>
+                        <li><i data-lucide="check"></i> Download File Materi PDF</li>
+                        <li><i data-lucide="check"></i> Prioritas Update Fitur</li>
                     </ul>
-                    <button class="btn btn-secondary pricing-btn">Sign up</button>
+                    <button class="btn btn-red" style="width:100%; margin-top:auto;">Pilih Samurai</button>
                 </div>
+
+                <!-- PLAN 4: KURSUS TG FOCUS (Static) -->
+                <div class="price-card static-card">
+                    <span class="badge" style="background:rgba(255,255,255,0.2); color:white;">Exclusive Program</span>
+                    <span class="plan-name">Kursus TG Focus</span>
+                    <span class="plan-desc">Bimbingan intensif 6 bulan.</span>
+                    <div class="price">Rp 3.6 Juta</div>
+                    <span class="price-sub" style="color:rgba(255,255,255,0.7);">(Setara Rp 600k/bulan)</span>
+                    <ul class="feature-list">
+                        <li><i data-lucide="check"></i> <strong>Akses All Materi App</strong></li>
+                        <li><i data-lucide="check"></i> Fokus JFT A2 + TG Materi</li>
+                        <li><i data-lucide="check"></i> Kursus Private (Mentoring)</li>
+                        <li><i data-lucide="check"></i> Waktu Fleksibel</li>
+                        <li><i data-lucide="check"></i> Science Based Study</li>
+                        <li><i data-lucide="check"></i> Gratis Test & Latihan</li>
+                    </ul>
+                    <button class="btn" style="width:100%; margin-top:auto;">Daftar Kursus</button>
+                </div>
+
             </div>
         </div>
     </section>
@@ -175,44 +634,81 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3>Namedly</h3>
-                    <p class="footer-desc">Descriptive line about what your company does.</p>
-                    <div class="social-icons">
-                        <a href="#"><i data-lucide="instagram"></i></a>
-                        <a href="#"><i data-lucide="linkedin"></i></a>
-                        <a href="#"><i data-lucide="x"></i></a>
-                    </div>
+                    <div class="logo">NIHON<span style="color:var(--accent-red)">SCIENCE</span></div>
+                    <p>Platform belajar bahasa Jepang pertama di Indonesia yang mengintegrasikan metode penelitian sains untuk efisiensi maksimal.</p>
                 </div>
                 <div class="footer-col">
-                    <h4>Features</h4>
+                    <h4>Navigasi</h4>
                     <ul>
-                        <li><a href="#">Core features</a></li>
-                        <li><a href="#">Pro experience</a></li>
-                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#belajar">Kurikulum</a></li>
+                        <li><a href="#harga">Biaya Belajar</a></li>
+                        <li><a href="grammar/index.html">Library Grammar</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Learn more</h4>
+                    <h4>Legal</h4>
                     <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Case studies</a></li>
-                        <li><a href="#">Customer stories</a></li>
-                        <li><a href="#">Best practices</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Contact Support</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Legal</a></li>
-                    </ul>
-                </div>
+            </div>
+            <div style="border-top:1px solid #f1f5f9; margin-top:60px; padding-top:20px; text-align:center; color:#94a3b8; font-size:0.9rem;">
+                &copy; 2025 NihonScience. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <!-- Memanggil file JS eksternal -->
-    <script src="script.js"></script>
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="login-box">
+            <button class="close-modal" onclick="toggleLogin()"><i data-lucide="x"></i></button>
+            <div style="text-align: center; margin-bottom: 24px;">
+                <h2 style="color:var(--primary-blue); font-size:1.5rem;">Selamat Datang</h2>
+                <p style="color:var(--text-light); font-size:0.95rem;">Lanjutkan progress belajar Anda.</p>
+            </div>
+            <form onsubmit="event.preventDefault(); alert('Login Berhasil (Demo)!'); toggleLogin();">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="nama@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Masuk Akun</button>
+            </form>
+            <div style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">
+                Belum punya akun? <a href="#harga" style="color: var(--primary-blue); font-weight: 700;" onclick="toggleLogin()">Daftar Sekarang</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        lucide.createIcons();
+
+        function toggleLogin() {
+            const modal = document.getElementById('loginModal');
+            if (modal.classList.contains('open')) {
+                modal.classList.remove('open');
+                setTimeout(() => { modal.style.display = 'none'; }, 300);
+            } else {
+                modal.style.display = 'flex';
+                // Trigger reflow agar transisi opacity jalan
+                requestAnimationFrame(() => {
+                    modal.classList.add('open');
+                });
+            }
+        }
+
+        // Close modal when clicking outside box
+        document.getElementById('loginModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleLogin();
+            }
+        });
+    </script>
 </body>
 </html>

@@ -3,207 +3,487 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cho - Hapalan Kanji & Kotoba</title>
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <!-- Load Supabase dari CDN (Script Eksternal tetap di sini agar loading cepat) -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>Master Kotoba - Nihon Science</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --primary-blue: #0f172a;
+            --secondary-blue: #1e293b;
+            --accent-red: #e11d48;
+            --science-cyan: #0ea5e9;
+            --success-green: #10b981;
+            --warning-yellow: #f59e0b;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 16px;
+            --font-jp: 'Noto Sans JP', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            touch-action: manipulation;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { 
+            font-size: 1.25rem; font-weight: 800; color: var(--primary-blue); 
+            display: flex; align-items: center; gap: 8px; text-decoration: none;
+        }
+
+        /* --- LEVEL TABS --- */
+        .level-tabs {
+            display: flex; justify-content: center; gap: 10px; margin: 30px 0; flex-wrap: wrap;
+        }
+        .level-btn {
+            padding: 8px 24px; border-radius: 50px; border: 1px solid var(--border);
+            background: white; font-weight: 600; cursor: pointer; transition: 0.2s;
+            color: var(--text-light);
+        }
+        .level-btn.active {
+            background: var(--primary-blue); color: white; border-color: var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+        }
+
+        /* --- FILTER & GRID --- */
+        .filter-bar {
+            display: flex; gap: 12px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 20px;
+        }
+        .filter-btn {
+            padding: 6px 16px; border-radius: 8px; border: 1px solid var(--border);
+            background: white; font-size: 0.9rem; font-weight: 600; color: var(--text-light);
+            cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 6px;
+        }
+        .filter-btn.active { background: #e0f2fe; color: var(--science-cyan); border-color: #bae6fd; }
+        
+        .search-input {
+            width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border);
+            margin-bottom: 30px; font-size: 1rem;
+        }
+
+        .kotoba-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px; padding-bottom: 100px;
+        }
+
+        /* --- MINI CARD (Grid View) --- */
+        .card-mini {
+            background: white; border: 1px solid var(--border); border-radius: 16px;
+            padding: 20px; cursor: pointer; transition: transform 0.2s; position: relative;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+        .card-mini:hover { transform: translateY(-4px); border-color: var(--science-cyan); }
+        .card-mini.mastered { border-left: 4px solid var(--success-green); }
+        
+        .mini-jp { font-size: 1.8rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 4px; }
+        .mini-mean { font-size: 0.95rem; color: var(--text-dark); font-weight: 600; }
+        .mini-romaji { font-size: 0.85rem; color: var(--text-light); font-family: monospace; }
+
+        /* --- FLOATING ACTION BUTTON --- */
+        .fab-quiz {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--accent-red); color: white;
+            padding: 16px 24px; border-radius: 50px;
+            font-weight: 700; box-shadow: 0 10px 25px rgba(225, 29, 72, 0.4);
+            cursor: pointer; transition: 0.3s; z-index: 90;
+            display: flex; align-items: center; gap: 8px; border: none;
+        }
+        .fab-quiz:hover { transform: scale(1.05); }
+
+        /* --- QUIZ OVERLAY (One-by-One Flashcard Mode) --- */
+        .quiz-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);
+            z-index: 2000; display: none; justify-content: center; align-items: center;
+            flex-direction: column; opacity: 0; transition: opacity 0.3s;
+        }
+        .quiz-overlay.active { display: flex; opacity: 1; }
+
+        .quiz-card {
+            background: white; width: 90%; max-width: 400px; min-height: 500px;
+            border-radius: 24px; position: relative; perspective: 1000px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .quiz-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+            border-radius: 24px; min-height: 500px;
+        }
+        .quiz-card.flipped .quiz-inner { transform: rotateY(180deg); }
+
+        .quiz-front, .quiz-back {
+            position: absolute; width: 100%; height: 100%;
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            border-radius: 24px; padding: 30px; background: white;
+        }
+
+        .quiz-front { z-index: 2; }
+        .quiz-back { transform: rotateY(180deg); background: #f0f9ff; border: 2px solid var(--science-cyan); }
+
+        /* Typography Quiz */
+        .q-kanji { font-size: 4rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 10px; }
+        .q-furi { font-size: 1.2rem; color: var(--text-light); }
+        .q-mean { font-size: 1.5rem; font-weight: 700; color: var(--accent-red); margin-bottom: 10px; }
+        .q-romaji { font-size: 1rem; font-family: monospace; color: var(--text-dark); margin-bottom: 20px; }
+        .q-ex { font-size: 0.9rem; color: var(--text-light); font-style: italic; background: rgba(255,255,255,0.5); padding: 10px; border-radius: 8px; }
+
+        /* Controls */
+        .quiz-controls {
+            position: absolute; bottom: 30px; left: 0; width: 100%;
+            display: flex; justify-content: center; gap: 16px; padding: 0 20px;
+        }
+        .quiz-btn {
+            flex: 1; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer; border: none;
+            transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .btn-show { background: var(--primary-blue); color: white; width: 80%; margin: 0 auto; }
+        .btn-hard { background: var(--accent-red); color: white; } /* Lupa */
+        .btn-easy { background: var(--success-green); color: white; } /* Ingat */
+        
+        .close-quiz { 
+            position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.1); 
+            border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; z-index: 3000;
+        }
+
+        /* SETUP SCREEN */
+        .setup-card {
+            background: white; padding: 40px; border-radius: 24px; width: 90%; max-width: 400px;
+        }
+        .form-select {
+            width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--border);
+            margin-bottom: 20px; font-size: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .kotoba-grid { grid-template-columns: 1fr; }
+            .quiz-question { font-size: 3rem; }
+            .q-kanji { font-size: 3.5rem; }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="app-header">
-        <div class="logo-group">
-            <img src="img/logo.svg" alt="Logo" class="logo-img">
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i data-lucide="arrow-left" size="20"></i>
+                NIHON<span style="color:var(--accent-red)">SCIENCE</span>
+                <span style="font-weight:400; font-size:0.9rem; color:var(--text-light); margin-left:8px;">| Kotoba Library</span>
+            </a>
         </div>
+    </header>
+
+    <div class="container">
         
-        <div class="header-controls">
-            <!-- Login Button -->
-            <button class="auth-btn" id="headerAuthBtn" onclick="openAuthModal()">Login</button>
-            
-            <!-- Dark Mode Toggle -->
-            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="Ganti Tema">
-                <!-- Icon injected by JS -->
-            </button>
+        <!-- Level Selection -->
+        <div class="level-tabs">
+            <button class="level-btn active" onclick="loadLevel('n5')">N5</button>
+            <button class="level-btn" onclick="loadLevel('n4')">N4</button>
+            <button class="level-btn" onclick="loadLevel('n3')">N3</button>
+            <button class="level-btn" onclick="loadLevel('n2')">N2</button>
+            <button class="level-btn" onclick="loadLevel('n1')">N1</button>
         </div>
-    </div>
 
-    <div class="main-container">
-        <!-- Greeting Element -->
-        <h4 id="user-greeting" class="user-greeting"></h4>
+        <!-- Search & Filters -->
+        <input type="text" class="search-input" id="searchInput" placeholder="Cari kosakata..." oninput="filterKotoba()">
         
-        <div class="tab-group">
-            <button class="tab-btn active" onclick="setTab('vocab')">Kosakata</button>
-            <button class="tab-btn" onclick="setTab('kanji')">Peta Kanji</button>
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="setFilter('all')" data-filter="all">Semua</button>
+            <button class="filter-btn" onclick="setFilter('mastered')" data-filter="mastered"><i data-lucide="check-circle-2" size="14"></i> Sudah Hapal</button>
+            <button class="filter-btn" onclick="setFilter('unmastered')" data-filter="unmastered"><i data-lucide="circle" size="14"></i> Belum</button>
         </div>
 
-        <!-- === FLASHCARD KOSAKATA === -->
-        <div id="vocab-section" class="section active">
-            <div class="level-group" id="vocab-levels">
-                <button class="lvl-btn" onclick="loadVocab('n5')">N5</button>
-                <button class="lvl-btn" onclick="loadVocab('n4')">N4</button>
-                <button class="lvl-btn" onclick="loadVocab('n3')">N3</button>
-                <button class="lvl-btn" onclick="loadVocab('n2')">N2</button>
-                <button class="lvl-btn" onclick="loadVocab('n1')">N1</button>
-            </div>
+        <!-- Grid (List View) -->
+        <div id="kotobaGrid" class="kotoba-grid">
+            <!-- JS Injection -->
+        </div>
+
+    </div>
+
+    <!-- Floating Quiz Button -->
+    <button class="fab-quiz" onclick="openQuizSetup()">
+        <i data-lucide="brain-circuit"></i> Mulai Hafalan
+    </button>
+
+    <!-- Quiz Overlay -->
+    <div class="quiz-overlay" id="quizOverlay" style="display: none;">
+        <button class="close-quiz" onclick="closeQuiz()"><i data-lucide="x"></i></button>
+        
+        <!-- 1. Setup Screen -->
+        <div id="quizSetup" class="setup-card">
+            <h2 style="margin-bottom:20px; text-align:center; color:var(--primary-blue);">Mulai Sesi Belajar</h2>
             
-            <div id="vocab-canvas-area" style="display:none;">
-                <div class="card-canvas-wrapper" id="cardWrapper">
-                    <canvas id="vocabCanvas"></canvas>
-                </div>
+            <label style="font-weight:700; display:block; margin-bottom:8px;">Target:</label>
+            <select id="quizTarget" class="form-select">
+                <option value="all">Semua Kosakata (Full Review)</option>
+                <option value="unmastered">Hanya yang Belum Hapal (Fokus)</option>
+                <option value="mastered">Review yang Sudah Hapal</option>
+            </select>
+
+            <div style="background:#f0f9ff; padding:12px; border-radius:8px; font-size:0.85rem; color:var(--text-light); margin-bottom:20px;">
+                <i data-lucide="info" size="14" style="vertical-align:text-bottom"></i>
+                Metode <strong>Active Recall</strong>: Kartu akan ditampilkan satu per satu. Jika Anda memilih "Lupa", kartu akan muncul lagi nanti sampai Anda ingat.
+            </div>
+
+            <button class="btn-show quiz-btn" style="width:100%; background:var(--accent-red); color:white;" onclick="initQuiz()">Mulai</button>
+        </div>
+
+        <!-- 2. Flashcard Game Screen -->
+        <div id="quizGame" class="quiz-card" style="display:none;">
+            <div class="quiz-inner" id="flashcardInner">
                 
-                <div class="fc-controls-area">
-                    <div class="fc-func-row">
-                        <button id="btn-filter" class="act-btn" onclick="toggleFilter()" title="Filter: Hanya Belum Hafal">
-                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/></svg>
-                        </button>
-                        <button id="btn-random" class="act-btn" onclick="toggleRandom()" title="Mode Acak">
-                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
-                        </button>
-                        <button id="btn-tts" class="act-btn" onclick="toggleTTS()" title="Text-to-Speech">
-                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                        </button>
-                        <button id="btn-auto" class="act-btn" onclick="openAutoSettings()" title="Putar Otomatis">
-                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                        </button>
-                    </div>
-
-                    <div class="bottom-actions">
-                        <button id="btn-vocab-known" class="vocab-known-btn action-bottom-btn" onclick="toggleVocabKnown()">
-                            Tandai Sudah Hafal
-                        </button>
-                        <button class="list-btn action-bottom-btn" onclick="openKnownList()">
-                            Daftar Hafalan
-                        </button>
-                    </div>
-
-                    <div class="fc-nav-row">
-                        <button class="act-btn" onclick="prevCard()" title="Sebelumnya">
-                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                        </button>
-                        <button class="act-btn" onclick="nextCard()" title="Selanjutnya">
-                            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                        </button>
+                <!-- FRONT -->
+                <div class="quiz-front">
+                    <div style="font-size:0.9rem; color:var(--text-light); margin-bottom:20px;">Apa artinya?</div>
+                    <div class="q-kanji jp-text" id="qKanji"></div>
+                    <div class="q-furi jp-text" id="qFuri"></div>
+                    
+                    <div class="quiz-controls">
+                        <button class="quiz-btn btn-show" onclick="flipCard()">Lihat Jawaban</button>
                     </div>
                 </div>
 
-                <div class="status-msg">Klik <b>Huruf Merah</b> untuk Detail Kanji • Klik Kosong untuk Balik</div>
-            </div>
-            <br>
-            <div id="vocab-msg" class="status-msg">Pilih level yang disediakan.</div>
-        </div>
+                <!-- BACK -->
+                <div class="quiz-back">
+                    <div class="q-mean" id="qMean"></div>
+                    <div class="q-romaji" id="qRomaji"></div>
+                    <div class="q-ex jp-text" id="qEx"></div>
+                    <button onclick="playTTSCurrent()" style="background:#e0f2fe; border:none; width:40px; height:40px; border-radius:50%; margin:10px auto; cursor:pointer; color:var(--science-cyan); display:flex; align-items:center; justify-content:center;"><i data-lucide="volume-2"></i></button>
 
-        <!-- === HEATMAP KANJI === -->
-        <div id="kanji-section" class="section">
-            <div class="level-group" id="kanji-levels">
-                <button class="lvl-btn" onclick="loadKanjiData('n5')">N5</button>
-                <button class="lvl-btn" onclick="loadKanjiData('n4')">N4</button>
-                <button class="lvl-btn" onclick="loadKanjiData('n3')">N3</button>
-                <button class="lvl-btn" onclick="loadKanjiData('n2')">N2</button>
-                <button class="lvl-btn" onclick="loadKanjiData('n1')">N1</button>
-            </div>
-
-            <div class="stats-bar"><div id="k-progress" class="stats-fill"></div></div>
-            <div style="text-align:center; font-size:0.8rem; opacity:0.6; margin-bottom:10px;">
-                Hafal: <span id="k-count">0</span> / <span id="k-total">0</span>
-            </div>
-
-            <div id="kanji-grid" class="heatmap-grid">
-                <div style="grid-column:1/-1; text-align:center; padding:20px; opacity:0.5;">Pilih level di atas</div>
-            </div>
-            <div class="status-msg" style="font-size:0.8rem;">Klik Kiri: Detail • Klik Kanan: Tandai Hafal</div>
-        </div>
-    </div>
-
-    <!-- MODAL DETAIL KANJI -->
-    <div id="modal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
-        <div class="modal">
-            <div class="modal-header">
-                <div class="big-kanji" id="m-char">?</div>
-                <div style="flex:1">
-                    <span class="label">Arti (Indonesia)</span>
-                    <div id="m-mean" style="font-size:1.3rem; font-weight:bold;">...</div>
-                    <div id="m-mean-en" style="font-size:0.9rem; opacity:0.6; font-style:italic;">...</div>
+                    <div class="quiz-controls">
+                        <button class="quiz-btn btn-hard" onclick="answer(false)">
+                            <i data-lucide="x" size="18"></i> Lupa
+                        </button>
+                        <button class="quiz-btn btn-easy" onclick="answer(true)">
+                            <i data-lucide="check" size="18"></i> Ingat
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="reading-row">
-                <div class="reading-col">
-                    <span class="label">Kunyomi</span>
-                    <div id="m-kun" class="reading-list" style="color:var(--primary);"></div>
-                </div>
-                <div class="reading-col" style="text-align:right">
-                    <span class="label">Onyomi</span>
-                    <div id="m-on" class="reading-list" style="color:#0984e3;"></div>
-                </div>
-            </div>
-            <button id="m-btn" class="toggle-btn" onclick="toggleKnownFromModal()">Tandai Sudah Hafal</button>
-            <div style="text-align:right; margin-top:15px;">
-                <button onclick="closeModal()" style="background:rgba(0,0,0,0.1); border:none; padding:8px 15px; border-radius:8px; cursor:pointer; color:var(--text);">Tutup</button>
+
             </div>
         </div>
     </div>
 
-    <!-- MODAL LIST HAFALAN -->
-    <div id="list-modal" class="modal-overlay" onclick="if(event.target===this)closeListModal()">
-        <div class="modal list-modal">
-            <h3 style="margin-top:0; color:var(--primary);">Kosakata Terhafal</h3>
-            <div id="known-list-content"></div>
-            <div style="text-align:right; margin-top:15px; padding-top:10px; border-top:1px solid rgba(0,0,0,0.1);">
-                <button onclick="closeListModal()" style="background:rgba(0,0,0,0.1); border:none; padding:8px 15px; border-radius:8px; cursor:pointer; color:var(--text);">Tutup</button>
-            </div>
-        </div>
-    </div>
+    <script>
+        // --- GLOBAL STATE ---
+        let currentLevel = 'n5';
+        let allData = [];
+        let filteredData = []; // Untuk Grid
+        let currentFilter = 'all';
+        let masteryData = JSON.parse(localStorage.getItem('kotobaMastery')) || {};
 
-    <!-- MODAL AUTO SETTINGS -->
-    <div id="auto-modal" class="modal-overlay">
-        <div class="modal auto-modal">
-            <h3 style="margin-top:0; text-align:center;">Kecepatan Putar</h3>
-            <div class="range-container">
-                <span id="range-val" class="range-val">3</span> Detik
-                <input type="range" id="speed-range" min="1" max="10" value="3" oninput="document.getElementById('range-val').innerText=this.value">
-            </div>
-            <div style="display:flex; gap:10px;">
-                <button onclick="startAutoPlay()" class="toggle-btn" style="background:var(--secondary); color:white;">Mulai (OK)</button>
-                <button onclick="closeAutoSettings()" class="toggle-btn" style="background:rgba(0,0,0,0.1);">Batal</button>
-            </div>
-        </div>
-    </div>
+        // Quiz State
+        let quizQueue = [];
+        let currentCard = null;
 
-    <!-- MODAL AUTHENTICATION -->
-    <div id="auth-modal" class="modal-overlay">
-        <div class="modal auth-modal">
-            <h3 style="margin-top:0; text-align:center; color: var(--primary);">Akun Supabase</h3>
-            <div class="auth-form">
-                <input type="text" id="auth-username" placeholder="ID Pengguna (Bebas)">
+        // --- INIT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            if(window.lucide) lucide.createIcons();
+            loadLevel('n5');
+        });
+
+        // --- LOAD DATA ---
+        async function loadLevel(level) {
+            currentLevel = level;
+            
+            // Update Tabs
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase() === level) btn.classList.add('active');
+            });
+
+            // Fetch Data
+            try {
+                const response = await fetch(`data/kotoba-${level}.js`); 
+                if(!response.ok) throw new Error("File not found");
+                allData = await response.json();
+                filterKotoba(); 
+            } catch (e) {
+                console.warn("Mode Preview: Menggunakan Fallback Data", e);
+                allData = generateFallbackData(); // Mock data
+                filterKotoba();
+            }
+        }
+
+        function generateFallbackData() {
+            return [
+                { kanji: '学生', furigana: 'がくせい', romaji: 'gakusei', mean: 'Mahasiswa', example: '私は学生です。' },
+                { kanji: '先生', furigana: 'せんせい', romaji: 'sensei', mean: 'Guru', example: '田中先生は優しいです。' },
+                { kanji: '食べる', furigana: 'たべる', romaji: 'taberu', mean: 'Makan', example: '寿司を食べます。' },
+                { kanji: '見る', furigana: 'みる', romaji: 'miru', mean: 'Melihat', example: '映画を見ます。' },
+                { kanji: '行く', furigana: 'いく', romaji: 'iku', mean: 'Pergi', example: '学校へ行きます。' }
+            ];
+        }
+
+        // --- RENDER GRID (List View) ---
+        function renderGrid(data) {
+            const grid = document.getElementById('kotobaGrid');
+            grid.innerHTML = '';
+
+            if(data.length === 0) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-light);">Data tidak ditemukan.</div>`;
+                return;
+            }
+
+            data.forEach(item => {
+                const isMastered = masteryData[`${currentLevel}-${item.kanji}`];
+                const masteredClass = isMastered ? 'mastered' : '';
                 
-                <!-- WRAPPER UNTUK PASSWORD & EYE ICON -->
-                <div class="password-wrapper">
-                    <input type="password" id="auth-password" placeholder="Password">
-                    <svg class="eye-icon" onclick="togglePasswordVisibility()" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-                    </svg>
-                </div>
+                const card = document.createElement('div');
+                card.className = `card-mini ${masteredClass}`;
+                card.innerHTML = `
+                    <div class="mini-jp jp-text">${item.kanji}</div>
+                    <div class="mini-mean">${item.mean}</div>
+                    <div class="mini-romaji">${item.romaji}</div>
+                    ${isMastered ? '<div style="position:absolute; top:10px; right:10px; color:var(--success-green);"><i data-lucide="check-circle-2" size="20"></i></div>' : ''}
+                `;
+                // Klik untuk play sound
+                card.onclick = () => playTTS(item.kanji);
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // --- FILTER ---
+        function setFilter(type) {
+            currentFilter = type;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.dataset.filter === type) btn.classList.add('active');
+            });
+            filterKotoba();
+        }
+
+        function filterKotoba() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            filteredData = allData.filter(item => {
+                const matchText = item.kanji.includes(term) || item.romaji.includes(term) || item.mean.toLowerCase().includes(term);
+                const isMastered = masteryData[`${currentLevel}-${item.kanji}`];
+                let matchStatus = true;
+                if (currentFilter === 'mastered') matchStatus = isMastered;
+                if (currentFilter === 'unmastered') matchStatus = !isMastered;
+                return matchText && matchStatus;
+            });
+            renderGrid(filteredData);
+        }
+
+        // --- TTS ---
+        function playTTS(text) {
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = 'ja-JP';
+            window.speechSynthesis.speak(utter);
+        }
+        function playTTSCurrent() { if(currentCard) playTTS(currentCard.kanji); }
+
+        // --- FLASHCARD QUIZ LOGIC ---
+        function openQuizSetup() {
+            document.getElementById('quizOverlay').style.display = 'flex';
+            document.getElementById('quizSetup').style.display = 'block';
+            document.getElementById('quizGame').style.display = 'none';
+            document.getElementById('quizOverlay').classList.add('active');
+        }
+
+        function closeQuiz() {
+            document.getElementById('quizOverlay').classList.remove('active');
+            setTimeout(() => { document.getElementById('quizOverlay').style.display = 'none'; }, 300);
+        }
+
+        function initQuiz() {
+            const target = document.getElementById('quizTarget').value;
+            let pool = allData;
+
+            if(target === 'mastered') pool = allData.filter(i => masteryData[`${currentLevel}-${i.kanji}`]);
+            if(target === 'unmastered') pool = allData.filter(i => !masteryData[`${currentLevel}-${i.kanji}`]);
+
+            if(pool.length === 0) return alert("Tidak ada kata yang cocok untuk kriteria ini.");
+
+            // Shuffle FULL DATA
+            quizQueue = pool.sort(() => 0.5 - Math.random());
+            
+            document.getElementById('quizSetup').style.display = 'none';
+            document.getElementById('quizGame').style.display = 'block';
+            
+            nextCard();
+        }
+
+        function nextCard() {
+            if(quizQueue.length === 0) {
+                alert("Sesi Belajar Selesai! 🎉");
+                closeQuiz();
+                filterKotoba(); // Refresh grid status
+                return;
+            }
+
+            // Reset Flip
+            const cardEl = document.querySelector('.quiz-card');
+            cardEl.classList.remove('flipped');
+
+            // Load Data
+            currentCard = quizQueue[0]; // Peek first
+            
+            // Update UI
+            setTimeout(() => { // Delay update content until flip back animation done if any
+                document.getElementById('qKanji').innerText = currentCard.kanji;
+                document.getElementById('qFuri').innerText = currentCard.furigana || '';
+                document.getElementById('qMean').innerText = currentCard.mean;
+                document.getElementById('qRomaji').innerText = currentCard.romaji;
+                document.getElementById('qEx').innerText = currentCard.example || '';
+            }, 200);
+        }
+
+        function flipCard() {
+            document.querySelector('.quiz-card').classList.add('flipped');
+            playTTS(currentCard.kanji); // Auto play sound on reveal
+        }
+
+        function answer(isKnown) {
+            // Remove current from queue head
+            const processedCard = quizQueue.shift();
+
+            if(isKnown) {
+                // Tandai hapal
+                masteryData[`${currentLevel}-${processedCard.kanji}`] = true;
+                localStorage.setItem('kotobaMastery', JSON.stringify(masteryData));
+                // Lanjut ke kartu berikutnya
+                nextCard();
+            } else {
+                // Jika lupa, tandai belum hapal
+                if(masteryData[`${currentLevel}-${processedCard.kanji}`]) {
+                    delete masteryData[`${currentLevel}-${processedCard.kanji}`];
+                    localStorage.setItem('kotobaMastery', JSON.stringify(masteryData));
+                }
                 
-                <!-- HINT CASE SENSITIVE -->
-                <div class="auth-hint">⚠️ Perhatikan huruf besar & kecil pada password</div>
+                // Re-queue (Spaced Repetition Micro: muncul lagi nanti di sesi ini)
+                // Masukkan kembali ke posisi acak di tengah/belakang antrian
+                const insertIndex = Math.floor(Math.random() * (quizQueue.length - 1)) + 1;
+                quizQueue.splice(insertIndex, 0, processedCard);
                 
-                <!-- TOMBOL LUPA PASSWORD DI SINI -->
-                <div style="text-align:right; margin-bottom:10px; font-size:0.8rem;">
-                    <span onclick="handleForgot()" style="cursor:pointer; color:var(--primary); text-decoration:underline;">Lupa Password?</span>
-                </div>
+                nextCard();
+            }
+        }
 
-                <button class="toggle-btn" style="background: var(--primary); color: white;" onclick="handleLogin()">Login (ID & Password)</button>
-                <button class="toggle-btn" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);" onclick="handleSignup()">Daftar Baru</button>
-            </div>
-            <div id="auth-msg" class="auth-msg"></div>
-            <div style="text-align:center; margin-top:10px;">
-                <button onclick="closeAuthModal()" style="background:none; border:none; color:var(--text); cursor:pointer; opacity:0.6;">Tutup</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- LOAD MAIN SCRIPT -->
-    <script src="app.js"></script>
-
+    </script>
 </body>
 </html>

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Kana - Nihon Science</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --primary-blue: #0f172a;
+            --secondary-blue: #1e293b;
+            --accent-red: #e11d48;
+            --science-cyan: #0ea5e9;
+            --success-green: #10b981;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --radius: 16px;
+            --font-jp: 'Noto Sans JP', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            touch-action: manipulation;
+        }
+
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .jp-text { font-family: var(--font-jp); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { 
+            font-size: 1.25rem; font-weight: 800; color: var(--primary-blue); 
+            display: flex; align-items: center; gap: 8px; text-decoration: none;
+        }
+
+        /* --- TABS --- */
+        .tab-container {
+            display: flex; justify-content: center; gap: 12px; margin: 30px 0; flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 24px; border-radius: 50px; border: 1px solid var(--border);
+            background: white; font-weight: 600; cursor: pointer; transition: 0.2s;
+            font-size: 1rem; color: var(--text-light);
+        }
+        .tab-btn.active {
+            background: var(--primary-blue); color: white; border-color: var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+        }
+
+        /* --- SUB TABS --- */
+        .sub-tabs {
+            display: flex; justify-content: center; gap: 8px; margin-bottom: 30px;
+        }
+        .sub-tab-btn {
+            padding: 6px 16px; border-radius: 8px; background: transparent; 
+            font-size: 0.9rem; font-weight: 600; color: var(--text-light); cursor: pointer; border: none;
+        }
+        .sub-tab-btn.active { background: #e0f2fe; color: var(--science-cyan); }
+
+        /* --- ROW LAYOUT --- */
+        .kana-section { display: none; animation: fadeIn 0.4s ease; }
+        .kana-section.active { display: block; }
+        .kana-group-container { display: none; }
+        .kana-group-container.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .row-block {
+            background: white; border: 1px solid var(--border); border-radius: 20px;
+            padding: 24px; margin-bottom: 24px;
+        }
+        .row-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px dashed var(--border);
+        }
+        .row-title { font-size: 1.1rem; font-weight: 700; color: var(--primary-blue); }
+        
+        .btn-practice-row {
+            background: #e0f2fe; color: var(--science-cyan); border: none;
+            padding: 6px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s;
+        }
+        .btn-practice-row:hover { background: var(--science-cyan); color: white; }
+
+        .kana-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); 
+            gap: 12px;
+        }
+
+        /* --- CARD --- */
+        .kana-card {
+            background: transparent; perspective: 1000px; height: 140px; cursor: pointer; position: relative;
+        }
+        .card-inner {
+            position: relative; width: 100%; height: 100%;
+            text-align: center; transition: transform 0.6s;
+            transform-style: preserve-3d;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background: #f8fafc; border: 1px solid var(--border);
+        }
+        .kana-card.flipped .card-inner { transform: rotateY(180deg); }
+        .kana-card.mastered .card-inner { border-color: var(--success-green); background: #f0fdf4; }
+
+        .card-front, .card-back {
+            position: absolute; width: 100%; height: 100%;
+            -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            border-radius: 12px;
+        }
+        .card-front { color: var(--primary-blue); }
+        .kana-char { font-size: 2.5rem; font-weight: 700; line-height: 1; }
+        .kana-romaji { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; font-weight: 600; text-transform: uppercase; }
+
+        .master-btn {
+            position: absolute; top: 8px; right: 8px; z-index: 20;
+            width: 24px; height: 24px; border-radius: 50%;
+            border: 2px solid #cbd5e1; background: white; color: transparent;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.2s; cursor: pointer;
+        }
+        .master-btn:hover { border-color: var(--success-green); }
+        .kana-card.mastered .master-btn { background: var(--success-green); border-color: var(--success-green); color: white; }
+
+        .tts-btn {
+            position: absolute; bottom: 8px; right: 8px; z-index: 20;
+            width: 28px; height: 28px; border-radius: 50%;
+            background: #e0f2fe; color: var(--science-cyan); border: none;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: 0.2s;
+        }
+        .tts-btn:hover { background: var(--science-cyan); color: white; }
+
+        .card-back {
+            background: #fff; transform: rotateY(180deg); padding: 8px;
+            font-size: 0.8rem; color: var(--text-dark);
+            border: 1px solid var(--science-cyan);
+        }
+        .stroke-preview {
+            width: 50px; height: 50px; margin-bottom: 8px;
+            border-radius: 4px; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        .stroke-preview img { width: 100%; height: 100%; object-fit: contain; }
+        .stroke-fallback { background: #eee; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #999; border-radius: 4px; }
+        .mnemonic-text { line-height: 1.3; }
+
+        /* --- READING SECTION --- */
+        .reading-controls {
+            background: white; border: 1px solid var(--border); border-radius: 16px;
+            padding: 20px; margin-bottom: 30px;
+            display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
+        }
+        .toggle-label { display: flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; color: var(--text-dark); }
+        .toggle-checkbox { width: 18px; height: 18px; accent-color: var(--science-cyan); cursor: pointer; }
+
+        .story-card {
+            background: white; border: 1px solid var(--border); border-radius: 20px;
+            overflow: hidden; margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .story-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 20px 30px; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .story-title { font-size: 1.5rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 4px; }
+        .story-meta { font-size: 0.9rem; color: var(--text-light); }
+
+        .story-content { padding: 30px; }
+        .sentence-block { margin-bottom: 24px; position: relative; }
+        .sentence-jp { font-size: 1.4rem; line-height: 1.8; color: var(--text-dark); font-weight: 500; margin-bottom: 8px; display: inline-block;}
+        
+        .sentence-play-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 24px; height: 24px; background: #e0f2fe; color: var(--science-cyan);
+            border-radius: 50%; cursor: pointer; margin-left: 8px; vertical-align: middle;
+        }
+        .sentence-play-btn:hover { background: var(--science-cyan); color: white; }
+
+        .sentence-romaji { font-size: 1rem; color: var(--science-cyan); font-family: monospace; margin-bottom: 4px; display: none; }
+        .sentence-mean { font-size: 1rem; color: var(--text-light); font-style: italic; display: none; }
+        .show-romaji .sentence-romaji { display: block; }
+        .show-mean .sentence-mean { display: block; }
+
+        /* --- MODAL (Smart Canvas) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px);
+            z-index: 1000; display: none; justify-content: center; align-items: center;
+            flex-direction: column; opacity: 0; transition: opacity 0.3s;
+        }
+        .modal-overlay.open { display: flex; opacity: 1; }
+
+        .modal {
+            background: white; width: 90%; max-width: 500px;
+            border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            display: flex; flex-direction: column; overflow: hidden;
+            transform: scale(0.95); transition: transform 0.3s;
+        }
+        .modal-overlay.open .modal { transform: scale(1); }
+
+        .modal-header {
+            padding: 20px; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .modal-title-char { font-size: 2rem; font-weight: 800; color: var(--primary-blue); }
+        .close-modal { background: none; border: none; cursor: pointer; color: var(--text-light); }
+
+        .modal-tabs { display: flex; border-bottom: 1px solid var(--border); }
+        .m-tab-btn {
+            flex: 1; padding: 12px; border: none; background: #f8fafc; cursor: pointer;
+            font-weight: 600; color: var(--text-light); border-bottom: 3px solid transparent;
+        }
+        .m-tab-btn.active { background: white; color: var(--primary-blue); border-bottom-color: var(--primary-blue); }
+
+        .modal-content-area { padding: 24px; min-height: 300px; }
+        .m-section { display: none; }
+        .m-section.active { display: block; }
+
+        /* Canvas */
+        .canvas-container {
+            position: relative; width: 300px; height: 300px; margin: 0 auto;
+            border: 2px dashed #cbd5e1; border-radius: 12px; background: #fff;
+            touch-action: none; cursor: crosshair;
+        }
+        canvas { width: 100%; height: 100%; }
+        .overlay-guide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 180px; font-weight: 700; color: rgba(15, 23, 42, 0.1);
+            pointer-events: none; user-select: none;
+            font-family: 'Noto Sans JP', sans-serif;
+            transition: color 0.5s;
+        }
+        .overlay-guide.show-correction { color: rgba(239, 68, 68, 0.3); }
+
+        /* Modal Info Image */
+        .modal-stroke-large {
+            width: 120px; height: 120px; margin: 0 auto 16px;
+            border: 1px solid var(--border); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center; background: #fafbfc;
+        }
+        .modal-stroke-large img { width: 100%; height: 100%; object-fit: contain; }
+
+        .canvas-tools { display: flex; justify-content: center; gap: 10px; margin-top: 16px; }
+        .tool-btn {
+            padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border);
+            background: white; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 0.9rem;
+        }
+        .tool-btn:hover { background: var(--bg-light); }
+        .tool-btn.primary { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+
+        /* Quiz UI */
+        .quiz-card { background: white; padding: 32px; border-radius: 24px; text-align: center; max-width: 400px; width: 90%; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .quiz-question { font-size: 5rem; margin: 10px 0 30px; color: var(--primary-blue); font-weight: 700; }
+        .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .quiz-btn {
+            background: white; border: 2px solid var(--border);
+            padding: 16px; border-radius: 12px; font-size: 1.2rem; font-weight: 700;
+            color: var(--text-dark); cursor: pointer; transition: 0.1s;
+        }
+        .quiz-btn:hover { background: var(--bg-light); border-color: var(--science-cyan); }
+        .quiz-btn.correct { background: var(--success-green); border-color: var(--success-green); color: white; }
+        .quiz-btn.wrong { background: var(--accent-red); border-color: var(--accent-red); color: white; }
+
+        .quiz-setup h3 { font-size: 1.25rem; color: var(--primary-blue); margin-bottom: 20px; }
+        .form-group { text-align: left; margin-bottom: 16px; }
+        .form-group label { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; color: var(--text-light); }
+        .form-select {
+            width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--border);
+            background: var(--bg-light); font-size: 1rem; color: var(--text-dark); outline: none;
+        }
+        .quiz-info-text {
+            font-size: 0.85rem; color: var(--text-light); background: #f0f9ff; 
+            padding: 10px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #bae6fd;
+        }
+
+        .close-quiz {
+            position: absolute; top: 16px; right: 16px; color: var(--text-light);
+            background: transparent; border: none; cursor: pointer;
+        }
+
+        .fab-quiz {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--accent-red); color: white;
+            padding: 16px 24px; border-radius: 50px;
+            font-weight: 700; box-shadow: 0 10px 25px rgba(225, 29, 72, 0.4);
+            cursor: pointer; transition: 0.3s; z-index: 90;
+            display: flex; align-items: center; gap: 8px; border: none;
+        }
+        .fab-quiz:hover { transform: scale(1.05); }
+
+        @media (max-width: 640px) {
+            .kana-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .kana-card { height: 140px; }
+            .kana-char { font-size: 2rem; }
+            .row-block { padding: 16px; }
+            .btn-practice-row span { display: none; }
+            .modal { width: 95%; }
+            .canvas-container { width: 260px; height: 260px; }
+            .overlay-guide { font-size: 150px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">
+                <i data-lucide="arrow-left" size="20"></i>
+                NIHON<span style="color:var(--accent-red)">SCIENCE</span>
+                <span style="font-weight:400; font-size:0.9rem; color:var(--text-light); margin-left:8px;">| Kana Master</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="tab-container">
+            <button class="tab-btn active" onclick="switchTab('hiragana')">Hiragana</button>
+            <button class="tab-btn" onclick="switchTab('katakana')">Katakana</button>
+            <button class="tab-btn" onclick="switchTab('reading')">Reading</button>
+        </div>
+
+        <div class="sub-tabs" id="subTabs">
+            <button class="sub-tab-btn active" onclick="filterGroup('basic')">Seion (Dasar)</button>
+            <button class="sub-tab-btn" onclick="filterGroup('dakuon')">Dakuon/Handakuon</button>
+            <button class="sub-tab-btn" onclick="filterGroup('yoon')">Yoon (Kombinasi)</button>
+        </div>
+
+        <div id="hiragana" class="kana-section active"></div>
+        <div id="katakana" class="kana-section"></div>
+        
+        <div id="reading" class="kana-section">
+            <div class="reading-controls">
+                <div style="font-weight:700; color:var(--text-light); margin-right:auto;">Tampilan Bantuan:</div>
+                <label class="toggle-label"><input type="checkbox" class="toggle-checkbox" id="toggleRomaji" onchange="toggleReadingView()"> Tampilkan Romaji</label>
+                <label class="toggle-label"><input type="checkbox" class="toggle-checkbox" id="toggleMeaning" onchange="toggleReadingView()"> Tampilkan Arti</label>
+            </div>
+            <div id="readingContainer"></div>
+        </div>
+    </div>
+
+    <!-- Smart Canvas Modal -->
+    <div class="modal-overlay" id="detailModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title-char jp-text" id="modalChar">あ</div>
+                <button class="close-modal" onclick="closeModal()"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-tabs">
+                <button class="m-tab-btn active" onclick="switchModalTab('write')">Latihan Tulis (Canvas)</button>
+                <button class="m-tab-btn" onclick="switchModalTab('info')">Info & Mnemonik</button>
+            </div>
+            
+            <div class="modal-content-area">
+                <!-- Writing Tab -->
+                <div id="tab-write" class="m-section active">
+                    <div class="canvas-container" id="canvasContainer">
+                        <canvas id="writingCanvas" width="300" height="300"></canvas>
+                        <div class="overlay-guide jp-text" id="canvasGuide">あ</div>
+                    </div>
+                    <div class="canvas-tools">
+                        <button class="tool-btn" onclick="clearCanvas()"><i data-lucide="rotate-ccw" size="16"></i> Hapus</button>
+                        <button class="tool-btn" onclick="playTTSFromModal()"><i data-lucide="volume-2" size="16"></i> Dengar</button>
+                        <button class="tool-btn primary" onclick="checkWriting()"><i data-lucide="check" size="16"></i> Koreksi</button>
+                    </div>
+                    <p style="text-align:center; font-size:0.85rem; color:var(--text-light); margin-top:12px;">
+                        Tulis huruf di kotak di atas, lalu klik <strong>Koreksi</strong> untuk membandingkan.
+                    </p>
+                </div>
+
+                <!-- Info Tab -->
+                <div id="tab-info" class="m-section">
+                    <div style="text-align:center;">
+                        <div class="modal-stroke-large">
+                            <img id="modalStrokeImage" src="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div style="display:none; flex-direction:column; color:#94a3b8; font-size:0.8rem;">
+                                <i data-lucide="pen-tool" size="24"></i>
+                                <span>No GIF</span>
+                            </div>
+                        </div>
+                        <h3 id="modalRomaji" style="font-size:1.5rem; color:var(--text-dark); margin-bottom:16px;">A</h3>
+                        <div id="modalMnemonic" style="background:#f0f9ff; padding:16px; border-radius:12px; color:var(--secondary-blue);">
+                            Mnemonik disini...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Overlay -->
+    <div class="quiz-overlay" id="quizOverlay" style="display: none;">
+        <div class="quiz-card">
+            <button class="close-quiz" onclick="closeQuiz()"><i data-lucide="x"></i></button>
+            
+            <!-- Setup -->
+            <div id="quizSetup" style="display:block;">
+                <h3><i data-lucide="settings-2" style="vertical-align:middle;"></i> Pengaturan Quiz</h3>
+                <div class="form-group">
+                    <label>Pilih Huruf:</label>
+                    <select id="quizTypeFilter" class="form-select">
+                        <option value="hiragana">Hanya Hiragana</option>
+                        <option value="katakana">Hanya Katakana</option>
+                        <option value="mix">Campuran</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Target Latihan:</label>
+                    <select id="quizStatusFilter" class="form-select">
+                        <option value="all">Semua (Latihan Penuh)</option>
+                        <option value="unmastered">Hanya yang Belum Hapal</option>
+                        <option value="mastered">Review yang Sudah Hapal</option>
+                    </select>
+                </div>
+                <button class="tab-btn active" style="width:100%; margin-top:10px;" onclick="initQuizFromSetup()">Mulai Quiz</button>
+            </div>
+
+            <!-- Game -->
+            <div id="quizGame" style="display:none;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span style="font-size: 0.9rem; color: var(--text-light);">Apa bacanya?</span>
+                    <span style="font-size: 0.9rem; font-weight:700; color: var(--science-cyan);" id="quizProgress">0/0</span>
+                </div>
+                <div class="quiz-question jp-text" id="quizQuestion">?</div>
+                <div class="quiz-options" id="quizOptions"></div>
+                <div id="quizFeedback" style="margin-top: 16px; font-weight: 700; height: 24px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <button class="fab-quiz" onclick="openQuizSetup()">
+        <i data-lucide="brain-circuit"></i> Uji Ingatan
+    </button>
+
+    <script>
+        // Init Lucide Only once DOM is ready to avoid ReferenceError if script is slow
+        document.addEventListener('DOMContentLoaded', () => {
+            if(window.lucide) lucide.createIcons();
+        });
+
+        // --- DATA ---
+        const hiraganaData = {
+            basic: [{group: 'A-Row', items: [{char:'あ', romaji:'a', mnemonic:'Huruf A dicoret'}, {char:'い', romaji:'i', mnemonic:'Dua ekor Ikan'}, {char:'う', romaji:'u', mnemonic:'Orang bungkuk bawa Uang'}, {char:'え', romaji:'e', mnemonic:'Burung Elang'}, {char:'お', romaji:'o', mnemonic:'Main gOlf'}]}, {group: 'Ka-Row', items: [{char:'か', romaji:'ka', mnemonic:'Kaki gagak'}, {char:'き', romaji:'ki', mnemonic:'Kunci pintu'}, {char:'く', romaji:'ku', mnemonic:'Mulut Ku-ku-ru-yuk'}, {char:'け', romaji:'ke', mnemonic:'Keris pusaka'}, {char:'こ', romaji:'ko', mnemonic:'Kotak'}]}, {group: 'Sa-Row', items: [{char:'さ', romaji:'sa', mnemonic:'Saya senam'}, {char:'し', romaji:'shi', mnemonic:'Pancingan Shimano'}, {char:'す', romaji:'su', mnemonic:'Susumu berputar'}, {char:'せ', romaji:'se', mnemonic:'Seseorang duduk'}, {char:'そ', romaji:'so', mnemonic:'Sosis zigzag'}]}, {group: 'Ta-Row', items: [{char:'た', romaji:'ta', mnemonic:'TA-ngan menulis'}, {char:'ち', romaji:'chi', mnemonic:'CHI-cak'}, {char:'つ', romaji:'tsu', mnemonic:'TSU-nami'}, {char:'て', romaji:'te', mnemonic:'TE-mpelan'}, {char:'と', romaji:'to', mnemonic:'TO-i (duri)'}]}, {group: 'Na-Row', items: [{char:'な', romaji:'na', mnemonic:'NA-ga'}, {char:'に', romaji:'ni', mnemonic:'NI-kmat'}, {char:'ぬ', romaji:'nu', mnemonic:'NU-del'}, {char:'ね', romaji:'ne', mnemonic:'NE-nek'}, {char:'の', romaji:'no', mnemonic:'NO (Dilarang)'}]}, {group: 'Ha-Row', items: [{char:'は', romaji:'ha', mnemonic:'HA-ntu'}, {char:'ひ', romaji:'hi', mnemonic:'HI-dung'}, {char:'ふ', romaji:'fu', mnemonic:'Gu-nung FU-ji'}, {char:'へ', romaji:'he', mnemonic:'HE-lm'}, {char:'ほ', romaji:'ho', mnemonic:'HO-ckey'}]}, {group: 'Ma-Row', items: [{char:'ま', romaji:'ma', mnemonic:'MA-nusia'}, {char:'み', romaji:'mi', mnemonic:'21 (MI)'}, {char:'む', romaji:'mu', mnemonic:'MU-sapi'}, {char:'め', romaji:'me', mnemonic:'ME-mie'}, {char:'も', romaji:'mo', mnemonic:'MO-nyet'}]}, {group: 'Ya-Row', items: [{char:'や', romaji:'ya', mnemonic:'YA-k (Sapi)'}, {char:'', romaji:'', empty:true}, {char:'ゆ', romaji:'yu', mnemonic:'Ikan YU (Hiu)'}, {char:'', romaji:'', empty:true}, {char:'よ', romaji:'yo', mnemonic:'YO-yo'}]}, {group: 'Ra-Row', items: [{char:'ら', romaji:'ra', mnemonic:'RA-mbut'}, {char:'り', romaji:'ri', mnemonic:'RI-ver'}, {char:'る', romaji:'ru', mnemonic:'RU-bah'}, {char:'れ', romaji:'re', mnemonic:'RE-storan'}, {char:'ろ', romaji:'ro', mnemonic:'RO-ti'}]}, {group: 'Wa-Row', items: [{char:'わ', romaji:'wa', mnemonic:'WA-sp'}, {char:'を', romaji:'wo', mnemonic:'WO-w'}, {char:'ん', romaji:'n', mnemonic:'N miring'}]}],
+            dakuon: [{group: 'Ga-Row', items: [{char:'が', romaji:'ga', mnemonic:'Ka + Tenten'}, {char:'ぎ', romaji:'gi', mnemonic:'Ki + Tenten'}, {char:'ぐ', romaji:'gu', mnemonic:'Ku + Tenten'}, {char:'げ', romaji:'ge', mnemonic:'Ke + Tenten'}, {char:'ご', romaji:'go', mnemonic:'Ko + Tenten'}]}, {group: 'Za-Row', items: [{char:'ざ', romaji:'za'}, {char:'じ', romaji:'ji'}, {char:'ず', romaji:'zu'}, {char:'ぜ', romaji:'ze'}, {char:'ぞ', romaji:'zo'}]}, {group: 'Da-Row', items: [{char:'だ', romaji:'da'}, {char:'ぢ', romaji:'ji'}, {char:'づ', romaji:'zu'}, {char:'で', romaji:'de'}, {char:'ど', romaji:'do'}]}, {group: 'Ba-Row', items: [{char:'ば', romaji:'ba'}, {char:'び', romaji:'bi'}, {char:'ぶ', romaji:'bu'}, {char:'べ', romaji:'be'}, {char:'ぼ', romaji:'bo'}]}, {group: 'Pa-Row', items: [{char:'ぱ', romaji:'pa'}, {char:'ぴ', romaji:'pi'}, {char:'ぷ', romaji:'pu'}, {char:'ぺ', romaji:'pe'}, {char:'ぽ', romaji:'po'}]}],
+            yoon: [{group: 'Kya-Row', items: [{char:'きゃ', romaji:'kya'}, {char:'きゅ', romaji:'kyu'}, {char:'きょ', romaji:'kyo'}]}]
+        };
+        const katakanaData = {
+            basic: [{group: 'A-Row', items: [{char:'ア', romaji:'a', mnemonic:'Antena'}, {char:'イ', romaji:'i', mnemonic:'Eagle'}, {char:'ウ', romaji:'u', mnemonic:'Udang'}, {char:'エ', romaji:'e', mnemonic:'Elevator'}, {char:'オ', romaji:'o', mnemonic:'Orang nari'}]}, {group: 'Ka-Row', items: [{char:'カ', romaji:'ka'}, {char:'キ', romaji:'ki'}, {char:'ク', romaji:'ku'}, {char:'ケ', romaji:'ke'}, {char:'コ', romaji:'ko'}]}, {group: 'Sa-Row', items: [{char:'サ', romaji:'sa'}, {char:'シ', romaji:'shi'}, {char:'ス', romaji:'su'}, {char:'セ', romaji:'se'}, {char:'ソ', romaji:'so'}]}, {group: 'Ta-Row', items: [{char:'タ', romaji:'ta'}, {char:'チ', romaji:'chi'}, {char:'ツ', romaji:'tsu'}, {char:'テ', romaji:'te'}, {char:'ト', romaji:'to'}]}, {group: 'Na-Row', items: [{char:'ナ', romaji:'na'}, {char:'ニ', romaji:'ni'}, {char:'ヌ', romaji:'nu'}, {char:'ネ', romaji:'ne'}, {char:'ノ', romaji:'no'}]}, {group: 'Ha-Row', items: [{char:'ハ', romaji:'ha'}, {char:'ヒ', romaji:'hi'}, {char:'フ', romaji:'fu'}, {char:'ヘ', romaji:'he'}, {char:'ホ', romaji:'ho'}]}, {group: 'Ma-Row', items: [{char:'マ', romaji:'ma'}, {char:'ミ', romaji:'mi'}, {char:'ム', romaji:'mu'}, {char:'メ', romaji:'me'}, {char:'モ', romaji:'mo'}]}, {group: 'Ya-Row', items: [{char:'ヤ', romaji:'ya'}, {char:'', romaji:'', empty:true}, {char:'ユ', romaji:'yu'}, {char:'', romaji:'', empty:true}, {char:'ヨ', romaji:'yo'}]}, {group: 'Ra-Row', items: [{char:'ラ', romaji:'ra'}, {char:'リ', romaji:'ri'}, {char:'ル', romaji:'ru'}, {char:'レ', romaji:'re'}, {char:'ロ', romaji:'ro'}]}, {group: 'Wa-Row', items: [{char:'ワ', romaji:'wa'}, {char:'ヲ', romaji:'wo'}, {char:'ン', romaji:'n'}]}],
+            dakuon: [{group: 'Ga-Row', items: [{char:'ガ', romaji:'ga'}, {char:'ギ', romaji:'gi'}, {char:'グ', romaji:'gu'}, {char:'ゲ', romaji:'ge'}, {char:'ゴ', romaji:'go'}]}, {group: 'Za-Row', items: [{char:'ザ', romaji:'za'}, {char:'ジ', romaji:'ji'}, {char:'ズ', romaji:'zu'}, {char:'ゼ', romaji:'ze'}, {char:'ゾ', romaji:'zo'}]}, {group: 'Da-Row', items: [{char:'ダ', romaji:'da'}, {char:'ぢ', romaji:'ji'}, {char:'づ', romaji:'zu'}, {char:'デ', romaji:'de'}, {char:'ド', romaji:'do'}]}, {group: 'Ba-Row', items: [{char:'バ', romaji:'ba'}, {char:'ビ', romaji:'bi'}, {char:'ブ', romaji:'bu'}, {char:'ベ', romaji:'be'}, {char:'ボ', romaji:'bo'}]}, {group: 'Pa-Row', items: [{char:'パ', romaji:'pa'}, {char:'ピ', romaji:'pi'}, {char:'プ', romaji:'pu'}, {char:'ペ', romaji:'pe'}, {char:'ポ', romaji:'po'}]}],
+            yoon: [{group: 'Kya-Row', items: [{char:'きゃ', romaji:'kya'}, {char:'キュ', romaji:'kyu'}, {char:'キョ', romaji:'kyo'}]}]
+        };
+
+        const readingData = [
+            {title: "桃太郎 (Momotarou)", level: "Pemula", content: [
+                {jp: "昔々、あるおじいさんとおばあさんがいました。", romaji: "Mukashi mukashi...", mean: "Dahulu kala..."},
+                {jp: "おじいさんは山へ芝刈りに...", romaji: "Ojiisan wa yama e...", mean: "Kakek pergi ke gunung..."}
+            ]}
+        ];
+
+        let masteryData = JSON.parse(localStorage.getItem('kanaMastery')) || {};
+        let currentType = 'hiragana';
+        let currentGroup = 'basic';
+        let currentModalChar = '';
+
+        // --- HELPER: FIND DATA ---
+        function findKanaData(char) {
+            const search = (data) => {
+                for (const groupKey in data) {
+                    for (const row of data[groupKey]) {
+                        const found = row.items.find(i => i.char === char);
+                        if (found) return { ...found, type: currentType };
+                    }
+                }
+            };
+            return search(hiraganaData) || search(katakanaData);
+        }
+
+        // --- RENDER ---
+        function renderKana(data, containerId, type) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            const groupsToRender = data[currentGroup] || [];
+            
+            if(groupsToRender.length === 0 && currentGroup === 'basic' && type === 'hiragana') {
+                groupsToRender.push({group: 'A-Row', items: [{char:'あ', romaji:'a'}, {char:'い', romaji:'i'}, {char:'う', romaji:'u'}, {char:'え', romaji:'e'}, {char:'お', romaji:'o'}]});
+            }
+
+            const wrapper = document.createElement('div');
+            wrapper.className = `kana-group-container active`;
+
+            groupsToRender.forEach((row, rowIndex) => {
+                const rowDiv = document.createElement('div');
+                rowDiv.className = 'row-block';
+                rowDiv.innerHTML = `<div class="row-header"><div class="row-title">${row.group}</div><button class="btn-practice-row" onclick="startSpecificRowQuiz('${type}','${currentGroup}',${rowIndex})"><i data-lucide="dumbbell" size="16"></i><span>Latih</span></button></div>`;
+                const grid = document.createElement('div');
+                grid.className = 'kana-grid';
+
+                row.items.forEach(item => {
+                    if(item.empty) { 
+                        const spacer = document.createElement('div');
+                        grid.appendChild(spacer);
+                        return; 
+                    }
+                    const isMastered = masteryData[item.char] ? 'mastered' : '';
+                    const checkIcon = isMastered ? `<i data-lucide="check" size="14"></i>` : '';
+                    
+                    // IMAGE LOGIC:
+                    const prefix = type === 'hiragana' ? 'h' : 'k';
+                    const cleanRomaji = item.romaji ? item.romaji.toLowerCase().replace(/[^a-z0-9]/g, '') : ''; 
+                    const imagePath = `assets/stroke/${prefix}-${cleanRomaji}.gif`;
+
+                    const card = document.createElement('div');
+                    card.className = `kana-card ${isMastered}`;
+                    card.id = `card-${item.char}`;
+                    card.onclick = () => openDetailModal(item.char); // Only char needed now
+                    
+                    card.innerHTML = `
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="master-btn" onclick="toggleMastery('${item.char}', event)">${checkIcon}</div>
+                                <div class="tts-btn" onclick="playTTS('${item.char}', event)"><i data-lucide="volume-2" size="14"></i></div>
+                                <div class="kana-char jp-text">${item.char}</div>
+                                <div class="kana-romaji">${item.romaji}</div>
+                            </div>
+                            <div class="card-back">
+                                <div class="stroke-preview">
+                                    <img src="${imagePath}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" alt="Stroke">
+                                    <div class="stroke-fallback" style="display:none;"><i data-lucide="pen-tool"></i></div>
+                                </div>
+                                <div class="mnemonic-text">Ingat: <br><strong style="color:var(--accent-red)">${item.mnemonic || item.romaji}</strong></div>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+                
+                rowDiv.appendChild(grid);
+                wrapper.appendChild(rowDiv);
+            });
+            container.appendChild(wrapper);
+        }
+
+        function renderReading() {
+            const container = document.getElementById('readingContainer');
+            container.innerHTML = '';
+            readingData.forEach(story => {
+                const card = document.createElement('div');
+                card.className = 'story-card';
+                let contentHtml = '';
+                story.content.forEach(line => {
+                    contentHtml += `
+                        <div class="sentence-block">
+                            <div>
+                                <span class="sentence-jp jp-text">${line.jp}</span>
+                                <span class="sentence-play-btn" onclick="playTTS('${line.jp}')"><i data-lucide="volume-2" size="14"></i></span>
+                            </div>
+                            <div class="sentence-romaji">${line.romaji}</div>
+                            <div class="sentence-mean">${line.mean}</div>
+                        </div>
+                    `;
+                });
+                card.innerHTML = `<div class="story-header"><div class="story-title jp-text">${story.title}</div></div><div class="story-content">${contentHtml}</div>`;
+                container.appendChild(card);
+            });
+        }
+
+        // --- TTS & LOGIC ---
+        function playTTS(text, e) {
+            if(e) e.stopPropagation();
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(text);
+                utter.lang = 'ja-JP';
+                utter.rate = 0.8; 
+                window.speechSynthesis.speak(utter);
+            }
+        }
+
+        function playTTSFromModal() { playTTS(currentModalChar); }
+
+        function toggleMastery(char, event) {
+            event.stopPropagation();
+            if (masteryData[char]) delete masteryData[char]; else masteryData[char] = true;
+            localStorage.setItem('kanaMastery', JSON.stringify(masteryData));
+            renderCurrentView();
+        }
+
+        function flipCard(el) { el.classList.toggle('flipped'); }
+
+        // --- SMART CANVAS & MODAL ---
+        let canvas, ctx, isDrawing = false;
+
+        function openDetailModal(char) {
+            const data = findKanaData(char);
+            if (!data) return;
+
+            currentModalChar = char;
+            document.getElementById('modalChar').innerText = char;
+            document.getElementById('modalRomaji').innerText = data.romaji.toUpperCase();
+            document.getElementById('canvasGuide').innerText = char;
+            document.getElementById('canvasGuide').classList.remove('show-correction');
+            
+            // Mnemonic & Image Logic for Modal
+            const mnemonicText = data.mnemonic || "Belum ada mnemonik.";
+            document.getElementById('modalMnemonic').innerHTML = `<strong>Ingat:</strong> ${mnemonicText}`;
+
+            const prefix = data.type === 'hiragana' ? 'h' : 'k';
+            const cleanRomaji = data.romaji.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const imagePath = `assets/stroke/${prefix}-${cleanRomaji}.gif`;
+            
+            const modalImg = document.getElementById('modalStrokeImage');
+            if(modalImg) {
+                modalImg.src = imagePath;
+                modalImg.style.display = 'block';
+                if(modalImg.nextElementSibling) modalImg.nextElementSibling.style.display = 'none';
+            }
+
+            document.getElementById('detailModal').classList.add('open');
+            setTimeout(initCanvas, 300);
+        }
+
+        function closeModal() { document.getElementById('detailModal').classList.remove('open'); }
+
+        function switchModalTab(tab) {
+            document.querySelectorAll('.m-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.m-section').forEach(s => s.classList.remove('active'));
+            if(tab === 'write') {
+                document.querySelector('.m-tab-btn:first-child').classList.add('active');
+                document.getElementById('tab-write').classList.add('active');
+            } else {
+                document.querySelector('.m-tab-btn:last-child').classList.add('active');
+                document.getElementById('tab-info').classList.add('active');
+            }
+        }
+
+        function initCanvas() {
+            canvas = document.getElementById('writingCanvas');
+            ctx = canvas.getContext('2d');
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.lineWidth = 8; ctx.strokeStyle = '#0f172a';
+            canvas.onmousedown = startDraw; canvas.onmouseup = stopDraw; canvas.onmousemove = draw;
+            canvas.ontouchstart = startDraw; canvas.ontouchend = stopDraw; canvas.ontouchmove = draw;
+        }
+
+        function startDraw(e) { isDrawing = true; ctx.beginPath(); draw(e); }
+        function stopDraw() { isDrawing = false; ctx.beginPath(); }
+        function draw(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || e.touches[0].clientX) - rect.left;
+            const y = (e.clientY || e.touches[0].clientY) - rect.top;
+            ctx.lineTo(x, y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x, y);
+        }
+
+        function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); document.getElementById('canvasGuide').classList.remove('show-correction'); }
+        function checkWriting() { document.getElementById('canvasGuide').classList.add('show-correction'); }
+
+        // --- INIT & MISC ---
+        window.onload = function() {
+            renderCurrentView();
+            renderReading();
+            if(window.lucide) lucide.createIcons();
+        };
+
+        function renderCurrentView() {
+            if(currentType === 'hiragana') renderKana(hiraganaData, 'hiragana', 'hiragana');
+            else renderKana(katakanaData, 'katakana', 'katakana');
+            if(window.lucide) lucide.createIcons();
+        }
+
+        function switchTab(type) {
+            currentType = type;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.kana-section').forEach(s => s.classList.remove('active'));
+            const idx = type === 'hiragana' ? 0 : type === 'katakana' ? 1 : 2;
+            document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+            document.getElementById(type).classList.add('active');
+            if(type === 'reading') {
+                document.getElementById('subTabs').style.display='none';
+                document.querySelector('.fab-quiz').style.display='none';
+            } else {
+                document.getElementById('subTabs').style.display='flex';
+                document.querySelector('.fab-quiz').style.display='flex';
+                renderCurrentView();
+            }
+        }
+
+        function filterGroup(g) {
+            currentGroup = g;
+            document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active'));
+            const idx = g === 'basic' ? 0 : g === 'dakuon' ? 1 : 2;
+            document.querySelectorAll('.sub-tab-btn')[idx].classList.add('active');
+            renderCurrentView();
+        }
+
+        function toggleReadingView() {
+            const r = document.getElementById('toggleRomaji').checked;
+            const m = document.getElementById('toggleMeaning').checked;
+            const c = document.getElementById('readingContainer');
+            if(r) c.classList.add('show-romaji'); else c.classList.remove('show-romaji');
+            if(m) c.classList.add('show-mean'); else c.classList.remove('show-mean');
+        }
+
+        // --- QUIZ (Full Logic) ---
+        let quizQueue = [];
+        let currentQuizItem = null;
+        let quizTotalCount = 0; let quizCorrectCount = 0;
+
+        function openQuizSetup() { document.getElementById('quizOverlay').style.display='flex'; document.getElementById('quizSetup').style.display='block'; document.getElementById('quizGame').style.display='none'; document.getElementById('quizOverlay').classList.add('active'); }
+        function closeQuiz() { document.getElementById('quizOverlay').style.display='none'; document.getElementById('quizOverlay').classList.remove('active'); }
+        
+        function initQuizFromSetup() {
+            const typeFilter = document.getElementById('quizTypeFilter').value;
+            const statusFilter = document.getElementById('quizStatusFilter').value;
+            let pool = [];
+            
+            // Gather ALL data (no slicing)
+            const typesToInclude = (typeFilter === 'mix') ? ['hiragana', 'katakana'] : [typeFilter];
+            typesToInclude.forEach(t => {
+                const dataSet = t === 'hiragana' ? hiraganaData : katakanaData;
+                ['basic', 'dakuon', 'yoon'].forEach(g => {
+                    if(dataSet[g]) dataSet[g].forEach(row => pool = pool.concat(row.items.filter(i => !i.empty)));
+                });
+            });
+
+            // Filter by Status
+            if(statusFilter === 'mastered') pool = pool.filter(i => masteryData[i.char]);
+            if(statusFilter === 'unmastered') pool = pool.filter(i => !masteryData[i.char]);
+            
+            if(pool.length === 0) return alert("Data kosong! Pastikan ada huruf yang sesuai kriteria.");
+            
+            quizQueue = pool.sort(() => 0.5 - Math.random());
+            quizTotalCount = quizQueue.length;
+            quizCorrectCount = 0;
+            document.getElementById('quizSetup').style.display='none';
+            document.getElementById('quizGame').style.display='block';
+            updateQuizCounter();
+            nextQuestion();
+        }
+
+        function startSpecificRowQuiz(type, group, rowIndex) {
+            const dataSet = type === 'hiragana' ? hiraganaData : katakanaData;
+            let pool = dataSet[group][rowIndex].items.filter(i => !i.empty);
+            if(pool.length === 0) return alert("Data kosong!");
+            quizQueue = pool.sort(() => 0.5 - Math.random());
+            quizTotalCount = quizQueue.length;
+            quizCorrectCount = 0;
+            document.getElementById('quizOverlay').style.display='flex';
+            document.getElementById('quizSetup').style.display='none';
+            document.getElementById('quizGame').style.display='block';
+            document.getElementById('quizOverlay').classList.add('active');
+            updateQuizCounter();
+            nextQuestion();
+        }
+
+        function updateQuizCounter() { document.getElementById('quizProgress').innerText = `${quizCorrectCount} / ${quizTotalCount}`; }
+        
+        function nextQuestion() {
+            if(quizQueue.length === 0) { alert("Selesai! 🎉"); closeQuiz(); return; }
+            currentQuizItem = quizQueue.pop();
+            document.getElementById('quizQuestion').innerText = currentQuizItem.char;
+            document.getElementById('quizFeedback').innerText = "";
+            const opts = generateSmartOptions(currentQuizItem);
+            document.getElementById('quizOptions').innerHTML = opts.map(o => `<button class="quiz-btn" onclick="checkAnswer(this, '${o}')">${o}</button>`).join('');
+        }
+
+        function generateSmartOptions(correctItem) {
+            let allRomaji = [];
+            const addRomaji = (data) => {
+                ['basic', 'dakuon', 'yoon'].forEach(g => {
+                    if(data[g]) data[g].forEach(row => row.items.forEach(i => { if(i.romaji && !i.empty) allRomaji.push(i.romaji); }));
+                });
+            };
+            addRomaji(hiraganaData);
+            addRomaji(katakanaData);
+            allRomaji = [...new Set(allRomaji)];
+            allRomaji = allRomaji.filter(r => r !== correctItem.romaji);
+            const distractors = allRomaji.sort(() => 0.5 - Math.random()).slice(0, 3);
+            return [...distractors, correctItem.romaji].sort(() => 0.5 - Math.random());
+        }
+
+        function checkAnswer(btn, ans) {
+            document.querySelectorAll('.quiz-btn').forEach(b => b.disabled = true);
+            if(ans === currentQuizItem.romaji) {
+                btn.classList.add('correct');
+                quizCorrectCount++;
+                updateQuizCounter();
+                setTimeout(nextQuestion, 800);
+            } else {
+                btn.classList.add('wrong');
+                // Requeue wrong item
+                quizQueue.splice(Math.floor(Math.random() * (quizQueue.length + 1)), 0, currentQuizItem);
+                setTimeout(nextQuestion, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
